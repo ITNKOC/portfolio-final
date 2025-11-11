@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiMapPin, FiZap, FiShoppingCart } from "react-icons/fi";
 import { personalInfo } from "@/lib/data";
@@ -192,81 +193,85 @@ const Hero = () => {
             {/* Name - Letter by Letter Animation */}
             <h1 className="relative text-5xl md:text-7xl lg:text-8xl font-orbitron font-bold mb-4 uppercase tracking-tight">
               {personalInfo.name.split('').map((char, index) => (
-                <motion.span
-                  key={index}
-                  className="inline-block text-gray-900 dark:text-white relative"
-                  initial={{
-                    opacity: 0,
-                    y: -50,
-                    rotateX: -90,
-                    scale: 0
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    rotateX: 0,
-                    scale: 1
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.05,
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 15
-                  }}
-                  whileHover={{
-                    scale: 1.2,
-                    y: -5,
-                    transition: { duration: 0.2 }
-                  }}
-                  style={{
-                    display: char === ' ' ? 'inline' : 'inline-block',
-                    width: char === ' ' ? '0.3em' : 'auto'
-                  }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
+                <React.Fragment key={index}>
+                  {char === ' ' ? (
+                    <>
+                      <br className="md:hidden" />
+                      <span className="hidden md:inline">&nbsp;</span>
+                    </>
+                  ) : (
+                    <motion.span
+                      className="inline-block text-gray-900 dark:text-white relative"
+                      initial={{
+                        opacity: 0,
+                        y: -50,
+                        rotateX: -90,
+                        scale: 0
+                      }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                        rotateX: 0,
+                        scale: 1
+                      }}
+                      transition={{
+                        duration: 0.5,
+                        delay: index * 0.05,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 15
+                      }}
+                      whileHover={{
+                        scale: 1.2,
+                        y: -5,
+                        transition: { duration: 0.2 }
+                      }}
+                    >
+                      {char}
 
-                  {/* Light Mode: Elegant Blue Gradient Shimmer */}
-                  <motion.span
-                    className="absolute inset-0 dark:hidden bg-gradient-to-r from-transparent via-light-rose to-transparent bg-clip-text text-transparent opacity-0"
-                    animate={{
-                      opacity: [0, 0.7, 0],
-                      backgroundPosition: ["-200%", "200%"]
-                    }}
-                    transition={{
-                      duration: 3,
-                      delay: index * 0.05 + 0.5,
-                      repeat: Infinity,
-                      repeatDelay: 2
-                    }}
-                    style={{
-                      backgroundSize: "200% 100%"
-                    }}
-                  >
-                    {char === ' ' ? '\u00A0' : char}
-                  </motion.span>
+                      {/* Light Mode: Elegant Blue Gradient Shimmer */}
+                      <motion.span
+                        className="absolute inset-0 dark:hidden bg-gradient-to-r from-transparent via-light-rose to-transparent bg-clip-text text-transparent opacity-0"
+                        animate={{
+                          opacity: [0, 0.7, 0],
+                          backgroundPosition: ["-200%", "200%"]
+                        }}
+                        transition={{
+                          duration: 3,
+                          delay: index * 0.05 + 0.5,
+                          repeat: Infinity,
+                          repeatDelay: 2
+                        }}
+                        style={{
+                          backgroundSize: "200% 100%"
+                        }}
+                      >
+                        {char}
+                      </motion.span>
 
-                  {/* Dark Mode: Individual Letter Glow */}
-                  <motion.span
-                    className="absolute inset-0 hidden dark:block text-cyber-primary opacity-0"
-                    animate={{
-                      opacity: [0, 0.8, 0],
-                      textShadow: [
-                        "0 0 5px #00FF41",
-                        "0 0 20px #00FF41, 0 0 40px #00FF41",
-                        "0 0 5px #00FF41"
-                      ]
-                    }}
-                    transition={{
-                      duration: 2,
-                      delay: index * 0.05 + 1,
-                      repeat: Infinity,
-                      repeatDelay: 3
-                    }}
-                  >
-                    {char === ' ' ? '\u00A0' : char}
-                  </motion.span>
-                </motion.span>
+                      {/* Dark Mode: Individual Letter Glow */}
+                      <motion.span
+                        className="absolute inset-0 hidden dark:block text-cyber-primary opacity-0"
+                        animate={{
+                          opacity: [0, 0.8, 0],
+                          textShadow: [
+                            "0 0 5px #00FF41",
+                            "0 0 20px #00FF41, 0 0 40px #00FF41",
+                            "0 0 5px #00FF41"
+                          ]
+                        }}
+                        transition={{
+                          duration: 2,
+                          delay: index * 0.05 + 1,
+                          repeat: Infinity,
+                          repeatDelay: 3
+                        }}
+                      >
+                        {char}
+                      </motion.span>
+                    </motion.span>
+                  )}
+                </React.Fragment>
               ))}
 
               {/* Light Mode: Elegant Underline Animation */}

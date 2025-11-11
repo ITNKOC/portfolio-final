@@ -194,12 +194,21 @@ export default function Home() {
               {projects.map((project, index) => (
                 <motion.div
                   key={index}
-                  className="matrix-card card-glow scanline group corner-brackets"
+                  className="matrix-card card-glow scanline group corner-brackets cursor-pointer"
                   initial={{ opacity: 0, y: 30, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   whileHover={{ scale: 1.05, y: -5 }}
+                  onClick={() => {
+                    if (project.demo !== "#") {
+                      setDemoModal({
+                        isOpen: true,
+                        url: project.demo,
+                        title: project.title,
+                      });
+                    }
+                  }}
                 >
                   {project.featured && (
                     <span className="inline-block px-3 py-1 bg-light-roseLight dark:bg-cyber-primary/20 text-light-rose dark:text-cyber-primary text-xs font-mono font-bold rounded-full mb-4 border-2 border-light-roseSoft dark:border-cyber-primary/30 animate-pulse">
@@ -236,25 +245,19 @@ export default function Home() {
                       href={project.github}
                       className="text-light-rose dark:text-cyber-primary hover:text-gray-900 dark:hover:text-white transition-colors flex items-center space-x-1 text-sm font-mono font-semibold"
                       whileHover={{ x: 3 }}
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <FiGithub />
                       <span>Code</span>
                     </motion.a>
                     {project.demo !== "#" ? (
-                      <motion.button
-                        onClick={() =>
-                          setDemoModal({
-                            isOpen: true,
-                            url: project.demo,
-                            title: project.title,
-                          })
-                        }
+                      <motion.div
                         className="text-light-rose dark:text-cyber-primary hover:text-gray-900 dark:hover:text-white transition-colors flex items-center space-x-1 text-sm font-mono font-semibold"
                         whileHover={{ x: 3 }}
                       >
                         <FiPackage />
-                        <span>Demo</span>
-                      </motion.button>
+                        <span>Live Demo</span>
+                      </motion.div>
                     ) : (
                       <motion.span
                         className="text-gray-400 dark:text-gray-600 flex items-center space-x-1 text-sm font-mono font-semibold cursor-not-allowed"

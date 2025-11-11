@@ -13,6 +13,17 @@ interface DemoModalProps {
 
 const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) => {
   const [viewMode, setViewMode] = useState<"desktop" | "mobile">("desktop");
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
+
+  // Detect if user is on mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobileDevice(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Reset view mode when modal opens
   useEffect(() => {
@@ -91,35 +102,37 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
               </div>
 
               <div className="flex items-center space-x-2">
-                {/* View Mode Toggle */}
-                <div className="flex items-center bg-light-roseLight dark:bg-cyber-gray rounded-lg p-1 border-2 border-light-roseSoft dark:border-cyber-gray">
-                  <motion.button
-                    onClick={() => setViewMode("desktop")}
-                    className={`p-2 rounded-md transition-all ${
-                      viewMode === "desktop"
-                        ? "bg-light-rose dark:bg-cyber-primary text-white"
-                        : "text-gray-600 dark:text-gray-400 hover:text-light-rose dark:hover:text-cyber-primary"
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    title="Desktop View"
-                  >
-                    <FiMonitor size={18} />
-                  </motion.button>
-                  <motion.button
-                    onClick={() => setViewMode("mobile")}
-                    className={`p-2 rounded-md transition-all ${
-                      viewMode === "mobile"
-                        ? "bg-light-rose dark:bg-cyber-primary text-white"
-                        : "text-gray-600 dark:text-gray-400 hover:text-light-rose dark:hover:text-cyber-primary"
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    title="Mobile View"
-                  >
-                    <FiSmartphone size={18} />
-                  </motion.button>
-                </div>
+                {/* View Mode Toggle - Only show on desktop */}
+                {!isMobileDevice && (
+                  <div className="flex items-center bg-light-roseLight dark:bg-cyber-gray rounded-lg p-1 border-2 border-light-roseSoft dark:border-cyber-gray">
+                    <motion.button
+                      onClick={() => setViewMode("desktop")}
+                      className={`p-2 rounded-md transition-all ${
+                        viewMode === "desktop"
+                          ? "bg-light-rose dark:bg-cyber-primary text-white"
+                          : "text-gray-600 dark:text-gray-400 hover:text-light-rose dark:hover:text-cyber-primary"
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      title="Desktop View"
+                    >
+                      <FiMonitor size={18} />
+                    </motion.button>
+                    <motion.button
+                      onClick={() => setViewMode("mobile")}
+                      className={`p-2 rounded-md transition-all ${
+                        viewMode === "mobile"
+                          ? "bg-light-rose dark:bg-cyber-primary text-white"
+                          : "text-gray-600 dark:text-gray-400 hover:text-light-rose dark:hover:text-cyber-primary"
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      title="Mobile View"
+                    >
+                      <FiSmartphone size={18} />
+                    </motion.button>
+                  </div>
+                )}
 
                 {/* Open in new tab */}
                 <motion.a
@@ -176,7 +189,7 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
 
             {/* Iframe Container */}
             <div className="absolute inset-0 pt-16 overflow-auto bg-gray-200 dark:bg-cyber-black/50">
-              {viewMode === "desktop" ? (
+              {isMobileDevice || viewMode === "desktop" ? (
                 <motion.iframe
                   key="desktop-view"
                   src={demoUrl}

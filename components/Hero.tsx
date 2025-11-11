@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiMapPin, FiZap, FiShoppingCart } from "react-icons/fi";
-import { personalInfo } from "@/lib/data";
+import { personalInfo, projects } from "@/lib/data";
 
 const Hero = () => {
   const containerVariants = {
@@ -520,58 +520,68 @@ const Hero = () => {
               <span className="hidden dark:inline">🤖 </span>AI Specialist
             </motion.span>
           </div>
+        </motion.div>
 
-          {/* Featured Projects - Di Menna Apps */}
-          <div className="max-w-4xl mx-auto mt-8">
-            <p className="text-light-secondary dark:text-cyber-primary text-sm font-mono mb-4 font-bold tracking-widest animate-pulse">⚡ PROJETS EN LIVE ⚡</p>
-            <div className="grid md:grid-cols-2 gap-4">
-              <motion.div
-                className="matrix-card card-glow text-left group cursor-pointer scanline"
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
+        {/* Live Projects Section */}
+        <motion.div
+          variants={itemVariants}
+          className="max-w-4xl mx-auto mb-12"
+        >
+          <motion.h3
+            className="text-center text-xl md:text-2xl font-orbitron font-bold mb-6 text-gray-900 dark:text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+          >
+            <span className="inline dark:hidden">⚡ PROJETS EN LIVE</span>
+            <span className="hidden dark:inline text-cyber-primary">⚡ PROJETS EN LIVE ⚡</span>
+          </motion.h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 px-4">
+            {projects.filter(p => p.demo !== "#" && p.featured).slice(0, 2).map((project, index) => (
+              <motion.a
+                key={index}
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-white dark:bg-cyber-darker border-2 border-gray-200 dark:border-cyber-gray hover:border-light-rose dark:hover:border-cyber-primary rounded-lg p-4 transition-all hover:shadow-lg hover:shadow-light-rose/20 dark:hover:shadow-cyber-primary/50"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.3 + index * 0.1 }}
+                whileHover={{ scale: 1.03, y: -3 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-lg font-chakra font-bold text-light-rose dark:text-cyber-primary flex items-center gap-2">
-                    <FiShoppingCart className="animate-pulse" /> Di Menna E-Commerce
-                  </h3>
-                  <span className="text-xs bg-light-roseLight dark:bg-cyber-primary/20 text-light-rose dark:text-cyber-primary px-2 py-1 rounded font-mono font-bold border-2 border-light-roseSoft dark:border-cyber-primary/30 animate-pulse">LIVE</span>
+                {/* LIVE Badge */}
+                <div className="absolute top-2 right-2 flex items-center gap-1 px-2 py-1 bg-light-rose dark:bg-cyber-primary rounded-full">
+                  <motion.span
+                    className="w-2 h-2 bg-white rounded-full"
+                    animate={{ scale: [1, 1.3, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  />
+                  <span className="text-white text-xs font-mono font-bold">LIVE</span>
                 </div>
-                <p className="text-gray-600 dark:text-white text-sm mb-3 leading-relaxed">
-                  Plateforme e-commerce complète avec intégration POS Lightspeed, gestion RH et sync en temps réel<span className="hidden dark:inline"> 🔥</span>
-                </p>
-                <div className="flex flex-wrap gap-1">
-                  <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-cyber-black/50 text-light-primary dark:text-cyber-primary rounded font-mono border border-light-primary/20 dark:border-cyber-primary/20">Next.js 15</span>
-                  <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-cyber-black/50 text-light-secondary dark:text-cyber-primary rounded font-mono border border-light-secondary/20 dark:border-cyber-primary/20">OAuth2</span>
-                  <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-cyber-black/50 text-light-accent dark:text-cyber-primary rounded font-mono border border-light-accent/20 dark:border-cyber-primary/20">PostgreSQL</span>
-                </div>
-              </motion.div>
 
-              <motion.div
-                className="matrix-card card-glow text-left group cursor-pointer scanline"
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                style={{ animationDelay: '0.2s' }}
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-lg font-chakra font-bold text-light-rose dark:text-cyber-primary flex items-center gap-2">
-                    <FiZap className="animate-pulse" /> Image4Marketing AI
-                  </h3>
-                  <span className="text-xs bg-light-roseLight dark:bg-cyber-primary/20 text-light-rose dark:text-cyber-primary px-2 py-1 rounded font-mono font-bold border-2 border-light-roseSoft dark:border-cyber-primary/30 animate-pulse">LIVE</span>
-                </div>
-                <p className="text-gray-600 dark:text-white text-sm mb-3 leading-relaxed">
-                  SaaS de transformation d'images par IA - Génère 4 versions pro de tes photos alimentaires<span className="hidden dark:inline"> ! 📸</span><span className="inline dark:hidden">.</span>
+                {/* Project Info */}
+                <h4 className="font-orbitron font-bold text-gray-900 dark:text-white mb-1 pr-16 group-hover:text-light-rose dark:group-hover:text-cyber-primary transition-colors">
+                  {project.title}
+                </h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 line-clamp-1">
+                  {project.description.substring(0, 80)}...
                 </p>
+
+                {/* Tech Stack */}
                 <div className="flex flex-wrap gap-1">
-                  <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-cyber-black/50 text-light-primary dark:text-cyber-primary rounded font-mono border border-light-primary/20 dark:border-cyber-primary/20">Gemini AI</span>
-                  <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-cyber-black/50 text-light-secondary dark:text-cyber-primary rounded font-mono border border-light-secondary/20 dark:border-cyber-primary/20">NextAuth</span>
-                  <span className="text-xs px-2 py-1 bg-gray-100 dark:bg-cyber-black/50 text-light-accent dark:text-cyber-primary rounded font-mono border border-light-accent/20 dark:border-cyber-primary/20">Cloudinary</span>
+                  {project.tech.slice(0, 3).map((tech, i) => (
+                    <span
+                      key={i}
+                      className="px-2 py-0.5 text-xs font-mono bg-gray-100 dark:bg-cyber-black text-gray-600 dark:text-cyber-primary border border-gray-200 dark:border-cyber-gray rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-              </motion.div>
-            </div>
+              </motion.a>
+            ))}
           </div>
         </motion.div>
 

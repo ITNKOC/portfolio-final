@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MatrixRain from "@/components/MatrixRain";
 import DemoModal from "@/components/DemoModal";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiCode, FiBriefcase, FiPackage, FiAward, FiMail, FiMapPin, FiPhone, FiGithub, FiLinkedin } from "react-icons/fi";
 import { experience, projects, skills, education, languages, personalInfo } from "@/lib/data";
 import { useState } from "react";
@@ -17,6 +17,7 @@ export default function Home() {
     url: "",
     title: "",
   });
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -194,12 +195,14 @@ export default function Home() {
               {projects.map((project, index) => (
                 <motion.div
                   key={index}
-                  className="matrix-card card-glow scanline group corner-brackets cursor-pointer"
+                  className="matrix-card card-glow scanline group corner-brackets cursor-pointer relative overflow-hidden"
                   initial={{ opacity: 0, y: 30, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   whileHover={{ scale: 1.05, y: -5 }}
+                  onMouseEnter={() => project.demo !== "#" && setHoveredProject(index)}
+                  onMouseLeave={() => setHoveredProject(null)}
                   onClick={() => {
                     if (project.demo !== "#") {
                       setDemoModal({
@@ -210,6 +213,53 @@ export default function Home() {
                     }
                   }}
                 >
+                  {/* Preview Overlay on Hover */}
+                  <AnimatePresence>
+                    {project.demo !== "#" && hoveredProject === index && (
+                      <motion.div
+                        className="absolute inset-0 bg-white dark:bg-cyber-darker z-20 rounded-lg border-4 border-light-rose dark:border-cyber-primary overflow-hidden shadow-2xl"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {/* Preview Header */}
+                        <div className="absolute top-0 left-0 right-0 bg-light-rose dark:bg-cyber-primary text-white px-4 py-2 z-30 flex items-center justify-between">
+                          <span className="text-sm font-mono font-bold">Aperçu // Preview</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-mono opacity-80 hidden sm:inline">Cliquer pour ouvrir</span>
+                            {/* Close button for mobile */}
+                            <motion.button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setHoveredProject(null);
+                              }}
+                              className="ml-2 p-1 rounded bg-white/20 hover:bg-white/30 transition-colors"
+                              whileHover={{ scale: 1.1 }}
+                              whileTap={{ scale: 0.9 }}
+                              aria-label="Fermer l'aperçu"
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                              </svg>
+                            </motion.button>
+                          </div>
+                        </div>
+
+                        {/* Preview Iframe */}
+                        <iframe
+                          src={project.demo}
+                          className="w-full h-full border-0 pointer-events-none"
+                          style={{ transform: "scale(0.7)", transformOrigin: "top left", width: "142.85%", height: "142.85%", marginTop: "40px" }}
+                          title={`Preview of ${project.title}`}
+                        />
+
+                        {/* Overlay gradient for better readability */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                   {project.featured && (
                     <span className="inline-block px-3 py-1 bg-light-roseLight dark:bg-cyber-primary/20 text-light-rose dark:text-cyber-primary text-xs font-mono font-bold rounded-full mb-4 border-2 border-light-roseSoft dark:border-cyber-primary/30 animate-pulse">
                       <span className="hidden dark:inline">⚡ </span>FEATURED

@@ -5,8 +5,9 @@ import Hero from "@/components/Hero";
 import MatrixRain from "@/components/MatrixRain";
 import DemoModal from "@/components/DemoModal";
 import ScrollToTop from "@/components/ScrollToTop";
+import StarField from "@/components/StarField";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiCode, FiBriefcase, FiPackage, FiAward, FiMail, FiMapPin, FiPhone, FiGithub, FiLinkedin, FiSend, FiTwitter, FiInstagram, FiUser, FiBookOpen, FiGlobe } from "react-icons/fi";
+import { FiCode, FiBriefcase, FiPackage, FiAward, FiMail, FiMapPin, FiPhone, FiGithub, FiLinkedin, FiSend, FiTwitter, FiInstagram, FiUser, FiBookOpen, FiGlobe, FiMousePointer } from "react-icons/fi";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiPostgresql, SiMongodb, SiDocker, SiGit } from "react-icons/si";
 import { HiSparkles, HiCode, HiDatabase, HiCloud } from "react-icons/hi";
 import { experience, projects, skills, education, languages, personalInfo } from "@/lib/data";
@@ -52,7 +53,7 @@ export default function Home() {
       <Hero />
 
       {/* About Section */}
-      <section id="about" className="py-24 md:py-32 lg:py-40 relative overflow-hidden z-10">
+      <section id="about" className="py-24 md:py-32 lg:py-40 bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-800 relative overflow-hidden z-10">
         <div className="absolute inset-0 subtle-grid opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -177,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gray-800 relative overflow-hidden z-10">
+      <section id="experience" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gradient-to-br dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial="hidden"
@@ -337,7 +338,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 md:py-32 lg:py-40 relative overflow-hidden z-10">
+      <section id="projects" className="py-24 md:py-32 lg:py-40 bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:to-[#0a0e27] relative overflow-hidden z-10">
         <div className="absolute inset-0 subtle-grid opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -346,25 +347,41 @@ export default function Home() {
             viewport={viewportSettings}
             variants={fadeInUp}
           >
-            <div className="relative inline-block mb-24">
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
-                Projets <span className="gradient-text">Phares</span>
-              </h2>
-              {/* Premium underline with animation */}
-              <motion.div
-                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red to-transparent rounded-full shadow-lg shadow-nbc-red/50"
-                initial={{ width: 0 }}
-                whileInView={{ width: "65%" }}
+            <div className="text-center mb-24">
+              <div className="relative inline-block mb-6">
+                <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
+                  Projets <span className="gradient-text">Phares</span>
+                </h2>
+                {/* Premium underline with animation */}
+                <motion.div
+                  className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red to-transparent rounded-full shadow-lg shadow-nbc-red/50"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "65%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+                {/* Glow effect */}
+                <motion.div
+                  className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                  whileInView={{ opacity: 0.5 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
+                />
+              </div>
+
+              {/* Call to action text */}
+              <motion.p
+                className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto flex items-center justify-center gap-2 flex-wrap"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              />
-              {/* Glow effect */}
-              <motion.div
-                className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
-                whileInView={{ opacity: 0.5 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              />
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <span className="inline-flex items-center gap-2 bg-nbc-red/10 dark:bg-nbc-red/20 text-nbc-red dark:text-nbc-red px-4 py-2 rounded-full border border-nbc-red/30 dark:border-nbc-red/40 font-medium animate-pulse-subtle">
+                  <FiMousePointer className="w-4 h-4" />
+                  Cliquez sur une carte pour voir la démo interactive
+                </span>
+              </motion.p>
             </div>
 
             <motion.div
@@ -527,6 +544,19 @@ export default function Home() {
                     whileHover={{ opacity: 1 }}
                   />
 
+                  {/* Click Indicator Badge - Only for projects with demo */}
+                  {project.demo !== "#" && (
+                    <motion.div
+                      className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-nbc-red text-white px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none flex items-center gap-2 text-xs sm:text-sm font-bold border-2 border-white/20"
+                      initial={{ opacity: 0, scale: 0.8, y: -10 }}
+                      whileInView={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <FiMousePointer className="w-3 h-3 sm:w-4 sm:h-4 animate-bounce" />
+                      <span>Cliquer pour voir</span>
+                    </motion.div>
+                  )}
+
                   {/* Corner Accent */}
                   <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-nbc-red/5 to-transparent dark:from-nbc-red/10 dark:to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
@@ -537,8 +567,12 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gray-800 relative overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="skills" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#16213e] dark:to-[#0a0e27] relative overflow-hidden z-10">
+        {/* Subtle Starfield for Dark Mode */}
+        <div className="absolute inset-0 z-0 opacity-30 dark:block hidden">
+          <StarField />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -676,7 +710,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 md:py-32 lg:py-40 relative overflow-hidden z-10">
+      <section id="contact" className="py-24 md:py-32 lg:py-40 bg-white dark:bg-gradient-to-b dark:from-[#16213e] dark:to-gray-900 relative overflow-hidden z-10">
         <div className="absolute inset-0 subtle-grid opacity-10"></div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -977,7 +1011,7 @@ export default function Home() {
       </section>
 
       {/* Footer - Premium Red Design */}
-      <footer className="relative z-10 bg-nbc-red dark:bg-gray-800 overflow-hidden">
+      <footer className="relative z-10 bg-nbc-red dark:bg-gradient-to-t dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
         {/* Decorative Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 subtle-grid"></div>

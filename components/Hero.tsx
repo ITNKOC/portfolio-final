@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiDownload } from "react-icons/fi";
 import { personalInfo } from "@/lib/data";
 import { useTheme } from "next-themes";
+import StarField from "./StarField";
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -29,11 +30,18 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex md:items-center items-end justify-center overflow-hidden bg-nbc-red dark:bg-gray-900">
+    <section id="home" className="relative min-h-screen flex md:items-center items-end justify-center overflow-hidden bg-nbc-red dark:bg-gradient-to-b dark:from-[#0a0e27] dark:via-[#16213e] dark:to-[#0f1b35]">
+      {/* Starfield for Dark Mode */}
+      {theme === 'dark' && (
+        <div className="absolute inset-0 z-0">
+          <StarField />
+        </div>
+      )}
+
       {/* Background Image - Desktop SVG (No BG versions) */}
-      <div className="absolute inset-0 z-0" style={{ isolation: 'isolate' }}>
+      <div className="absolute inset-0 z-[5]" style={{ isolation: 'isolate' }}>
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
           style={{
             backgroundImage: theme === 'dark'
               ? "url('/hero/hero desktop no bg night.svg')"
@@ -41,12 +49,13 @@ const Hero = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             mixBlendMode: 'normal',
+            opacity: 1,
           }}
         />
       </div>
 
       {/* Gradient Overlay - Dark from top to bottom */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-transparent via-black/20 to-black/60 dark:from-transparent dark:via-black/30 dark:to-black/70 pointer-events-none" />
+      <div className="absolute inset-0 z-[6] bg-gradient-to-b from-transparent via-black/20 to-black/60 dark:from-transparent dark:via-[#0a0e27]/30 dark:to-[#0a0e27]/70 pointer-events-none transition-all duration-500" />
 
       {/* Content */}
       <motion.div

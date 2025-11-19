@@ -4,11 +4,14 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { FiMenu, FiX, FiSun, FiMoon, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { t } = useLanguage();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -21,12 +24,11 @@ const Navbar = () => {
   }, []);
 
   const menuItems = [
-    { name: "Accueil", href: "#home" },
-    { name: "À Propos", href: "#about" },
-    { name: "Expérience", href: "#experience" },
-    { name: "Projets", href: "#projects" },
-    { name: "Compétences", href: "#skills" },
-    { name: "Contact", href: "#contact" },
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.experience, href: "#experience" },
+    { name: t.nav.projects, href: "#projects" },
+    { name: t.nav.skills, href: "#skills" },
+    { name: t.nav.contact, href: "#contact" },
   ];
 
   if (!mounted) return null;
@@ -116,6 +118,7 @@ const Navbar = () => {
             >
               <FiMail size={20} />
             </motion.a>
+            <LanguageSwitcher />
             <motion.button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="relative p-2.5 rounded-xl overflow-hidden group bg-white/20 dark:bg-white/10 text-white border-2 border-white/30 hover:border-white shadow-lg"
@@ -148,6 +151,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-3">
+            <LanguageSwitcher />
             <motion.button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="p-2.5 rounded-lg bg-nbc-polar dark:bg-nbc-gray-800 hover:bg-nbc-red/10 dark:hover:bg-nbc-red/20 text-nbc-red border-2 border-nbc-gray-200 dark:border-nbc-gray-700 hover:border-nbc-red"

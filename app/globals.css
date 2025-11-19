@@ -906,4 +906,54 @@
       opacity: 0.95;
     }
   }
+
+  /* Starfield Animation - Universe Theme for Dark Mode */
+  .starfield-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .star-blink {
+    background: #fff;
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+    animation: blinkAnim 5s infinite ease-in-out;
+  }
+
+  @keyframes blinkAnim {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.2;
+      transform: scale(0.8);
+    }
+  }
+
+  /* Dark Mode Section Ambient Glow */
+  .dark section {
+    position: relative;
+  }
+
+  .dark section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(228, 28, 35, 0.03), transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Subtle Grid Pattern Enhancement for Dark Mode */
+  .dark .subtle-grid {
+    opacity: 0.05 !important;
+  }
+
 }

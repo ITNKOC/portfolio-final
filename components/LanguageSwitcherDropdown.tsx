@@ -73,9 +73,19 @@ const LanguageSwitcherDropdown = () => {
           </motion.div>
         </div>
 
-        {/* Glow */}
+        {/* Enhanced Glow - Desktop */}
         <motion.div
-          className="absolute -inset-1 bg-gradient-to-r from-nbc-red/20 to-purple-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 -z-10"
+          className="hidden sm:block absolute -inset-2 bg-gradient-to-r from-nbc-red/40 via-purple-500/40 to-blue-500/40 rounded-3xl blur-2xl opacity-0 group-hover:opacity-80 -z-10"
+          animate={{
+            scale: [1, 1.05, 1],
+            rotate: [0, 2, -2, 0],
+          }}
+          transition={{ duration: 3, repeat: Infinity }}
+        />
+
+        {/* Mobile Glow */}
+        <motion.div
+          className="sm:hidden absolute -inset-1 bg-gradient-to-r from-nbc-red/20 to-purple-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 -z-10"
           transition={{ duration: 0.5 }}
         />
       </motion.button>
@@ -90,8 +100,24 @@ const LanguageSwitcherDropdown = () => {
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
-            {/* Glass Effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent dark:from-gray-800/50 dark:to-transparent pointer-events-none" />
+            {/* Enhanced Glass Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-white/30 to-transparent dark:from-gray-800/50 dark:via-gray-800/30 dark:to-transparent pointer-events-none" />
+
+            {/* Animated border gradient - Desktop only */}
+            <motion.div
+              className="hidden sm:block absolute inset-0 rounded-2xl"
+              style={{
+                background: "linear-gradient(135deg, transparent 0%, rgba(239, 68, 68, 0.2) 50%, transparent 100%)",
+              }}
+              animate={{
+                backgroundPosition: ["0% 0%", "100% 100%"],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                repeatType: "reverse",
+              }}
+            />
 
             {languages.map((lang, index) => (
               <motion.button
@@ -144,12 +170,20 @@ const LanguageSwitcherDropdown = () => {
                   )}
                 </AnimatePresence>
 
-                {/* Hover indicator */}
+                {/* Enhanced Hover indicator - Desktop */}
                 <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-nbc-red to-purple-500"
+                  className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-nbc-red via-purple-500 to-blue-500"
                   initial={{ opacity: 0, scaleY: 0 }}
                   whileHover={{ opacity: 1, scaleY: 1 }}
                   transition={{ duration: 0.2 }}
+                />
+
+                {/* Glow on hover - Desktop only */}
+                <motion.div
+                  className="hidden sm:block absolute inset-0 bg-gradient-to-r from-nbc-red/10 to-purple-500/10 rounded-xl"
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
                 />
               </motion.button>
             ))}

@@ -19,15 +19,41 @@ const LanguageSwitcherTabs = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.3 }}
       >
-        {/* Animated Background Indicator */}
+        {/* Enhanced Animated Background Indicator */}
         <motion.div
-          className="absolute top-1 sm:top-1.5 h-[calc(100%-8px)] sm:h-[calc(100%-12px)] rounded-lg sm:rounded-xl bg-gradient-to-r from-nbc-red to-purple-500 shadow-lg"
+          className="absolute top-1 sm:top-1.5 h-[calc(100%-8px)] sm:h-[calc(100%-12px)] rounded-lg sm:rounded-xl bg-gradient-to-r from-nbc-red via-purple-500 to-nbc-red shadow-lg overflow-hidden"
           animate={{
             left: language === "fr" ? "4px" : "50%",
             width: language === "fr" ? "calc(50% - 4px)" : "calc(50% - 4px)",
           }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        />
+        >
+          {/* Animated gradient inside slider - Desktop only */}
+          <motion.div
+            className="hidden sm:block absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+            animate={{
+              x: ["-100%", "200%"],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+
+          {/* Pulsing glow - Desktop only */}
+          <motion.div
+            className="hidden sm:block absolute inset-0 bg-white/20"
+            animate={{
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </motion.div>
 
         {/* Tabs */}
         {languages.map((lang) => (
@@ -78,8 +104,36 @@ const LanguageSwitcherTabs = () => {
           </motion.button>
         ))}
 
-        {/* Glow Effect */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-nbc-red/30 via-purple-500/30 to-nbc-red/30 rounded-2xl blur-xl opacity-50 -z-10" />
+        {/* Enhanced Glow Effect - Desktop */}
+        <motion.div
+          className="hidden sm:block absolute -inset-2 bg-gradient-to-r from-nbc-red/40 via-purple-500/40 to-blue-500/40 rounded-3xl blur-2xl opacity-60 -z-10"
+          animate={{
+            scale: [1, 1.05, 1],
+            opacity: [0.6, 0.8, 0.6],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        {/* Mobile Glow */}
+        <div className="sm:hidden absolute -inset-1 bg-gradient-to-r from-nbc-red/30 via-purple-500/30 to-nbc-red/30 rounded-2xl blur-xl opacity-50 -z-10" />
+
+        {/* Shine effect on slider - Desktop only */}
+        <motion.div
+          className="hidden sm:block absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none"
+          animate={{
+            x: ["-100%", "200%"],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            repeatDelay: 2,
+            ease: "linear",
+          }}
+        />
       </motion.div>
     </div>
   );

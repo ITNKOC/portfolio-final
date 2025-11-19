@@ -10,8 +10,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiCode, FiBriefcase, FiPackage, FiAward, FiMail, FiMapPin, FiPhone, FiGithub, FiLinkedin, FiSend, FiTwitter, FiInstagram, FiUser, FiBookOpen, FiGlobe, FiMousePointer } from "react-icons/fi";
 import { SiJavascript, SiTypescript, SiPython, SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiPostgresql, SiMongodb, SiDocker, SiGit } from "react-icons/si";
 import { HiSparkles, HiCode, HiDatabase, HiCloud } from "react-icons/hi";
-import { experience, projects, skills, education, languages, personalInfo } from "@/lib/data";
+import { skills } from "@/lib/data";
+import { getTranslatedPersonalInfo, getTranslatedExperience, getTranslatedProjects, getTranslatedEducation, getTranslatedLanguages } from "@/lib/translatedData";
 import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   fadeInUp,
   fadeInLeft,
@@ -24,6 +26,7 @@ import {
 } from "@/lib/animations";
 
 export default function Home() {
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [formStatus, setFormStatus] = useState("");
   const [demoModal, setDemoModal] = useState<{ isOpen: boolean; url: string; title: string }>({
@@ -32,6 +35,13 @@ export default function Home() {
     title: "",
   });
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+
+  // Get translated data based on current language
+  const personalInfo = getTranslatedPersonalInfo(language);
+  const experience = getTranslatedExperience(language);
+  const projects = getTranslatedProjects(language);
+  const education = getTranslatedEducation(language);
+  const languages = getTranslatedLanguages(language);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,7 +74,7 @@ export default function Home() {
           >
             <div className="relative inline-block mb-24">
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
-                À Propos <span className="gradient-text">de Moi</span>
+                {t.about.title} <span className="gradient-text">{t.about.subtitle}</span>
               </h2>
               {/* Premium underline with animation */}
               <motion.div
@@ -100,11 +110,11 @@ export default function Home() {
                   >
                     <FiUser size={20} className="sm:w-6 sm:h-6" />
                   </motion.div>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">QUI SUIS-JE</h3>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.whoAmI}</h3>
                 </div>
                 <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-3 md:mb-4 font-sans">{personalInfo.bio}</p>
                 <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed font-sans">
-                  Passionné par l'innovation, j'apporte <span className="text-nbc-red dark:text-nbc-red font-bold">autonomie, créativité et orientation résultats</span> pour transformer les défis techniques en produits impactants.
+                  Passionné par l'innovation, j'apporte <span className="text-nbc-red dark:text-nbc-red font-bold">{t.about.bioHighlight}</span> {t.about.bioEnd}
                 </p>
               </motion.div>
 
@@ -125,7 +135,7 @@ export default function Home() {
                     >
                       <FiBookOpen size={20} className="sm:w-6 sm:h-6" />
                     </motion.div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">FORMATION</h3>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.education}</h3>
                   </div>
                   {education.map((edu, index) => (
                     <div key={index} className={`${index !== 0 ? "mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-200 dark:border-nbc-gray-700" : ""}`}>
@@ -153,7 +163,7 @@ export default function Home() {
                     >
                       <FiGlobe size={20} className="sm:w-6 sm:h-6" />
                     </motion.div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">LANGUES</h3>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.languages}</h3>
                   </div>
                   <div className="flex flex-wrap gap-2 sm:gap-3">
                     {languages.map((lang, index) => (
@@ -188,7 +198,7 @@ export default function Home() {
           >
             <div className="relative inline-block mb-24">
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-white relative z-10 tracking-tight">
-                Expérience <span className="text-white drop-shadow-2xl">Professionnelle</span>
+                {t.experience.title} <span className="text-white drop-shadow-2xl">{t.experience.subtitle}</span>
               </h2>
               {/* Premium underline with animation */}
               <motion.div
@@ -350,7 +360,7 @@ export default function Home() {
             <div className="text-center mb-24">
               <div className="relative inline-block mb-6">
                 <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
-                  Projets <span className="gradient-text">Phares</span>
+                  {t.projects.title} <span className="gradient-text">{t.projects.subtitle}</span>
                 </h2>
                 {/* Premium underline with animation */}
                 <motion.div
@@ -379,7 +389,7 @@ export default function Home() {
               >
                 <span className="inline-flex items-center gap-2 bg-nbc-red/10 dark:bg-nbc-red/20 text-nbc-red dark:text-nbc-red px-4 py-2 rounded-full border border-nbc-red/30 dark:border-nbc-red/40 font-medium animate-pulse-subtle">
                   <FiMousePointer className="w-4 h-4" />
-                  Cliquez sur une carte pour voir la démo interactive
+                  {t.projects.clickToView}
                 </span>
               </motion.p>
             </div>
@@ -442,12 +452,12 @@ export default function Home() {
                             whileTap={{ scale: 0.95 }}
                           >
                             <FiPackage className="w-3 h-3 sm:w-4 sm:h-4" />
-                            <span className="hidden xs:inline">Démo</span>
+                            <span className="hidden xs:inline">{t.projects.demo}</span>
                           </motion.button>
                         ) : (
                           <div className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gray-200 dark:bg-nbc-gray-800 text-gray-400 dark:text-gray-600 font-bold text-xs sm:text-sm rounded-lg cursor-not-allowed flex items-center gap-1 sm:gap-2">
                             <FiPackage className="w-3 h-3 sm:w-4 sm:h-4" />
-                            <span className="hidden xs:inline">Démo</span>
+                            <span className="hidden xs:inline">{t.projects.demo}</span>
                           </div>
                         )}
 
@@ -464,7 +474,7 @@ export default function Home() {
                           }}
                         >
                           <FiGithub className="w-3 h-3 sm:w-4 sm:h-4" />
-                          <span className="hidden xs:inline">Code</span>
+                          <span className="hidden xs:inline">{t.projects.code}</span>
                         </motion.a>
                       </div>
                     </div>
@@ -553,7 +563,7 @@ export default function Home() {
                       transition={{ duration: 0.3 }}
                     >
                       <FiMousePointer className="w-3 h-3 sm:w-4 sm:h-4 animate-bounce" />
-                      <span>Cliquer pour voir</span>
+                      <span>{t.projects.clickBadge}</span>
                     </motion.div>
                   )}
 
@@ -581,7 +591,7 @@ export default function Home() {
           >
             <div className="relative inline-block mb-24">
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-white relative z-10 tracking-tight">
-                Compétences <span className="text-white drop-shadow-2xl">Techniques</span>
+                {t.skills.title} <span className="text-white drop-shadow-2xl">{t.skills.subtitle}</span>
               </h2>
               {/* Premium underline with animation */}
               <motion.div
@@ -613,14 +623,14 @@ export default function Home() {
                   items.reduce((sum: number, skill: any) => sum + skill.level, 0) / items.length
                 );
 
-                // Category display names
+                // Category display names from translations
                 const categoryNames: { [key: string]: string } = {
-                  languages: "Langages de Programmation",
-                  frontend: "Développement Frontend",
-                  backend: "Développement Backend",
-                  ai: "IA & Apprentissage Automatique",
-                  databases: "Bases de Données & ORM",
-                  devops: "DevOps & Cloud",
+                  languages: t.skills.languages,
+                  frontend: t.skills.frontend,
+                  backend: t.skills.backend,
+                  ai: t.skills.ai,
+                  databases: t.skills.databases,
+                  devops: t.skills.devops,
                 };
 
                 // Category icons - Professional React Icons
@@ -721,7 +731,7 @@ export default function Home() {
           >
             <div className="relative inline-block mb-8">
               <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
-                Prenons <span className="gradient-text">Contact</span>
+                {t.contact.title} <span className="gradient-text">{t.contact.subtitle}</span>
               </h2>
               {/* Premium underline with animation */}
               <motion.div
@@ -740,7 +750,7 @@ export default function Home() {
               />
             </div>
             <p className="text-center text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 mb-10 md:mb-12 max-w-2xl mx-auto px-4 leading-relaxed">
-              Vous avez un projet en tête ? N'hésitez pas à me contacter pour en discuter.
+              {t.contact.description}
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-8">
@@ -763,9 +773,9 @@ export default function Home() {
                     >
                       <FiMail size={24} />
                     </motion.div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-gray-900 dark:text-white tracking-tight">Informations de Contact</h3>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-gray-900 dark:text-white tracking-tight">{t.contact.contactInfo}</h3>
                   </div>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">N'hésitez pas à me contacter pour discuter de vos projets.</p>
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">{t.contact.contactDescription}</p>
                 </div>
 
                 {/* Contact items with icons - Mobile Optimized */}
@@ -803,7 +813,7 @@ export default function Home() {
                       <FiPhone size={22} className="sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">Téléphone</p>
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">{t.contact.phone}</p>
                       <p className="text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors">
                         {personalInfo.phone}
                       </p>
@@ -822,7 +832,7 @@ export default function Home() {
                       <FiMapPin size={22} className="sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">Localisation</p>
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">{t.contact.location}</p>
                       <p className="text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold">
                         {personalInfo.location}
                       </p>
@@ -832,7 +842,7 @@ export default function Home() {
 
                 {/* Social links - Mobile Optimized */}
                 <div className="pt-6 border-t-2 border-gray-200 dark:border-nbc-gray-700">
-                  <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">Suivez-moi sur les réseaux</p>
+                  <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">{t.contact.followMe}</p>
                   <div className="flex gap-3 sm:gap-4">
                     <motion.a
                       href={personalInfo.github}
@@ -902,7 +912,7 @@ export default function Home() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="font-semibold">Message envoyé avec succès!</span>
+                      <span className="font-semibold">{t.contact.successMessage}</span>
                     </motion.div>
                   )}
 
@@ -918,7 +928,7 @@ export default function Home() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                       </div>
-                      <span className="font-semibold">Une erreur s'est produite. Réessayez.</span>
+                      <span className="font-semibold">{t.contact.errorMessage}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -929,7 +939,7 @@ export default function Home() {
                     type="text"
                     id="name"
                     className="peer w-full px-4 py-4 text-base bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent text-gray-900 dark:text-gray-100 font-medium"
-                    placeholder="Nom"
+                    placeholder={t.contact.namePlaceholder}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
@@ -938,7 +948,7 @@ export default function Home() {
                     htmlFor="name"
                     className="absolute left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
                   >
-                    Nom
+                    {t.contact.namePlaceholder}
                   </label>
                 </div>
 
@@ -948,7 +958,7 @@ export default function Home() {
                     type="email"
                     id="email"
                     className="peer w-full px-4 py-4 text-base bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent text-gray-900 dark:text-gray-100 font-medium"
-                    placeholder="Email"
+                    placeholder={t.contact.emailPlaceholder}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
@@ -957,7 +967,7 @@ export default function Home() {
                     htmlFor="email"
                     className="absolute left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
                   >
-                    Email
+                    {t.contact.emailPlaceholder}
                   </label>
                 </div>
 
@@ -967,7 +977,7 @@ export default function Home() {
                     id="message"
                     rows={6}
                     className="peer w-full px-4 py-4 text-base bg-white dark:bg-nbc-gray-800 border-2 border-gray-200 dark:border-nbc-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent resize-none text-gray-900 dark:text-white font-medium"
-                    placeholder="Message"
+                    placeholder={t.contact.messagePlaceholder}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
@@ -976,7 +986,7 @@ export default function Home() {
                     htmlFor="message"
                     className="absolute left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
                   >
-                    Message
+                    {t.contact.messagePlaceholder}
                   </label>
                 </div>
 
@@ -995,12 +1005,12 @@ export default function Home() {
                         animate={{ rotate: 360 }}
                         transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                       />
-                      <span>Envoi en cours...</span>
+                      <span>{t.contact.sending}</span>
                     </>
                   ) : (
                     <>
                       <FiSend className="w-5 h-5" />
-                      <span>Envoyer le message</span>
+                      <span>{t.contact.send}</span>
                     </>
                   )}
                 </motion.button>
@@ -1032,7 +1042,7 @@ export default function Home() {
                 {personalInfo.name}
               </h3>
               <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
-                Développeur Full Stack & Expert IA | Créateur d'expériences digitales innovantes
+                {t.footer.taglineAlt}
               </p>
             </motion.div>
 
@@ -1082,17 +1092,23 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              {['À Propos', 'Expérience', 'Projets', 'Compétences', 'Contact'].map((item, index) => (
+              {[
+                { label: t.nav.about, href: '#about' },
+                { label: t.nav.experience, href: '#experience' },
+                { label: t.nav.projects, href: '#projects' },
+                { label: t.nav.skills, href: '#skills' },
+                { label: t.nav.contact, href: '#contact' },
+              ].map((item, index) => (
                 <motion.a
-                  key={item}
-                  href={`#${item.toLowerCase().replace('à propos', 'about').replace('expérience', 'experience').replace('projets', 'projects').replace('compétences', 'skills').replace('contact', 'contact')}`}
+                  key={item.href}
+                  href={item.href}
                   className="text-sm sm:text-base font-medium text-white/80 hover:text-white transition-colors relative group"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.4 + index * 0.05 }}
                 >
-                  {item}
+                  {item.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
                 </motion.a>
               ))}
@@ -1128,15 +1144,15 @@ export default function Home() {
           >
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 text-center">
               <p className="text-sm text-white/70">
-                © 2025 {personalInfo.name}. Tous droits réservés.
+                © 2025 {personalInfo.name}. {t.footer.rights}
               </p>
               <span className="hidden sm:block text-white/40">•</span>
               <p className="text-sm text-white/70">
-                Conçu avec <motion.span
+                {t.footer.designedWith} <motion.span
                   className="inline-block text-white"
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ duration: 1, repeat: Infinity, repeatDelay: 2 }}
-                >❤️</motion.span> utilisant <span className="font-semibold text-white">Next.js</span> & <span className="font-semibold text-white">Tailwind CSS</span>
+                >❤️</motion.span> {t.footer.using} <span className="font-semibold text-white">Next.js</span> {t.footer.and} <span className="font-semibold text-white">Tailwind CSS</span>
               </p>
             </div>
           </motion.div>

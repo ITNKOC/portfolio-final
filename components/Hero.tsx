@@ -3,12 +3,15 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiDownload } from "react-icons/fi";
-import { personalInfo } from "@/lib/data";
+import { getTranslatedPersonalInfo } from "@/lib/translatedData";
 import { useTheme } from "next-themes";
+import { useLanguage } from "@/contexts/LanguageContext";
 import StarField from "./StarField";
 
 const Hero = () => {
   const { theme } = useTheme();
+  const { t, language } = useLanguage();
+  const personalInfo = getTranslatedPersonalInfo(language);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -72,7 +75,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Bonjour, je suis
+            {t.hero.greeting}
           </motion.p>
 
           {/* Main Name - Split for Desktop, Centered for Mobile */}
@@ -129,7 +132,7 @@ const Hero = () => {
           variants={itemVariants}
           className="max-w-2xl mx-auto text-white/95 text-sm sm:text-base md:text-xl leading-relaxed px-6 mb-8 md:mb-10 md:mt-[102px] drop-shadow-lg text-center"
         >
-          Développeur Full Stack & Expert IA | Je transforme des idées en <span className="text-white font-bold">applications performantes</span>
+          {t.hero.description} <span className="text-white font-bold">{t.hero.descriptionBold}</span>
         </motion.p>
 
         {/* Premium CTA Buttons - Desktop Only */}
@@ -157,7 +160,7 @@ const Hero = () => {
             {/* Button content */}
             <div className="relative flex items-center space-x-3 text-white font-bold tracking-wide">
               <FiMail className="group-hover:animate-bounce" size={20} />
-              <span>TRAVAILLONS ENSEMBLE</span>
+              <span>{t.hero.cta1}</span>
             </div>
 
             {/* Glow effect */}
@@ -185,7 +188,7 @@ const Hero = () => {
 
             {/* Button content */}
             <div className="relative flex items-center space-x-3 text-white font-bold tracking-wide">
-              <span>VOIR MES PROJETS</span>
+              <span>{t.hero.cta2}</span>
               <motion.span
                 className="inline-block"
                 animate={{ x: [0, 5, 0] }}
@@ -268,7 +271,7 @@ const Hero = () => {
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            Scroll pour découvrir
+            {t.hero.scrollDown}
           </motion.p>
           <motion.a
             href="#about"

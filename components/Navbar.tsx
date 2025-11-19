@@ -2,10 +2,22 @@
 
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
-import { FiMenu, FiX, FiSun, FiMoon, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import {
+  FiMenu,
+  FiX,
+  FiSun,
+  FiMoon,
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+} from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import LanguageSwitcher from "./LanguageSwitcher";
+// Choisissez votre switcher préféré en décommentant une ligne:
+import LanguageSwitcher from "./LanguageSwitcherToggle"; // ⭐ RECOMMANDÉ: Toggle élégant
+// import LanguageSwitcher from "./LanguageSwitcherDropdown"; // Dropdown sophistiqué
+// import LanguageSwitcher from "./LanguageSwitcherTabs"; // Tabs modernes
+// import LanguageSwitcher from "./LanguageSwitcher"; // Original (simple)
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,7 +82,11 @@ const Navbar = () => {
                 className="text-white hover:text-white/80 transition-all relative group font-semibold px-3 py-2 rounded-lg"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
+                transition={{
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 200,
+                }}
                 whileHover={{ y: -2 }}
               >
                 {item.name}
@@ -123,7 +139,7 @@ const Navbar = () => {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="relative p-2.5 rounded-xl overflow-hidden group bg-white/20 dark:bg-white/10 text-white border-2 border-white/30 hover:border-white shadow-lg"
               style={{
-                transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)"
+                transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
               }}
               whileHover={{ scale: 1.1, rotate: 10 }}
               whileTap={{ scale: 0.9, rotate: -10 }}
@@ -140,7 +156,7 @@ const Navbar = () => {
                   duration: 0.5,
                   ease: [0.34, 1.56, 0.64, 1],
                   type: "spring",
-                  stiffness: 200
+                  stiffness: 200,
                 }}
                 className="relative z-10"
               >
@@ -156,7 +172,7 @@ const Navbar = () => {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="p-2.5 rounded-lg bg-nbc-polar dark:bg-nbc-gray-800 hover:bg-nbc-red/10 dark:hover:bg-nbc-red/20 text-nbc-red border-2 border-nbc-gray-200 dark:border-nbc-gray-700 hover:border-nbc-red"
               style={{
-                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -209,14 +225,21 @@ const Navbar = () => {
                     setTimeout(() => {
                       const element = document.querySelector(item.href);
                       if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        element.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        });
                       }
                     }, 300);
                   }}
                   className="block bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 border-l-4 border-transparent hover:border-white rounded-r-lg px-6 py-4 font-semibold text-white transition-all group"
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.08, type: "spring", stiffness: 100 }}
+                  transition={{
+                    delay: index * 0.08,
+                    type: "spring",
+                    stiffness: 100,
+                  }}
                   whileTap={{ scale: 0.97 }}
                 >
                   <div className="flex items-center justify-between">
@@ -239,7 +262,9 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <p className="text-xs font-mono text-white/70 mb-4 tracking-wider uppercase">Connect</p>
+                <p className="text-xs font-mono text-white/70 mb-4 tracking-wider uppercase">
+                  Connect
+                </p>
                 <div className="grid grid-cols-3 gap-3">
                   <motion.a
                     href="https://github.com/ITNKOC"
@@ -249,8 +274,13 @@ const Navbar = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <FiGithub size={24} className="text-white group-hover:text-white/80 transition-colors" />
-                    <span className="text-xs font-mono text-white/70">GitHub</span>
+                    <FiGithub
+                      size={24}
+                      className="text-white group-hover:text-white/80 transition-colors"
+                    />
+                    <span className="text-xs font-mono text-white/70">
+                      GitHub
+                    </span>
                   </motion.a>
                   <motion.a
                     href="https://linkedin.com/in/koceila-djaballah-295716221"
@@ -260,8 +290,13 @@ const Navbar = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <FiLinkedin size={24} className="text-white group-hover:text-white/80 transition-colors" />
-                    <span className="text-xs font-mono text-white/70">LinkedIn</span>
+                    <FiLinkedin
+                      size={24}
+                      className="text-white group-hover:text-white/80 transition-colors"
+                    />
+                    <span className="text-xs font-mono text-white/70">
+                      LinkedIn
+                    </span>
                   </motion.a>
                   <motion.a
                     href="mailto:koceila.djaballah@gmail.com"
@@ -269,8 +304,13 @@ const Navbar = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <FiMail size={24} className="text-white group-hover:text-white/80 transition-colors" />
-                    <span className="text-xs font-mono text-white/70">Email</span>
+                    <FiMail
+                      size={24}
+                      className="text-white group-hover:text-white/80 transition-colors"
+                    />
+                    <span className="text-xs font-mono text-white/70">
+                      Email
+                    </span>
                   </motion.a>
                 </div>
               </motion.div>

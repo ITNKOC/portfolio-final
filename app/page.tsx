@@ -4,10 +4,23 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MatrixRain from "@/components/MatrixRain";
 import DemoModal from "@/components/DemoModal";
+import ScrollToTop from "@/components/ScrollToTop";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiCode, FiBriefcase, FiPackage, FiAward, FiMail, FiMapPin, FiPhone, FiGithub, FiLinkedin } from "react-icons/fi";
+import { FiCode, FiBriefcase, FiPackage, FiAward, FiMail, FiMapPin, FiPhone, FiGithub, FiLinkedin, FiSend, FiTwitter, FiInstagram, FiUser, FiBookOpen, FiGlobe } from "react-icons/fi";
+import { SiJavascript, SiTypescript, SiPython, SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiPostgresql, SiMongodb, SiDocker, SiGit } from "react-icons/si";
+import { HiSparkles, HiCode, HiDatabase, HiCloud } from "react-icons/hi";
 import { experience, projects, skills, education, languages, personalInfo } from "@/lib/data";
 import { useState } from "react";
+import {
+  fadeInUp,
+  fadeInLeft,
+  fadeInRight,
+  professionalCard,
+  staggerContainer,
+  staggerItem,
+  viewportSettings,
+  cardViewportSettings,
+} from "@/lib/animations";
 
 export default function Home() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -31,7 +44,7 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-white dark:bg-cyber-black text-gray-900 dark:text-white min-h-screen relative">
+    <main className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen relative">
       {/* Matrix Rain Background Effect */}
       <MatrixRain />
 
@@ -39,70 +52,121 @@ export default function Home() {
       <Hero />
 
       {/* About Section */}
-      <section id="about" className="py-20 relative overflow-hidden z-10">
-        <div className="absolute inset-0 cyber-grid opacity-10"></div>
+      <section id="about" className="py-24 md:py-32 lg:py-40 relative overflow-hidden z-10">
+        <div className="absolute inset-0 subtle-grid opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            variants={fadeInUp}
           >
-            <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-center mb-4 text-gray-900 dark:text-white">
-              About <span className="text-light-rose dark:text-cyber-primary matrix-text">Me</span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-light-rose via-light-roseSoft to-light-rose dark:from-cyber-primary dark:via-cyber-primary dark:to-cyber-primary mx-auto mb-12 animate-pulse"></div>
-
-            <div className="grid md:grid-2 gap-8">
+            <div className="relative inline-block mb-24">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
+                À Propos <span className="gradient-text">de Moi</span>
+              </h2>
+              {/* Premium underline with animation */}
               <motion.div
-                className="matrix-card card-glow scanline"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red to-transparent rounded-full"
+                initial={{ width: 0 }}
+                whileInView={{ width: "60%" }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              />
+              {/* Glow effect */}
+              <motion.div
+                className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                whileInView={{ opacity: 0.5 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              />
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+              <motion.div
+                className="professional-card professional-glow p-6 md:p-8"
+                initial={{ opacity: 0, x: -50, scale: 0.95 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                viewport={cardViewportSettings}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                <h3 className="text-2xl font-chakra font-bold text-light-rose dark:text-cyber-primary mb-4 tracking-wide">WHO I AM</h3>
-                <p className="text-gray-600 dark:text-white leading-relaxed mb-4 font-chakra">{personalInfo.bio}</p>
-                <p className="text-gray-600 dark:text-white leading-relaxed font-chakra">
-                  Passionné par l'innovation, j'apporte <span className="text-light-rose dark:text-cyber-primary font-bold matrix-text">autonomie, créativité et orientation résultats</span> pour transformer les défis techniques en produits impactants.
+                <div className="flex items-center gap-3 mb-4 md:mb-6">
+                  <motion.div
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <FiUser size={20} className="sm:w-6 sm:h-6" />
+                  </motion.div>
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">QUI SUIS-JE</h3>
+                </div>
+                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-3 md:mb-4 font-sans">{personalInfo.bio}</p>
+                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed font-sans">
+                  Passionné par l'innovation, j'apporte <span className="text-nbc-red dark:text-nbc-red font-bold">autonomie, créativité et orientation résultats</span> pour transformer les défis techniques en produits impactants.
                 </p>
               </motion.div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 md:space-y-6">
                 <motion.div
-                  className="matrix-card card-glow scanline"
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
+                  className="professional-card professional-glow p-6 md:p-8"
+                  initial={{ opacity: 0, x: 50, scale: 0.95 }}
+                  whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                  viewport={cardViewportSettings}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
                 >
-                  <h3 className="text-2xl font-chakra font-bold text-light-rose dark:text-cyber-primary mb-4 tracking-wide">EDUCATION</h3>
+                  <div className="flex items-center gap-3 mb-4 md:mb-6">
+                    <motion.div
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                      whileHover={{ scale: 1.1, rotate: -5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      <FiBookOpen size={20} className="sm:w-6 sm:h-6" />
+                    </motion.div>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">FORMATION</h3>
+                  </div>
                   {education.map((edu, index) => (
-                    <div key={index} className={`${index !== 0 ? "mt-6 pt-6 border-t border-gray-300 dark:border-cyber-gray" : ""}`}>
-                      <h4 className="text-xl font-chakra font-bold text-gray-900 dark:text-white">{edu.degree}</h4>
-                      <p className="text-light-rose dark:text-cyber-primary font-mono font-semibold">{edu.school}</p>
-                      <p className="text-gray-500 dark:text-white text-sm font-mono">{edu.location} | {edu.period}</p>
-                      <p className="text-gray-600 dark:text-white mt-2 font-chakra">{edu.description}</p>
+                    <div key={index} className={`${index !== 0 ? "mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-200 dark:border-nbc-gray-700" : ""}`}>
+                      <h4 className="text-lg sm:text-xl md:text-2xl font-display font-bold text-gray-900 dark:text-white">{edu.degree}</h4>
+                      <p className="text-sm sm:text-base text-nbc-red dark:text-nbc-red font-mono font-semibold">{edu.school}</p>
+                      <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-mono">{edu.location} | {edu.period}</p>
+                      <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mt-2 font-sans leading-relaxed">{edu.description}</p>
                     </div>
                   ))}
                 </motion.div>
 
                 <motion.div
-                  className="matrix-card card-glow corner-brackets"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="professional-card professional-glow corner-accent p-6 md:p-8"
+                  initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={cardViewportSettings}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
                 >
-                  <h3 className="text-2xl font-chakra font-bold text-light-accent dark:text-cyber-primary mb-4 tracking-wide">LANGUAGES</h3>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex items-center gap-3 mb-4 md:mb-6">
+                    <motion.div
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                      whileHover={{ scale: 1.1, rotate: 360 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      <FiGlobe size={20} className="sm:w-6 sm:h-6" />
+                    </motion.div>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">LANGUES</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
                     {languages.map((lang, index) => (
-                      <span
+                      <motion.span
                         key={index}
-                        className="px-4 py-2 bg-gray-100 dark:bg-cyber-black border border-gray-300 dark:border-cyber-gray rounded-full text-sm font-mono hover:scale-105 transition-transform cursor-default hover:border-light-primary dark:hover:border-cyber-primary"
+                        className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-nbc-gray-800 border border-gray-300 dark:border-nbc-gray-700 rounded-full text-xs sm:text-sm font-mono transition-all cursor-default"
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3 + index * 0.05 }}
+                        whileHover={{ scale: 1.1, y: -2, borderColor: "rgb(228, 28, 35)" }}
                       >
-                        {lang.flag} {lang.language} <span className="text-gray-500 dark:text-white">({lang.level})</span>
-                      </span>
+                        {lang.language} <span className="text-gray-600 dark:text-gray-400">({lang.level})</span>
+                      </motion.span>
                     ))}
                   </div>
                 </motion.div>
@@ -113,96 +177,212 @@ export default function Home() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-20 bg-gray-50 dark:bg-cyber-darker relative overflow-hidden z-10">
+      <section id="experience" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gray-800 relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            variants={fadeInUp}
           >
-            <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-center mb-4 text-gray-900 dark:text-white">
-              Professional <span className="text-light-rose dark:text-cyber-primary matrix-text">Experience</span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-light-rose via-light-roseSoft to-light-rose dark:from-cyber-primary dark:via-cyber-primary dark:to-cyber-primary mx-auto mb-12"></div>
+            <div className="relative inline-block mb-24">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-white relative z-10 tracking-tight">
+                Expérience <span className="text-white drop-shadow-2xl">Professionnelle</span>
+              </h2>
+              {/* Premium underline with animation */}
+              <motion.div
+                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-white to-transparent rounded-full shadow-lg shadow-white/50"
+                initial={{ width: 0 }}
+                whileInView={{ width: "70%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              />
+              {/* Glow effect */}
+              <motion.div
+                className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                whileInView={{ opacity: 0.5 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              />
+            </div>
 
-            <div className="space-y-8">
-              {experience.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  className="matrix-card card-glow scanline corner-brackets"
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2, duration: 0.6 }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                    <div>
-                      <h3 className="text-2xl font-chakra font-bold text-gray-900 dark:text-white mb-1">{exp.title}</h3>
-                      <p className="text-light-rose dark:text-cyber-primary font-chakra font-semibold text-lg mb-1">{exp.company}</p>
-                      <p className="text-gray-600 dark:text-white text-sm font-mono">{exp.location}</p>
-                    </div>
-                    <div className="mt-2 md:mt-0 text-right">
-                      <p className="text-light-rose dark:text-cyber-primary font-mono font-medium">{exp.period}</p>
-                      <p className="text-gray-600 dark:text-white text-sm font-mono">{exp.duration}</p>
-                    </div>
-                  </div>
+            {/* Timeline Container */}
+            <div className="relative max-w-5xl mx-auto">
+              {/* Animated Timeline Line */}
+              <motion.div
+                className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-white via-white/50 to-transparent dark:from-nbc-gray-400 dark:via-nbc-gray-600 dark:to-transparent"
+                initial={{ height: 0, opacity: 0 }}
+                whileInView={{ height: "100%", opacity: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+              />
 
-                  <ul className="space-y-2 mb-4">
-                    {exp.description.map((desc, i) => (
-                      <li key={i} className="flex items-start space-x-2 text-gray-700 dark:text-white font-chakra">
-                        <span className="text-light-rose dark:text-cyber-primary mt-1 font-bold">▹</span>
-                        <span>{desc}</span>
-                      </li>
-                    ))}
-                  </ul>
+              {/* Experience Cards with Timeline */}
+              <motion.div
+                className="space-y-8 md:space-y-12 ml-8 md:ml-12"
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportSettings}
+                variants={staggerContainer}
+              >
+                {experience.map((exp, index) => (
+                  <motion.div
+                    key={index}
+                    className="relative"
+                    variants={staggerItem}
+                  >
+                    {/* Timeline Dot with Icon and Pulse Animation */}
+                    <motion.div
+                      className="absolute -left-[38px] md:-left-[52px] top-6 md:top-8 w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-nbc-red to-red-600 border-2 md:border-4 border-white dark:border-nbc-gray-900 shadow-lg z-10 flex items-center justify-center"
+                      initial={{ scale: 0, opacity: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: index * 0.2, type: "spring", stiffness: 200 }}
+                    >
+                      <FiBriefcase className="w-3 h-3 md:w-4 md:h-4 text-white" />
+                      {/* Pulse Ring Effect */}
+                      <motion.div
+                        className="absolute inset-0 rounded-full bg-nbc-red"
+                        animate={{
+                          scale: [1, 1.8, 1.8],
+                          opacity: [0.5, 0, 0],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: index * 0.2,
+                        }}
+                      />
+                    </motion.div>
 
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tech.map((tech, i) => (
-                      <motion.span
-                        key={i}
-                        className="px-3 py-1 bg-light-roseLight dark:bg-cyber-black border border-light-roseSoft dark:border-cyber-primary/30 rounded-full text-sm text-light-rose dark:text-cyber-primary font-mono transition-all hover:scale-105 hover:border-light-rose dark:hover:border-cyber-primary cursor-default"
-                        whileHover={{ scale: 1.1 }}
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+                    {/* Experience Card */}
+                    <motion.div
+                      className="relative bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-5 md:p-6 hover:border-nbc-red dark:hover:border-nbc-red transition-all duration-500 shadow-lg hover:shadow-2xl group"
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.15 }}
+                      whileHover={{ y: -8, scale: 1.02 }}
+                    >
+                      {/* Elegant Corner Accent */}
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-nbc-red/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                      {/* Header with Company/Role/Date */}
+                      <div className="space-y-2 md:space-y-3 mb-4 md:mb-5">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors duration-300 mb-2 tracking-tight leading-tight">
+                              {exp.title}
+                            </h3>
+                            <p className="text-sm sm:text-base md:text-lg text-nbc-red dark:text-nbc-red font-sans font-semibold mb-1">
+                              {exp.company}
+                            </p>
+                            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-mono">
+                              {exp.location}
+                            </p>
+                          </div>
+                          <div className="flex flex-row sm:flex-col items-start sm:items-end gap-2">
+                            <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-nbc-red/10 dark:bg-nbc-red/20 text-nbc-red dark:text-nbc-red text-xs sm:text-sm font-mono font-bold rounded-full border border-nbc-red/30 dark:border-nbc-red/40 whitespace-nowrap">
+                              {exp.period}
+                            </span>
+                            <span className="text-gray-500 dark:text-gray-400 text-xs font-mono">
+                              {exp.duration}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Description List */}
+                      <ul className="space-y-2 md:space-y-3 mb-4 md:mb-5">
+                        {exp.description.map((desc, i) => (
+                          <motion.li
+                            key={i}
+                            className="flex items-start space-x-2 md:space-x-3 text-xs sm:text-sm md:text-base text-gray-700 dark:text-gray-300 font-sans leading-relaxed"
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.3, delay: i * 0.1 }}
+                          >
+                            <span className="text-nbc-red dark:text-nbc-red mt-0.5 md:mt-1.5 font-bold text-base md:text-lg flex-shrink-0">
+                              ▹
+                            </span>
+                            <span>{desc.replace(/[🚀💻🤖☁️]/g, '').trim()}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+
+                      {/* Tech Stack Tags */}
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-3 md:pt-4 border-t border-gray-200 dark:border-nbc-gray-700">
+                        {exp.tech.map((tech, i) => (
+                          <motion.span
+                            key={i}
+                            className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-nbc-red/20 dark:to-nbc-red/10 border border-nbc-red/30 dark:border-nbc-red/40 rounded-full text-xs text-nbc-red dark:text-nbc-red font-mono font-semibold transition-all hover:scale-110 hover:border-nbc-red dark:hover:border-nbc-red cursor-default hover:shadow-lg"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.2, delay: i * 0.05 }}
+                            whileHover={{ scale: 1.15, y: -2 }}
+                          >
+                            {tech}
+                          </motion.span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 relative overflow-hidden z-10">
-        <div className="absolute inset-0 cyber-grid opacity-10"></div>
+      <section id="projects" className="py-24 md:py-32 lg:py-40 relative overflow-hidden z-10">
+        <div className="absolute inset-0 subtle-grid opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            variants={fadeInUp}
           >
-            <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-center mb-4 text-gray-900 dark:text-white">
-              Featured <span className="text-light-rose dark:text-cyber-primary matrix-text">Projects</span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-light-rose via-light-roseSoft to-light-rose dark:from-cyber-primary dark:via-cyber-primary dark:to-cyber-primary mx-auto mb-12"></div>
+            <div className="relative inline-block mb-24">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
+                Projets <span className="gradient-text">Phares</span>
+              </h2>
+              {/* Premium underline with animation */}
+              <motion.div
+                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red to-transparent rounded-full shadow-lg shadow-nbc-red/50"
+                initial={{ width: 0 }}
+                whileInView={{ width: "65%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              />
+              {/* Glow effect */}
+              <motion.div
+                className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                whileInView={{ opacity: 0.5 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              />
+            </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10"
+              initial="hidden"
+              whileInView="visible"
+              viewport={cardViewportSettings}
+              variants={staggerContainer}
+            >
               {projects.map((project, index) => (
                 <motion.div
                   key={index}
-                  className="matrix-card card-glow scanline group corner-brackets cursor-pointer relative overflow-hidden"
-                  initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                  className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all duration-500 shadow-lg hover:shadow-2xl cursor-pointer"
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  onMouseEnter={() => project.demo !== "#" && setHoveredProject(index)}
-                  onMouseLeave={() => setHoveredProject(null)}
+                  transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
+                  whileHover={{ y: -8, scale: 1.02 }}
                   onClick={() => {
                     if (project.demo !== "#") {
                       setDemoModal({
@@ -213,264 +393,582 @@ export default function Home() {
                     }
                   }}
                 >
-                  {/* Preview Overlay on Hover */}
-                  <AnimatePresence>
-                    {project.demo !== "#" && hoveredProject === index && (
-                      <motion.div
-                        className="absolute inset-0 bg-white dark:bg-cyber-darker z-20 rounded-lg border-4 border-light-rose dark:border-cyber-primary overflow-hidden shadow-2xl"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.8 }}
-                        transition={{ duration: 0.3 }}
+                  {/* Card Content */}
+                  <div className="p-5 sm:p-6 md:p-8 space-y-4 md:space-y-6">
+                    {/* Header with Index and Actions */}
+                    <div className="flex items-start justify-between">
+                      {/* Project Number */}
+                      <motion.span
+                        className="text-nbc-red/40 dark:text-nbc-red/30 text-4xl sm:text-5xl md:text-6xl font-bold leading-none"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 }}
                       >
-                        {/* Preview Header */}
-                        <div className="absolute top-0 left-0 right-0 bg-light-rose dark:bg-cyber-primary text-white px-4 py-2 z-30 flex items-center justify-between">
-                          <span className="text-sm font-mono font-bold">Aperçu // Preview</span>
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs font-mono opacity-80 hidden sm:inline">Cliquer pour ouvrir</span>
-                            {/* Close button for mobile */}
-                            <motion.button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setHoveredProject(null);
-                              }}
-                              className="ml-2 p-1 rounded bg-white/20 hover:bg-white/30 transition-colors"
-                              whileHover={{ scale: 1.1 }}
-                              whileTap={{ scale: 0.9 }}
-                              aria-label="Fermer l'aperçu"
-                            >
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <line x1="18" y1="6" x2="6" y2="18"></line>
-                                <line x1="6" y1="6" x2="18" y2="18"></line>
-                              </svg>
-                            </motion.button>
+                        0{index + 1}
+                      </motion.span>
+
+                      {/* Action Buttons */}
+                      <div className="flex gap-1.5 sm:gap-2">
+                        {/* Demo Button */}
+                        {project.demo !== "#" ? (
+                          <motion.button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setDemoModal({
+                                isOpen: true,
+                                url: project.demo,
+                                title: project.title,
+                              });
+                            }}
+                            className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 text-white font-bold text-xs sm:text-sm rounded-lg shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-1 sm:gap-2"
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            whileTap={{ scale: 0.95 }}
+                          >
+                            <FiPackage className="w-3 h-3 sm:w-4 sm:h-4" />
+                            <span className="hidden xs:inline">Démo</span>
+                          </motion.button>
+                        ) : (
+                          <div className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gray-200 dark:bg-nbc-gray-800 text-gray-400 dark:text-gray-600 font-bold text-xs sm:text-sm rounded-lg cursor-not-allowed flex items-center gap-1 sm:gap-2">
+                            <FiPackage className="w-3 h-3 sm:w-4 sm:h-4" />
+                            <span className="hidden xs:inline">Démo</span>
                           </div>
-                        </div>
+                        )}
 
-                        {/* Preview Iframe */}
-                        <iframe
-                          src={project.demo}
-                          className="w-full h-full border-0 pointer-events-none"
-                          style={{ transform: "scale(0.7)", transformOrigin: "top left", width: "142.85%", height: "142.85%", marginTop: "40px" }}
-                          title={`Preview of ${project.title}`}
-                        />
+                        {/* GitHub Button */}
+                        <motion.a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold text-xs sm:text-sm rounded-lg shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-1 sm:gap-2"
+                          whileHover={{ scale: 1.05, y: -2 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                          }}
+                        >
+                          <FiGithub className="w-3 h-3 sm:w-4 sm:h-4" />
+                          <span className="hidden xs:inline">Code</span>
+                        </motion.a>
+                      </div>
+                    </div>
 
-                        {/* Overlay gradient for better readability */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                  {project.featured && (
-                    <span className="inline-block px-3 py-1 bg-light-roseLight dark:bg-cyber-primary/20 text-light-rose dark:text-cyber-primary text-xs font-mono font-bold rounded-full mb-4 border-2 border-light-roseSoft dark:border-cyber-primary/30 animate-pulse">
-                      <span className="hidden dark:inline">⚡ </span>FEATURED
-                    </span>
-                  )}
-                  <h3 className="text-xl font-chakra font-bold text-gray-900 dark:text-white mb-2 group-hover:text-light-rose dark:group-hover:text-cyber-primary transition-colors">{project.title}</h3>
-                  <p className="text-light-rose dark:text-cyber-primary font-chakra font-medium text-sm mb-3">{project.subtitle}</p>
-                  <p className="text-gray-700 dark:text-white text-sm mb-4 font-chakra leading-relaxed">{project.description}</p>
-
-                  <div className="space-y-2 mb-4">
-                    {project.features.slice(0, 2).map((feature, i) => (
-                      <p key={i} className="text-gray-600 dark:text-white text-xs flex items-start space-x-2 font-chakra">
-                        <span className="text-light-rose dark:text-cyber-primary font-bold">•</span>
-                        <span>{feature}</span>
-                      </p>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.slice(0, 4).map((tech, i) => (
-                      <motion.span
-                        key={i}
-                        className="px-2 py-1 bg-light-roseLight dark:bg-cyber-black border border-light-roseSoft dark:border-cyber-gray rounded text-xs text-gray-700 dark:text-white font-mono hover:border-light-rose dark:hover:border-cyber-primary transition-colors cursor-default"
-                        whileHover={{ scale: 1.1 }}
+                    {/* Project Title and Description */}
+                    <div className="space-y-2 md:space-y-3">
+                      <motion.h3
+                        className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors duration-300 tracking-tight leading-tight"
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
                       >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
+                        {project.title}
+                      </motion.h3>
 
-                  <div className="flex space-x-4">
-                    <motion.a
-                      href={project.github}
-                      className="text-light-rose dark:text-cyber-primary hover:text-gray-900 dark:hover:text-white transition-colors flex items-center space-x-1 text-sm font-mono font-semibold"
-                      whileHover={{ x: 3 }}
-                      onClick={(e) => e.stopPropagation()}
+                      <motion.p
+                        className="text-nbc-red dark:text-nbc-red font-medium text-xs sm:text-sm"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.35 }}
+                      >
+                        {project.subtitle}
+                      </motion.p>
+
+                      <motion.p
+                        className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                      >
+                        {project.description}
+                      </motion.p>
+                    </div>
+
+                    {/* Key Features */}
+                    <motion.div
+                      className="space-y-2"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ delay: 0.45 }}
                     >
-                      <FiGithub />
-                      <span>Code</span>
-                    </motion.a>
-                    {project.demo !== "#" ? (
-                      <motion.div
-                        className="text-light-rose dark:text-cyber-primary hover:text-gray-900 dark:hover:text-white transition-colors flex items-center space-x-1 text-sm font-mono font-semibold"
-                        whileHover={{ x: 3 }}
-                      >
-                        <FiPackage />
-                        <span>Live Demo</span>
-                      </motion.div>
-                    ) : (
-                      <motion.span
-                        className="text-gray-400 dark:text-gray-600 flex items-center space-x-1 text-sm font-mono font-semibold cursor-not-allowed"
-                      >
-                        <FiPackage />
-                        <span>Demo</span>
-                      </motion.span>
-                    )}
+                      {project.features.slice(0, 3).map((feature, i) => (
+                        <motion.div
+                          key={i}
+                          className="flex items-start space-x-2 text-gray-700 dark:text-gray-300 text-sm"
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.5 + i * 0.05 }}
+                        >
+                          <span className="text-nbc-red dark:text-nbc-red font-bold mt-0.5 flex-shrink-0">▹</span>
+                          <span>{feature}</span>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-3 md:pt-4 border-t border-gray-200 dark:border-nbc-gray-700">
+                      {project.tech.map((tech, i) => (
+                        <motion.span
+                          key={i}
+                          className="px-2 sm:px-3 py-0.5 sm:py-1 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-nbc-red/20 dark:to-nbc-red/10 text-nbc-red dark:text-nbc-red text-xs sm:text-sm font-medium rounded-full border border-nbc-red/20 dark:border-nbc-red/30 hover:border-nbc-red dark:hover:border-nbc-red hover:shadow-md cursor-default transition-all duration-300"
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.6 + i * 0.05 }}
+                          whileHover={{ scale: 1.1, y: -2 }}
+                        >
+                          {tech}
+                        </motion.span>
+                      ))}
+                    </div>
                   </div>
+
+                  {/* Hover Gradient Overlay */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-tr from-nbc-red/5 via-transparent to-nbc-red/5 dark:from-nbc-red/10 dark:via-transparent dark:to-nbc-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  />
+
+                  {/* Corner Accent */}
+                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-nbc-red/5 to-transparent dark:from-nbc-red/10 dark:to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 bg-gray-50 dark:bg-cyber-darker relative overflow-hidden z-10">
+      <section id="skills" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gray-800 relative overflow-hidden z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            variants={fadeInUp}
           >
-            <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-center mb-4 text-gray-900 dark:text-white">
-              Technical <span className="text-light-rose dark:text-cyber-primary matrix-text">Skills</span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-light-rose via-light-roseSoft to-light-rose dark:from-cyber-primary dark:via-cyber-primary dark:to-cyber-primary mx-auto mb-12"></div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {Object.entries(skills).map(([category, items], index) => (
-                <motion.div
-                  key={category}
-                  className="matrix-card card-glow scanline corner-brackets"
-                  initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
-                  whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  whileHover={{ scale: 1.03, rotateY: 2 }}
-                >
-                  <h3 className="text-xl font-chakra font-bold text-light-rose dark:text-cyber-primary mb-4 capitalize tracking-wide">
-                    {category.replace(/([A-Z])/g, " $1").trim()}
-                  </h3>
-                  <div className="space-y-3">
-                    {items.map((skill: any, i: number) => (
-                      <div key={i}>
-                        <div className="flex justify-between mb-1">
-                          <span className="text-gray-700 dark:text-white font-chakra font-medium">{skill.name}</span>
-                          <span className="text-light-rose dark:text-cyber-primary text-sm font-mono font-bold">{skill.level}%</span>
-                        </div>
-                        <div className="w-full bg-light-roseLight dark:bg-cyber-black rounded-full h-2 overflow-hidden border border-light-roseSoft dark:border-cyber-gray/30">
-                          <motion.div
-                            className="bg-gradient-to-r from-light-rose via-light-roseSoft to-light-rose dark:from-cyber-primary dark:via-cyber-primary dark:to-cyber-primary h-2 rounded-full relative overflow-hidden"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1, delay: i * 0.1, ease: "easeOut" }}
-                          >
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-slide-right"></div>
-                          </motion.div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+            <div className="relative inline-block mb-24">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-white relative z-10 tracking-tight">
+                Compétences <span className="text-white drop-shadow-2xl">Techniques</span>
+              </h2>
+              {/* Premium underline with animation */}
+              <motion.div
+                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-white to-transparent rounded-full shadow-lg shadow-white/50"
+                initial={{ width: 0 }}
+                whileInView={{ width: "60%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              />
+              {/* Glow effect */}
+              <motion.div
+                className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                whileInView={{ opacity: 0.5 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              />
             </div>
+
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
+              initial="hidden"
+              whileInView="visible"
+              viewport={cardViewportSettings}
+              variants={staggerContainer}
+            >
+              {Object.entries(skills).map(([category, items], index) => {
+                // Calculate average proficiency for the category
+                const avgLevel = Math.round(
+                  items.reduce((sum: number, skill: any) => sum + skill.level, 0) / items.length
+                );
+
+                // Category display names
+                const categoryNames: { [key: string]: string } = {
+                  languages: "Langages de Programmation",
+                  frontend: "Développement Frontend",
+                  backend: "Développement Backend",
+                  ai: "IA & Apprentissage Automatique",
+                  databases: "Bases de Données & ORM",
+                  devops: "DevOps & Cloud",
+                };
+
+                // Category icons - Professional React Icons
+                const categoryIconsMap: { [key: string]: JSX.Element } = {
+                  languages: <HiCode className="w-5 h-5 sm:w-6 sm:h-6" />,
+                  frontend: <SiReact className="w-5 h-5 sm:w-6 sm:h-6" />,
+                  backend: <SiNodedotjs className="w-5 h-5 sm:w-6 sm:h-6" />,
+                  ai: <HiSparkles className="w-5 h-5 sm:w-6 sm:h-6" />,
+                  databases: <HiDatabase className="w-5 h-5 sm:w-6 sm:h-6" />,
+                  devops: <HiCloud className="w-5 h-5 sm:w-6 sm:h-6" />,
+                };
+
+                return (
+                  <motion.div
+                    key={category}
+                    className="group relative bg-white dark:bg-gray-900 rounded-2xl p-5 sm:p-6 md:p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all duration-500 shadow-lg hover:shadow-2xl"
+                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                  >
+                    {/* Category Icon/Badge and Level */}
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4 md:mb-6">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <motion.div
+                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 flex items-center justify-center text-white font-bold shadow-lg flex-shrink-0"
+                          whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          {categoryIconsMap[category]}
+                        </motion.div>
+                        <h3 className="text-base sm:text-lg md:text-xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors capitalize tracking-tight">
+                          {categoryNames[category]}
+                        </h3>
+                      </div>
+                      <span className="text-2xl sm:text-3xl font-bold text-nbc-red/30 dark:text-nbc-red/20 group-hover:text-nbc-red/50 dark:group-hover:text-nbc-red/40 transition-colors">
+                        {avgLevel}%
+                      </span>
+                    </div>
+
+                    {/* Animated Progress Bar for Category Average */}
+                    <div className="relative h-2 sm:h-3 bg-gray-200 dark:bg-nbc-gray-700/50 rounded-full overflow-hidden mb-4 md:mb-6">
+                      <motion.div
+                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 rounded-full"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${avgLevel}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
+                      />
+                      {/* Shimmer effect */}
+                      <motion.div
+                        className="absolute inset-y-0 w-20 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                        animate={{ x: ["-100%", "300%"] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "linear", repeatDelay: 1 }}
+                      />
+                    </div>
+
+                    {/* Technologies List */}
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                      {items.map((skill: any, i: number) => (
+                        <motion.span
+                          key={i}
+                          className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gray-100 dark:bg-nbc-gray-800/50 hover:bg-nbc-red/10 dark:hover:bg-nbc-red/20 text-gray-700 dark:text-gray-300 hover:text-nbc-red dark:hover:text-nbc-red text-xs sm:text-sm font-medium rounded-lg border border-gray-300 dark:border-nbc-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all cursor-default"
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.4 + i * 0.05 }}
+                          whileHover={{ scale: 1.05, y: -2 }}
+                        >
+                          {skill.name}
+                        </motion.span>
+                      ))}
+                    </div>
+
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-nbc-red/5 via-transparent to-transparent dark:from-nbc-red/10 dark:via-transparent dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
+
+                    {/* Corner Accent */}
+                    <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-nbc-red/10 to-transparent dark:from-nbc-red/20 dark:to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 relative overflow-hidden z-10">
-        <div className="absolute inset-0 cyber-grid opacity-10"></div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section id="contact" className="py-24 md:py-32 lg:py-40 relative overflow-hidden z-10">
+        <div className="absolute inset-0 subtle-grid opacity-10"></div>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportSettings}
+            variants={fadeInUp}
           >
-            <h2 className="text-4xl md:text-5xl font-orbitron font-bold text-center mb-4 text-gray-900 dark:text-white">
-              Get In <span className="text-light-rose dark:text-cyber-primary matrix-text">Touch</span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-light-rose via-light-roseSoft to-light-rose dark:from-cyber-primary dark:via-cyber-primary dark:to-cyber-primary mx-auto mb-12"></div>
-
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="relative inline-block mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
+                Prenons <span className="gradient-text">Contact</span>
+              </h2>
+              {/* Premium underline with animation */}
               <motion.div
-                className="matrix-card card-glow scanline corner-brackets"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red to-transparent rounded-full shadow-lg shadow-nbc-red/50"
+                initial={{ width: 0 }}
+                whileInView={{ width: "50%" }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              />
+              {/* Glow effect */}
+              <motion.div
+                className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                whileInView={{ opacity: 0.5 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              />
+            </div>
+            <p className="text-center text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 mb-10 md:mb-12 max-w-2xl mx-auto px-4 leading-relaxed">
+              Vous avez un projet en tête ? N'hésitez pas à me contacter pour en discuter.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-8">
+              {/* Enhanced Contact Info Card */}
+              <motion.div
+                className="bg-white dark:bg-gray-900 rounded-2xl p-6 sm:p-7 md:p-8 border-2 border-gray-200 dark:border-gray-700 space-y-6 md:space-y-6 shadow-lg hover:shadow-2xl transition-all duration-500"
+                initial={{ opacity: 0, x: -50, scale: 0.95 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                viewport={cardViewportSettings}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                <div className="flex items-center space-x-3 mb-6">
-                  <FiMail className="text-light-rose dark:text-cyber-primary animate-pulse" size={24} />
-                  <div>
-                    <p className="text-gray-500 dark:text-white text-sm font-mono">Email</p>
-                    <a href={`mailto:${personalInfo.email}`} className="text-light-rose dark:text-cyber-primary hover:text-gray-900 dark:hover:text-white hover:underline font-chakra font-semibold transition-colors">
-                      {personalInfo.email}
-                    </a>
+                {/* Elegant heading with icon */}
+                <div className="space-y-3 md:space-y-3">
+                  <div className="flex items-center gap-3">
+                    <motion.div
+                      className="w-12 h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      <FiMail size={24} />
+                    </motion.div>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-gray-900 dark:text-white tracking-tight">Informations de Contact</h3>
                   </div>
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">N'hésitez pas à me contacter pour discuter de vos projets.</p>
                 </div>
-                <div className="flex items-center space-x-3 mb-6">
-                  <FiPhone className="text-light-rose dark:text-cyber-primary animate-pulse" size={24} />
-                  <div>
-                    <p className="text-gray-500 dark:text-white text-sm font-mono">Phone</p>
-                    <a href={`tel:${personalInfo.phone}`} className="text-light-rose dark:text-cyber-primary hover:text-gray-900 dark:hover:text-white hover:underline font-chakra font-semibold transition-colors">
-                      {personalInfo.phone}
-                    </a>
-                  </div>
+
+                {/* Contact items with icons - Mobile Optimized */}
+                <div className="space-y-4">
+                  <motion.a
+                    href={`mailto:${personalInfo.email}`}
+                    className="group flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all"
+                    whileHover={{ x: 5, scale: 1.02 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <FiMail size={22} className="sm:w-6 sm:h-6" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">Email</p>
+                      <p className="text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors truncate">
+                        {personalInfo.email}
+                      </p>
+                    </div>
+                  </motion.a>
+
+                  <motion.a
+                    href={`tel:${personalInfo.phone}`}
+                    className="group flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all"
+                    whileHover={{ x: 5, scale: 1.02 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <FiPhone size={22} className="sm:w-6 sm:h-6" />
+                    </div>
+                    <div>
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">Téléphone</p>
+                      <p className="text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors">
+                        {personalInfo.phone}
+                      </p>
+                    </div>
+                  </motion.a>
+
+                  <motion.div
+                    className="group flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all"
+                    whileHover={{ x: 5, scale: 1.02 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <FiMapPin size={22} className="sm:w-6 sm:h-6" />
+                    </div>
+                    <div>
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">Localisation</p>
+                      <p className="text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold">
+                        {personalInfo.location}
+                      </p>
+                    </div>
+                  </motion.div>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <FiMapPin className="text-light-rose dark:text-cyber-primary animate-pulse" size={24} />
-                  <div>
-                    <p className="text-gray-500 dark:text-white text-sm font-mono">Location</p>
-                    <p className="text-gray-900 dark:text-white font-chakra font-semibold">{personalInfo.location}</p>
+
+                {/* Social links - Mobile Optimized */}
+                <div className="pt-6 border-t-2 border-gray-200 dark:border-nbc-gray-700">
+                  <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">Suivez-moi sur les réseaux</p>
+                  <div className="flex gap-3 sm:gap-4">
+                    <motion.a
+                      href={personalInfo.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 sm:flex-none sm:w-14 sm:h-14 h-12 rounded-xl bg-gray-900 dark:bg-white flex items-center justify-center text-white dark:text-gray-900 hover:bg-nbc-red dark:hover:bg-nbc-red hover:text-white dark:hover:text-white transition-all shadow-md hover:shadow-lg"
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      <FiGithub size={22} />
+                    </motion.a>
+                    <motion.a
+                      href={personalInfo.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 sm:flex-none sm:w-14 sm:h-14 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white hover:bg-nbc-red transition-all shadow-md hover:shadow-lg"
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      <FiLinkedin size={22} />
+                    </motion.a>
+                    <motion.a
+                      href={`mailto:${personalInfo.email}`}
+                      className="flex-1 sm:flex-none sm:w-14 sm:h-14 h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white hover:from-red-600 hover:to-nbc-red transition-all shadow-md hover:shadow-lg"
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.6 }}
+                    >
+                      <FiMail size={22} />
+                    </motion.a>
                   </div>
                 </div>
               </motion.div>
 
+              {/* Modern Form with Floating Labels - Mobile Optimized */}
               <motion.form
                 onSubmit={handleSubmit}
-                className="matrix-card card-glow scanline corner-brackets"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                className="bg-white dark:bg-gray-900 rounded-2xl p-6 sm:p-7 md:p-8 border-2 border-gray-200 dark:border-gray-700 space-y-6 shadow-lg hover:shadow-2xl transition-all duration-500"
+                initial={{ opacity: 0, x: 50, scale: 0.95 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                viewport={cardViewportSettings}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-gray-50 dark:bg-cyber-black border-2 border-gray-300 dark:border-cyber-gray rounded-lg px-4 py-3 mb-4 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 font-chakra focus:border-light-rose dark:focus:border-cyber-primary focus:outline-none focus:ring-2 focus:ring-light-rose/20 dark:focus:ring-cyber-primary/20 transition-all"
-                  required
-                />
-                <input
-                  type="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-gray-50 dark:bg-cyber-black border-2 border-gray-300 dark:border-cyber-gray rounded-lg px-4 py-3 mb-4 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 font-chakra focus:border-light-rose dark:focus:border-cyber-primary focus:outline-none focus:ring-2 focus:ring-light-rose/20 dark:focus:ring-cyber-primary/20 transition-all"
-                  required
-                />
-                <textarea
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={4}
-                  className="w-full bg-gray-50 dark:bg-cyber-black border-2 border-gray-300 dark:border-cyber-gray rounded-lg px-4 py-3 mb-4 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 font-chakra focus:border-light-primary dark:focus:border-cyber-primary focus:outline-none focus:ring-2 focus:ring-light-primary/20 dark:focus:ring-cyber-primary/20 transition-all resize-none"
-                  required
-                ></textarea>
+                {/* Success/Error Messages */}
+                <AnimatePresence>
+                  {formStatus === "success" && (
+                    <motion.div
+                      className="p-4 bg-green-50 dark:bg-green-900/20 border-2 border-green-200 dark:border-green-800 rounded-xl flex items-center gap-3 text-green-700 dark:text-green-400"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                    >
+                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white flex-shrink-0">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className="font-semibold">Message envoyé avec succès!</span>
+                    </motion.div>
+                  )}
+
+                  {formStatus === "error" && (
+                    <motion.div
+                      className="p-4 bg-red-50 dark:bg-red-900/20 border-2 border-red-200 dark:border-red-800 rounded-xl flex items-center gap-3 text-red-700 dark:text-red-400"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                    >
+                      <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white flex-shrink-0">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </div>
+                      <span className="font-semibold">Une erreur s'est produite. Réessayez.</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Name Input with Floating Label - Mobile Optimized */}
+                <div className="relative">
+                  <input
+                    type="text"
+                    id="name"
+                    className="peer w-full px-4 py-4 text-base bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent text-gray-900 dark:text-gray-100 font-medium"
+                    placeholder="Nom"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                  />
+                  <label
+                    htmlFor="name"
+                    className="absolute left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
+                  >
+                    Nom
+                  </label>
+                </div>
+
+                {/* Email Input with Floating Label - Mobile Optimized */}
+                <div className="relative">
+                  <input
+                    type="email"
+                    id="email"
+                    className="peer w-full px-4 py-4 text-base bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent text-gray-900 dark:text-gray-100 font-medium"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                  />
+                  <label
+                    htmlFor="email"
+                    className="absolute left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
+                  >
+                    Email
+                  </label>
+                </div>
+
+                {/* Message Textarea with Floating Label - Mobile Optimized */}
+                <div className="relative">
+                  <textarea
+                    id="message"
+                    rows={6}
+                    className="peer w-full px-4 py-4 text-base bg-white dark:bg-nbc-gray-800 border-2 border-gray-200 dark:border-nbc-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent resize-none text-gray-900 dark:text-white font-medium"
+                    placeholder="Message"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
+                  ></textarea>
+                  <label
+                    htmlFor="message"
+                    className="absolute left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
+                  >
+                    Message
+                  </label>
+                </div>
+
+                {/* Modern Submit Button - Mobile Optimized */}
                 <motion.button
                   type="submit"
-                  className="w-full px-6 py-3 bg-light-rose dark:bg-cyber-primary text-white dark:text-cyber-black font-chakra font-bold rounded-lg hover:opacity-90 transition-all disabled:opacity-50 neon-border relative overflow-hidden group"
                   disabled={formStatus === "sending"}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="w-full px-6 py-4 sm:py-5 bg-gradient-to-r from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 text-white font-bold text-base sm:text-lg rounded-xl hover:from-red-600 hover:to-nbc-red shadow-lg hover:shadow-2xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 active:scale-95"
+                  whileHover={{ scale: formStatus === "sending" ? 1 : 1.02, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
                 >
-                  <span className="relative z-10">{formStatus === "sending" ? "Sending..." : formStatus === "success" ? "✓ Sent!" : "Send Message"}</span>
+                  {formStatus === "sending" ? (
+                    <>
+                      <motion.div
+                        className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      />
+                      <span>Envoi en cours...</span>
+                    </>
+                  ) : (
+                    <>
+                      <FiSend className="w-5 h-5" />
+                      <span>Envoyer le message</span>
+                    </>
+                  )}
                 </motion.button>
               </motion.form>
             </div>
@@ -478,41 +976,136 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 bg-gray-100 dark:bg-cyber-darker border-t-2 border-gray-300 dark:border-cyber-gray relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-600 dark:text-white text-sm font-mono mb-4 md:mb-0">
-              © 2025 {personalInfo.name}. Built with <span className="text-light-rose dark:text-cyber-primary font-bold">Next.js</span> & <span className="text-light-rose dark:text-cyber-primary font-bold">Tailwind CSS</span>
-            </p>
-            <div className="flex space-x-6">
+      {/* Footer - Premium Red Design */}
+      <footer className="relative z-10 bg-nbc-red dark:bg-gray-800 overflow-hidden">
+        {/* Decorative Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0 subtle-grid"></div>
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
+          {/* Main Content - Centered Layout */}
+          <div className="text-center mb-12">
+            {/* Brand Name */}
+            <motion.div
+              className="mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-white mb-4 tracking-tight">
+                {personalInfo.name}
+              </h3>
+              <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
+                Développeur Full Stack & Expert IA | Créateur d'expériences digitales innovantes
+              </p>
+            </motion.div>
+
+            {/* Social Links - Large & Prominent */}
+            <motion.div
+              className="flex justify-center gap-4 sm:gap-6 mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               <motion.a
                 href={personalInfo.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 dark:text-white hover:text-light-rose dark:hover:text-cyber-primary transition-colors"
-                whileHover={{ scale: 1.2, rotate: 5 }}
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white flex items-center justify-center text-white shadow-lg hover:shadow-2xl transition-all group"
+                whileHover={{ scale: 1.15, y: -5, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <FiGithub size={20} />
+                <FiGithub size={24} className="group-hover:scale-110 transition-transform" />
               </motion.a>
               <motion.a
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 dark:text-white hover:text-light-rose dark:hover:text-cyber-primary transition-colors"
-                whileHover={{ scale: 1.2, rotate: -5 }}
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white flex items-center justify-center text-white shadow-lg hover:shadow-2xl transition-all group"
+                whileHover={{ scale: 1.15, y: -5, rotate: -5 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <FiLinkedin size={20} />
+                <FiLinkedin size={24} className="group-hover:scale-110 transition-transform" />
               </motion.a>
               <motion.a
                 href={`mailto:${personalInfo.email}`}
-                className="text-gray-500 dark:text-white hover:text-light-rose dark:hover:text-cyber-primary transition-colors"
-                whileHover={{ scale: 1.2, rotate: 5 }}
+                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white flex items-center justify-center text-white shadow-lg hover:shadow-2xl transition-all group"
+                whileHover={{ scale: 1.15, y: -5, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <FiMail size={20} />
+                <FiMail size={24} className="group-hover:scale-110 transition-transform" />
               </motion.a>
-            </div>
+            </motion.div>
+
+            {/* Quick Navigation */}
+            <motion.nav
+              className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 mb-10"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              {['À Propos', 'Expérience', 'Projets', 'Compétences', 'Contact'].map((item, index) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase().replace('à propos', 'about').replace('expérience', 'experience').replace('projets', 'projects').replace('compétences', 'skills').replace('contact', 'contact')}`}
+                  className="text-sm sm:text-base font-medium text-white/80 hover:text-white transition-colors relative group"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.4 + index * 0.05 }}
+                >
+                  {item}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
+                </motion.a>
+              ))}
+            </motion.nav>
+
+            {/* Contact Info */}
+            <motion.div
+              className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 text-white/80 text-sm sm:text-base mb-10"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <a href={`mailto:${personalInfo.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
+                <FiMail size={18} />
+                <span className="font-medium">{personalInfo.email}</span>
+              </a>
+              <span className="hidden sm:block text-white/40">•</span>
+              <div className="flex items-center gap-2">
+                <FiMapPin size={18} />
+                <span className="font-medium">{personalInfo.location}</span>
+              </div>
+            </motion.div>
           </div>
+
+          {/* Bottom Bar - Copyright */}
+          <motion.div
+            className="pt-8 border-t border-white/20"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 text-center">
+              <p className="text-sm text-white/70">
+                © 2025 {personalInfo.name}. Tous droits réservés.
+              </p>
+              <span className="hidden sm:block text-white/40">•</span>
+              <p className="text-sm text-white/70">
+                Conçu avec <motion.span
+                  className="inline-block text-white"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 1, repeat: Infinity, repeatDelay: 2 }}
+                >❤️</motion.span> utilisant <span className="font-semibold text-white">Next.js</span> & <span className="font-semibold text-white">Tailwind CSS</span>
+              </p>
+            </div>
+          </motion.div>
         </div>
       </footer>
 
@@ -523,6 +1116,9 @@ export default function Home() {
         demoUrl={demoModal.url}
         projectTitle={demoModal.title}
       />
+
+      {/* Scroll To Top Button */}
+      <ScrollToTop />
     </main>
   );
 }

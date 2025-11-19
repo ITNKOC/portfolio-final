@@ -76,45 +76,45 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
 
           {/* Modal Content */}
           <motion.div
-            className="relative w-full h-full max-w-[95vw] max-h-[90vh] bg-white dark:bg-cyber-darker rounded-2xl overflow-hidden shadow-2xl border-4 border-light-rose dark:border-cyber-primary"
+            className="relative w-full h-full max-w-[95vw] max-h-[90vh] bg-white dark:bg-nbc-gray-800 rounded-2xl overflow-hidden shadow-2xl border-4 border-nbc-red"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
           >
             {/* Header */}
-            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-6 py-4 bg-white/95 dark:bg-cyber-black/95 backdrop-blur-md border-b-2 border-light-roseSoft dark:border-cyber-primary/30">
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-6 py-4 bg-white/95 dark:bg-nbc-gray-900/95 backdrop-blur-md border-b-2 border-nbc-red/30">
               <div className="flex items-center space-x-3">
                 <motion.div
-                  className="w-3 h-3 rounded-full bg-light-rose dark:bg-cyber-primary"
+                  className="w-3 h-3 rounded-full bg-nbc-red"
                   animate={{
                     boxShadow: [
-                      "0 0 10px rgba(30, 58, 138, 0.5)",
-                      "0 0 20px rgba(30, 58, 138, 0.8)",
-                      "0 0 10px rgba(30, 58, 138, 0.5)",
+                      "0 0 10px rgba(228, 28, 35, 0.5)",
+                      "0 0 20px rgba(228, 28, 35, 0.8)",
+                      "0 0 10px rgba(228, 28, 35, 0.5)",
                     ],
                   }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <h3 className="text-lg font-orbitron font-bold text-gray-900 dark:text-white">
-                  {projectTitle} <span className="text-light-rose dark:text-cyber-primary">// Live Demo</span>
+                <h3 className="text-lg font-bold text-nbc-text-primary">
+                  {projectTitle} <span className="text-nbc-red">// Démo en Direct</span>
                 </h3>
               </div>
 
               <div className="flex items-center space-x-2">
                 {/* View Mode Toggle - Only show on desktop */}
                 {!isMobileDevice && (
-                  <div className="flex items-center bg-light-roseLight dark:bg-cyber-gray rounded-lg p-1 border-2 border-light-roseSoft dark:border-cyber-gray">
+                  <div className="flex items-center bg-nbc-red/10 dark:bg-nbc-gray-700 rounded-lg p-1 border-2 border-nbc-red/20 dark:border-nbc-gray-600">
                     <motion.button
                       onClick={() => setViewMode("desktop")}
                       className={`p-2 rounded-md transition-all ${
                         viewMode === "desktop"
-                          ? "bg-light-rose dark:bg-cyber-primary text-white"
-                          : "text-gray-600 dark:text-gray-400 hover:text-light-rose dark:hover:text-cyber-primary"
+                          ? "bg-nbc-red text-white"
+                          : "text-nbc-text-secondary hover:text-nbc-red"
                       }`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      title="Desktop View"
+                      title="Vue Bureau"
                     >
                       <FiMonitor size={18} />
                     </motion.button>
@@ -122,12 +122,12 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
                       onClick={() => setViewMode("mobile")}
                       className={`p-2 rounded-md transition-all ${
                         viewMode === "mobile"
-                          ? "bg-light-rose dark:bg-cyber-primary text-white"
-                          : "text-gray-600 dark:text-gray-400 hover:text-light-rose dark:hover:text-cyber-primary"
+                          ? "bg-nbc-red text-white"
+                          : "text-nbc-text-secondary hover:text-nbc-red"
                       }`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      title="Mobile View"
+                      title="Vue Mobile"
                     >
                       <FiSmartphone size={18} />
                     </motion.button>
@@ -139,10 +139,10 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
                   href={demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg bg-light-roseLight dark:bg-cyber-gray hover:bg-light-roseSoft dark:hover:bg-cyber-primary/20 text-light-rose dark:text-cyber-primary border-2 border-light-roseSoft dark:border-cyber-gray transition-colors"
+                  className="p-2.5 rounded-lg bg-nbc-red/10 dark:bg-nbc-gray-700 hover:bg-nbc-red/20 dark:hover:bg-nbc-red/20 text-nbc-red border-2 border-nbc-red/20 dark:border-nbc-gray-600 transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  title="Open in new tab"
+                  title="Ouvrir dans un nouvel onglet"
                 >
                   <FiExternalLink size={18} />
                 </motion.a>
@@ -150,10 +150,10 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
                 {/* Close button */}
                 <motion.button
                   onClick={onClose}
-                  className="p-2.5 rounded-lg bg-light-roseLight dark:bg-cyber-gray hover:bg-red-100 dark:hover:bg-red-900/20 text-light-rose dark:text-cyber-primary hover:text-red-600 dark:hover:text-red-500 border-2 border-light-roseSoft dark:border-cyber-gray hover:border-red-500 dark:hover:border-red-500 transition-colors"
+                  className="p-2.5 rounded-lg bg-nbc-red/10 dark:bg-nbc-gray-700 hover:bg-red-100 dark:hover:bg-red-900/20 text-nbc-red hover:text-red-600 dark:hover:text-red-500 border-2 border-nbc-red/20 dark:border-nbc-gray-600 hover:border-red-500 dark:hover:border-red-500 transition-colors"
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.95 }}
-                  title="Close (ESC)"
+                  title="Fermer (ESC)"
                 >
                   <FiX size={20} />
                 </motion.button>
@@ -161,7 +161,7 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
             </div>
 
             {/* Loading Animation */}
-            <div className="absolute inset-0 flex items-center justify-center pt-16 bg-gray-100 dark:bg-cyber-black">
+            <div className="absolute inset-0 flex items-center justify-center pt-16 bg-nbc-gray-50 dark:bg-nbc-gray-900">
               <motion.div
                 className="flex flex-col items-center space-y-4"
                 initial={{ opacity: 1 }}
@@ -170,17 +170,17 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
               >
                 <div className="relative">
                   <motion.div
-                    className="w-16 h-16 border-4 border-light-roseSoft dark:border-cyber-gray rounded-full"
+                    className="w-16 h-16 border-4 border-nbc-red/20 dark:border-nbc-gray-700 rounded-full"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                   />
                   <motion.div
-                    className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-light-rose dark:border-t-cyber-primary rounded-full"
+                    className="absolute inset-0 w-16 h-16 border-4 border-transparent border-t-nbc-red rounded-full"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
                   />
                 </div>
-                <p className="text-gray-700 dark:text-white font-mono text-sm">Loading demo<motion.span
+                <p className="text-nbc-text-secondary font-mono text-sm">Chargement de la démo<motion.span
                   animate={{ opacity: [0, 1, 0] }}
                   transition={{ duration: 1, repeat: Infinity }}
                 >...</motion.span></p>
@@ -188,13 +188,13 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
             </div>
 
             {/* Iframe Container */}
-            <div className="absolute inset-0 pt-16 overflow-auto bg-gray-200 dark:bg-cyber-black/50">
+            <div className="absolute inset-0 pt-16 overflow-auto bg-nbc-gray-100 dark:bg-nbc-gray-900/50">
               {isMobileDevice || viewMode === "desktop" ? (
                 <motion.iframe
                   key="desktop-view"
                   src={demoUrl}
                   className="w-full h-full border-0"
-                  title={`${projectTitle} Demo`}
+                  title={`${projectTitle} Démo`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   loading="lazy"
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -223,7 +223,7 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
                           width: "calc(100% + 30px)",
                           height: "100%",
                         }}
-                        title={`${projectTitle} Demo - Mobile View`}
+                        title={`${projectTitle} Démo - Vue Mobile`}
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         loading="lazy"
                         scrolling="yes"
@@ -238,11 +238,11 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
               )}
             </div>
 
-            {/* Corner Decorations - Dark Mode Only */}
-            <div className="absolute top-16 left-0 w-8 h-8 border-l-2 border-t-2 border-cyber-primary dark:opacity-30 opacity-0 pointer-events-none" />
-            <div className="absolute top-16 right-0 w-8 h-8 border-r-2 border-t-2 border-cyber-primary dark:opacity-30 opacity-0 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-cyber-primary dark:opacity-30 opacity-0 pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-cyber-primary dark:opacity-30 opacity-0 pointer-events-none" />
+            {/* Corner Decorations - Elegant NBC Accent */}
+            <div className="absolute top-16 left-0 w-8 h-8 border-l-2 border-t-2 border-nbc-red opacity-20 pointer-events-none" />
+            <div className="absolute top-16 right-0 w-8 h-8 border-r-2 border-t-2 border-nbc-red opacity-20 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-nbc-red opacity-20 pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-nbc-red opacity-20 pointer-events-none" />
           </motion.div>
         </motion.div>
       )}

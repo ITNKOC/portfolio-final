@@ -21,11 +21,11 @@ const Navbar = () => {
   }, []);
 
   const menuItems = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
-    { name: "Skills", href: "#skills" },
+    { name: "Accueil", href: "#home" },
+    { name: "À Propos", href: "#about" },
+    { name: "Expérience", href: "#experience" },
+    { name: "Projets", href: "#projects" },
+    { name: "Compétences", href: "#skills" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -33,15 +33,12 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 ${
-        scrolled
-          ? "bg-white/90 dark:bg-cyber-black/90 backdrop-blur-lg border-b border-gray-200 dark:border-cyber-gray shadow-lg shadow-cyber-primary/10"
-          : "bg-transparent"
-      }`}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.34, 1.56, 0.64, 1] }}
+      className="absolute top-0 left-0 right-0 z-50 bg-transparent"
       style={{
-        transition: "all 0.8s cubic-bezier(0.23, 1, 0.32, 1)"
+        transition: "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,11 +46,17 @@ const Navbar = () => {
           {/* Logo */}
           <motion.a
             href="#home"
-            className="text-2xl font-bold text-light-rose dark:text-cyber-primary hover:text-gray-900 dark:hover:text-glow transition-all font-mono"
+            className="relative text-2xl font-bold font-mono group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            &lt;KD /&gt;
+            <span className="relative z-10 text-white drop-shadow-lg">
+              &lt;KD /&gt;
+            </span>
+            <motion.div
+              className="absolute inset-0 bg-white/10 blur-xl rounded-lg opacity-0 group-hover:opacity-100"
+              transition={{ duration: 0.3 }}
+            />
           </motion.a>
 
           {/* Desktop Menu */}
@@ -62,13 +65,23 @@ const Navbar = () => {
               <motion.a
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-light-rose dark:hover:text-cyber-primary transition-colors relative group font-medium"
+                className="text-white hover:text-white/80 transition-all relative group font-semibold px-3 py-2 rounded-lg"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.1, type: "spring", stiffness: 200 }}
+                whileHover={{ y: -2 }}
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-light-rose dark:bg-cyber-primary group-hover:w-full transition-all duration-300"></span>
+                <motion.span
+                  className="absolute bottom-0 left-0 h-0.5 rounded-full bg-white"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
+                <motion.div
+                  className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 -z-10 bg-white/10"
+                  transition={{ duration: 0.3 }}
+                />
               </motion.a>
             ))}
           </div>
@@ -79,7 +92,7 @@ const Navbar = () => {
               href="https://github.com/ITNKOC"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-light-rose dark:hover:text-cyber-primary transition-colors"
+              className="text-white hover:text-white/80 transition-colors"
               whileHover={{ scale: 1.2, rotate: 360 }}
               transition={{ duration: 0.3 }}
             >
@@ -89,7 +102,7 @@ const Navbar = () => {
               href="https://linkedin.com/in/koceila-djaballah-295716221"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-white hover:text-light-rose dark:hover:text-cyber-primary transition-colors"
+              className="text-white hover:text-white/80 transition-colors"
               whileHover={{ scale: 1.2, rotate: 360 }}
               transition={{ duration: 0.3 }}
             >
@@ -97,7 +110,7 @@ const Navbar = () => {
             </motion.a>
             <motion.a
               href="mailto:koceila.djaballah@gmail.com"
-              className="text-gray-600 dark:text-white hover:text-light-rose dark:hover:text-cyber-primary transition-colors"
+              className="text-white hover:text-white/80 transition-colors"
               whileHover={{ scale: 1.2, rotate: 360 }}
               transition={{ duration: 0.3 }}
             >
@@ -105,18 +118,28 @@ const Navbar = () => {
             </motion.a>
             <motion.button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-lg bg-light-roseLight dark:bg-cyber-gray hover:bg-light-roseSoft dark:hover:bg-cyber-primary/20 text-light-rose dark:text-white border-2 border-light-roseSoft dark:border-cyber-gray hover:border-light-rose"
+              className="relative p-2.5 rounded-xl overflow-hidden group bg-white/20 dark:bg-white/10 text-white border-2 border-white/30 hover:border-white shadow-lg"
               style={{
-                transition: "all 0.8s cubic-bezier(0.23, 1, 0.32, 1)"
+                transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)"
               }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.1, rotate: 10 }}
+              whileTap={{ scale: 0.9, rotate: -10 }}
             >
               <motion.div
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-white/20"
+                transition={{ duration: 0.3 }}
+              />
+              <motion.div
                 key={theme}
-                initial={{ rotate: -180, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                initial={{ rotate: -180, opacity: 0, scale: 0.5 }}
+                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.34, 1.56, 0.64, 1],
+                  type: "spring",
+                  stiffness: 200
+                }}
+                className="relative z-10"
               >
                 {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
               </motion.div>
@@ -127,9 +150,9 @@ const Navbar = () => {
           <div className="md:hidden flex items-center space-x-3">
             <motion.button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2.5 rounded-lg bg-light-roseLight dark:bg-cyber-gray hover:bg-light-roseSoft dark:hover:bg-cyber-primary/20 text-light-rose dark:text-white border-2 border-light-roseSoft dark:border-cyber-gray hover:border-light-rose"
+              className="p-2.5 rounded-lg bg-nbc-polar dark:bg-nbc-gray-800 hover:bg-nbc-red/10 dark:hover:bg-nbc-red/20 text-nbc-red border-2 border-nbc-gray-200 dark:border-nbc-gray-700 hover:border-nbc-red"
               style={{
-                transition: "all 0.8s cubic-bezier(0.23, 1, 0.32, 1)"
+                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -138,14 +161,14 @@ const Navbar = () => {
                 key={theme}
                 initial={{ rotate: -180, opacity: 0 }}
                 animate={{ rotate: 0, opacity: 1 }}
-                transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+                transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
               >
                 {theme === "dark" ? <FiSun size={20} /> : <FiMoon size={20} />}
               </motion.div>
             </motion.button>
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2.5 rounded-lg bg-gray-100 dark:bg-cyber-darker border-2 border-gray-300 dark:border-cyber-gray text-gray-700 dark:text-gray-300 hover:text-light-rose dark:hover:text-cyber-primary hover:border-light-rose dark:hover:border-cyber-primary transition-colors"
+              className="p-2.5 rounded-lg bg-nbc-gray-100 dark:bg-nbc-gray-800 border-2 border-nbc-gray-300 dark:border-nbc-gray-700 text-nbc-text-secondary hover:text-nbc-red hover:border-nbc-red transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -165,12 +188,12 @@ const Navbar = () => {
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
+            animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white/98 dark:bg-cyber-darker/98 backdrop-blur-xl border-t-2 border-gray-200 dark:border-cyber-gray shadow-xl"
+            className="md:hidden bg-nbc-red/95 dark:bg-nbc-gray-900/95 backdrop-blur-sm border-t-2 border-white/20 shadow-xl"
           >
-            <div className="px-6 py-8 space-y-3 max-h-[70vh] overflow-y-auto">
+            <div className="px-6 py-8 space-y-3 h-full overflow-y-auto">
               {/* Menu Items */}
               {menuItems.map((item, index) => (
                 <motion.a
@@ -186,7 +209,7 @@ const Navbar = () => {
                       }
                     }, 300);
                   }}
-                  className="block bg-gray-50 dark:bg-cyber-black/50 hover:bg-light-roseLight dark:hover:bg-cyber-primary/10 border-l-4 border-transparent hover:border-light-rose dark:hover:border-cyber-primary rounded-r-lg px-6 py-4 font-chakra font-semibold text-gray-800 dark:text-gray-200 transition-all group"
+                  className="block bg-white/10 dark:bg-white/5 hover:bg-white/20 dark:hover:bg-white/10 border-l-4 border-transparent hover:border-white rounded-r-lg px-6 py-4 font-semibold text-white transition-all group"
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.08, type: "spring", stiffness: 100 }}
@@ -195,7 +218,7 @@ const Navbar = () => {
                   <div className="flex items-center justify-between">
                     <span className="text-base">{item.name}</span>
                     <motion.span
-                      className="text-light-rose dark:text-cyber-primary opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="text-white opacity-0 group-hover:opacity-100 transition-opacity"
                       initial={{ x: -10 }}
                       whileHover={{ x: 0 }}
                     >
@@ -207,43 +230,43 @@ const Navbar = () => {
 
               {/* Social Links Section */}
               <motion.div
-                className="pt-6 mt-6 border-t-2 border-gray-200 dark:border-cyber-gray"
+                className="pt-6 mt-6 border-t-2 border-white/20"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <p className="text-xs font-mono text-gray-500 dark:text-gray-400 mb-4 tracking-wider uppercase">Connect</p>
+                <p className="text-xs font-mono text-white/70 mb-4 tracking-wider uppercase">Connect</p>
                 <div className="grid grid-cols-3 gap-3">
                   <motion.a
                     href="https://github.com/ITNKOC"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center justify-center gap-2 p-4 bg-gray-100 dark:bg-cyber-black/50 hover:bg-light-roseLight dark:hover:bg-cyber-primary/10 border-2 border-gray-200 dark:border-cyber-gray hover:border-light-rose dark:hover:border-cyber-primary rounded-xl transition-all group"
+                    className="flex flex-col items-center justify-center gap-2 p-4 bg-white/10 hover:bg-white/20 border-2 border-white/20 hover:border-white rounded-xl transition-all group"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <FiGithub size={24} className="text-gray-600 dark:text-white group-hover:text-light-rose dark:group-hover:text-cyber-primary transition-colors" />
-                    <span className="text-xs font-mono text-gray-500 dark:text-white">GitHub</span>
+                    <FiGithub size={24} className="text-white group-hover:text-white/80 transition-colors" />
+                    <span className="text-xs font-mono text-white/70">GitHub</span>
                   </motion.a>
                   <motion.a
                     href="https://linkedin.com/in/koceila-djaballah-295716221"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center justify-center gap-2 p-4 bg-gray-100 dark:bg-cyber-black/50 hover:bg-light-roseLight dark:hover:bg-cyber-primary/10 border-2 border-gray-200 dark:border-cyber-gray hover:border-light-rose dark:hover:border-cyber-primary rounded-xl transition-all group"
+                    className="flex flex-col items-center justify-center gap-2 p-4 bg-white/10 hover:bg-white/20 border-2 border-white/20 hover:border-white rounded-xl transition-all group"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <FiLinkedin size={24} className="text-gray-600 dark:text-white group-hover:text-light-rose dark:group-hover:text-cyber-primary transition-colors" />
-                    <span className="text-xs font-mono text-gray-500 dark:text-white">LinkedIn</span>
+                    <FiLinkedin size={24} className="text-white group-hover:text-white/80 transition-colors" />
+                    <span className="text-xs font-mono text-white/70">LinkedIn</span>
                   </motion.a>
                   <motion.a
                     href="mailto:koceila.djaballah@gmail.com"
-                    className="flex flex-col items-center justify-center gap-2 p-4 bg-gray-100 dark:bg-cyber-black/50 hover:bg-light-roseLight dark:hover:bg-cyber-primary/10 border-2 border-gray-200 dark:border-cyber-gray hover:border-light-rose dark:hover:border-cyber-primary rounded-xl transition-all group"
+                    className="flex flex-col items-center justify-center gap-2 p-4 bg-white/10 hover:bg-white/20 border-2 border-white/20 hover:border-white rounded-xl transition-all group"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <FiMail size={24} className="text-gray-600 dark:text-white group-hover:text-light-rose dark:group-hover:text-cyber-primary transition-colors" />
-                    <span className="text-xs font-mono text-gray-500 dark:text-white">Email</span>
+                    <FiMail size={24} className="text-white group-hover:text-white/80 transition-colors" />
+                    <span className="text-xs font-mono text-white/70">Email</span>
                   </motion.a>
                 </div>
               </motion.div>

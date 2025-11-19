@@ -1,26 +1,26 @@
 export const personalInfo = {
   name: "Koceila Djaballah",
-  title: "Full Stack Developer | AI Specialist | SaaS Solutions Architect",
-  location: "Montreal, QC",
+  title: "Développeur Full Stack | Spécialiste IA | Architecte Solutions SaaS",
+  location: "Montréal, QC",
   email: "koceila.djaballah@gmail.com",
   phone: "+1 (438) 282-1633",
   github: "https://github.com/ITNKOC",
   linkedin: "https://linkedin.com/in/koceila-djaballah-295716221",
-  bio: "Dev Full Stack passionné avec 1 an d'expérience en transformation digitale. Chez Di Menna Restaurant, j'ai mené la transformation tech complète : 2 apps web en prod (e-commerce + POS Lightspeed + plateforme marketing IA), infra cloud, et support client. Bref, du dev qui change la donne ! 💪",
+  bio: "Développeur Full Stack passionné avec une expertise en transformation digitale et intelligence artificielle. Spécialisé dans la conception et le déploiement de solutions SaaS complètes, de l'architecture cloud à l'intégration d'APIs tierces. Expérience concrète dans la mise en production d'applications e-commerce, systèmes POS et plateformes marketing basées sur l'IA générative.",
 };
 
 export const experience = [
   {
-    title: "Développeur Full Stack & Chargé TI",
+    title: "Développeur Full Stack & Responsable TI",
     company: "Restaurant Di Menna",
-    location: "Montreal, QC",
-    period: "Nov. 2024 - Dec. 2025",
+    location: "Montréal, QC",
+    period: "Novembre 2024 - Décembre 2025",
     duration: "1 an",
     description: [
-      "🚀 Boss de la transformation digitale pendant 1 an : designé, codé et déployé 2 apps web en production",
-      "💻 Créé une plateforme e-commerce full-stack (Next.js 15/React 19) avec intégration POS Lightspeed OAuth2, sync temps réel via webhooks, module RH & gestion multi-users",
-      "🤖 Développé un SaaS Marketing IA : outil de transformation d'images alimentaires générant 4 versions pro avec Gemini 2.5 Flash + génération de contenu marketing automatisé",
-      "☁️ Géré le DevOps complet : archi cloud (Vercel/Neon), CI/CD avec GitHub Actions, monitoring des performances",
+      "Pilotage de la transformation digitale complète : conception, développement et déploiement de deux applications web en environnement de production",
+      "Développement d'une plateforme e-commerce full-stack (Next.js 15/React 19) avec intégration OAuth2 du système POS Lightspeed, synchronisation temps réel via webhooks, module RH et gestion multi-utilisateurs",
+      "Création d'une solution SaaS de marketing visuel basée sur l'IA : transformation automatisée d'images alimentaires en quatre variations professionnelles via Gemini 2.5 Flash avec génération de contenu marketing intelligent",
+      "Gestion complète de l'infrastructure DevOps : architecture cloud sur Vercel et Neon, pipeline CI/CD avec GitHub Actions, monitoring et optimisation des performances",
     ],
     tech: [
       "Next.js 15",
@@ -39,15 +39,15 @@ export const experience = [
   {
     title: "Développeur Full Stack & IA (Stage de fin d'études)",
     company: "Plateforme SaaS de Gestion Hospitalière",
-    location: "Montreal, QC",
-    period: "Dec. 2024 - Apr. 2025",
-    duration: "5 months",
+    location: "Montréal, QC",
+    period: "Décembre 2024 - Avril 2025",
+    duration: "5 mois",
     description: [
-      "Collaborative development of medical SaaS platform with microservices architecture (Team of 4)",
-      "Integrated fine-tuned LLM agents with RAG for contextual medical assistance and intelligent appointment scheduling",
-      "Created deep learning models (PyTorch, OpenCV) for automatic pathology detection: tuberculosis and malaria",
-      "Implemented secure EMR system: JWT authentication, data encryption, permissions management",
-      "Applied Scrum methodology: sprint planning, user stories, daily stand-ups, retrospectives",
+      "Développement collaboratif d'une plateforme SaaS médicale avec architecture microservices au sein d'une équipe de 4 développeurs",
+      "Intégration d'agents LLM affinés avec système RAG pour l'assistance médicale contextuelle et la gestion intelligente des rendez-vous",
+      "Conception de modèles d'apprentissage profond (PyTorch, OpenCV) pour la détection automatique de pathologies : tuberculose et paludisme",
+      "Mise en place d'un système EMR sécurisé : authentification JWT, chiffrement des données et gestion des permissions",
+      "Application de la méthodologie Scrum : planification des sprints, rédaction de user stories, daily stand-ups et rétrospectives",
     ],
     tech: [
       "Python",
@@ -64,13 +64,13 @@ export const experience = [
   },
   {
     title: "Développeur Web Freelance",
-    company: "Various Clients",
-    location: "Montreal & Remote",
+    company: "Clients Variés",
+    location: "Montréal & À Distance",
     period: "2021 - 2024",
-    duration: "3 years",
+    duration: "3 ans",
     description: [
-      "Designed and delivered complete websites (showcases, e-commerce) for SMEs and individuals",
-      "Full-cycle autonomous project management: needs analysis, UX/UI design, development, testing, deployment, maintenance",
+      "Conception et livraison de sites web complets (vitrines, e-commerce) pour PME et particuliers",
+      "Gestion autonome de projets en cycle complet : analyse des besoins, conception UX/UI, développement, tests, déploiement et maintenance",
     ],
     tech: ["PHP", "JavaScript", "HTML/CSS", "MySQL", "WordPress"],
   },
@@ -78,10 +78,10 @@ export const experience = [
 
 export const projects = [
   {
-    title: "DiMenna Express - E-commerce Platform",
-    subtitle: "Plateforme E-commerce Full-Stack avec POS Integration",
+    title: "DiMenna Express - Plateforme E-commerce",
+    subtitle: "Plateforme E-commerce Full-Stack avec Intégration POS",
     description:
-      "Plateforme e-commerce complète avec intégration POS Lightspeed en temps réel, gestion RH et module multi-utilisateurs. Code privé - En production ! 🚀",
+      "Plateforme e-commerce complète avec intégration POS Lightspeed en temps réel, gestion RH et module multi-utilisateurs. Solution propriétaire actuellement en production.",
     image: "/images/dimenna-ecommerce.jpg",
     features: [
       "Intégration OAuth2 avec Lightspeed POS pour sync temps réel des produits et inventaire",
@@ -108,10 +108,10 @@ export const projects = [
     featured: true,
   },
   {
-    title: "Di Menna Restaurant Website",
+    title: "Site Web Restaurant Di Menna",
     subtitle: "Site Web Complet pour Restaurant Italien Authentique",
     description:
-      "Site web moderne et responsive pour Di Menna, restaurant italien authentique établi en 1971. Hub central pour réservations, menu et engagement client. En production ! 🍝",
+      "Site web moderne et responsive pour Di Menna, restaurant italien authentique établi en 1971. Plateforme centrale pour les réservations, consultation du menu et engagement client. Actuellement en production.",
     image: "/images/dimenna-vitrine.jpg",
     features: [
       "Système de réservation en ligne intégré avec OpenTable",
@@ -140,13 +140,13 @@ export const projects = [
     title: "Product Scorecard",
     subtitle: "SaaS d'Analyse de Viabilité E-commerce",
     description:
-      "Plateforme intelligente pour entrepreneurs : valide la viabilité commerciale de tes produits avant d'investir ! 💡",
+      "Plateforme intelligente d'aide à la décision pour entrepreneurs : évaluation complète de la viabilité commerciale des produits avant l'investissement.",
     image: "/images/product-scorecard.jpg",
     features: [
-      "Wizard intelligent en 8 étapes avec collecte de données structurée et auto-save",
-      "Coach IA contextuel via Google Gemini API qui s'adapte à tes données produit",
+      "Assistant intelligent en 8 étapes avec collecte de données structurée et sauvegarde automatique",
+      "Coach IA contextuel via Google Gemini API adapté aux données produit",
       "Algorithme de scoring propriétaire (0-100) basé sur 8 critères pondérés",
-      "Rapports stratégiques automatisés : analyses SWOT, personas clients, recommandations marketing",
+      "Rapports stratégiques automatisés : analyses SWOT, personas clients et recommandations marketing",
     ],
     tech: [
       "Next.js",
@@ -165,15 +165,15 @@ export const projects = [
   },
   {
     title: "Image4Marketing",
-    subtitle: "SaaS Marketing Visuel par IA 🎨",
+    subtitle: "SaaS de Marketing Visuel par IA",
     description:
-      "App SaaS complète qui transforme tes images alimentaires en contenu marketing pro via IA générative. Utilisée en production par Restaurant Di Menna ! 🔥",
+      "Application SaaS complète de transformation d'images alimentaires en contenu marketing professionnel via IA générative. Déployée en production pour le Restaurant Di Menna.",
     image: "/images/image4marketing.jpg",
     features: [
-      "Workflow en 5 étapes : Upload → Génération de 4 variations optimisées → Modifs par chat IA → Export avec captions",
-      "Features avancées : auth NextAuth v5, galerie utilisateur, partage public, rate limiting",
-      "Intégration Gemini Vision pour analyse visuelle auto et génération de contenu marketing",
-      "Variations pro : e-commerce, livraison, réseaux sociaux, bannières hero",
+      "Processus en 5 étapes : téléchargement, génération de 4 variations optimisées, modifications par chat IA et export avec légendes",
+      "Fonctionnalités avancées : authentification NextAuth v5, galerie utilisateur, partage public et limitation de débit",
+      "Intégration Gemini Vision pour analyse visuelle automatique et génération de contenu marketing",
+      "Variations professionnelles : e-commerce, livraison, réseaux sociaux et bannières hero",
     ],
     tech: [
       "Next.js 14",
@@ -193,16 +193,16 @@ export const projects = [
     featured: true,
   },
   {
-    title: "Hospital Management Platform",
-    subtitle: "Intelligent Medical SaaS",
+    title: "Plateforme de Gestion Hospitalière",
+    subtitle: "SaaS Médical Intelligent",
     description:
-      "Advanced medical SaaS platform with microservices architecture for modern hospital management. Academic final project with team of 4.",
+      "Plateforme SaaS médicale avancée avec architecture microservices pour la gestion hospitalière moderne. Projet académique de fin d'études réalisé en équipe de 4 développeurs.",
     image: "/images/hospital.jpg",
     features: [
-      "Fine-tuned LLM agents with RAG for contextual medical assistance",
-      "Deep Learning models for pathology detection (tuberculosis, malaria)",
-      "Secure EMR system with JWT authentication and data encryption",
-      "Scrum methodology applied throughout development",
+      "Agents LLM affinés avec système RAG pour l'assistance médicale contextuelle",
+      "Modèles d'apprentissage profond pour la détection de pathologies (tuberculose, paludisme)",
+      "Système EMR sécurisé avec authentification JWT et chiffrement des données",
+      "Méthodologie Scrum appliquée tout au long du développement",
     ],
     tech: [
       "Python",
@@ -221,15 +221,15 @@ export const projects = [
     featured: true,
   },
   {
-    title: "CBIR System",
-    subtitle: "Content-Based Image Retrieval",
+    title: "Système CBIR",
+    subtitle: "Recherche d'Images par Similarité Visuelle",
     description:
-      "Advanced image search engine based on visual similarity using computer vision techniques.",
+      "Moteur de recherche d'images avancé basé sur la similarité visuelle utilisant des techniques de vision par ordinateur.",
     image: "/images/cbir.jpg",
     features: [
-      "Visual feature extraction via GLCM (texture) and BiT descriptors",
-      "4 distance metrics implementation for optimal relevance",
-      "Interactive Streamlit interface",
+      "Extraction de caractéristiques visuelles via descripteurs GLCM (texture) et BiT",
+      "Implémentation de 4 métriques de distance pour une pertinence optimale",
+      "Interface interactive développée avec Streamlit",
     ],
     tech: ["Python", "OpenCV", "scikit-image", "NumPy", "Streamlit"],
     github: "#",
@@ -237,15 +237,15 @@ export const projects = [
     year: "2024",
   },
   {
-    title: "E-commerce Platforms",
-    subtitle: "Multi-Technology Full Stack Projects",
+    title: "Plateformes E-commerce",
+    subtitle: "Projets Full Stack Multi-Technologies",
     description:
-      "Various e-commerce platforms built with different technology stacks.",
+      "Différentes plateformes e-commerce développées avec diverses stacks technologiques.",
     image: "/images/ecommerce.jpg",
     features: [
-      "PHP E-commerce: Clothing store with MVC architecture",
-      "MERN E-commerce: Perfume platform with RESTful API and Redux",
-      "Complete catalog management, secure payment systems",
+      "E-commerce PHP : Boutique de vêtements avec architecture MVC",
+      "E-commerce MERN : Plateforme de parfumerie avec API RESTful et Redux",
+      "Gestion complète de catalogue et systèmes de paiement sécurisés",
     ],
     tech: ["PHP", "MySQL", "MongoDB", "Express.js", "React", "Node.js"],
     github: "#",
@@ -253,15 +253,15 @@ export const projects = [
     year: "2023",
   },
   {
-    title: "Uber Clone",
-    subtitle: "Mobile Transportation App",
+    title: "Clone Uber",
+    subtitle: "Application Mobile de Transport",
     description:
-      "Complete transportation mobile app with separate client/driver interfaces.",
+      "Application mobile complète de transport avec interfaces séparées pour clients et chauffeurs.",
     image: "/images/uber-clone.jpg",
     features: [
-      "Real-time geolocation via Google Maps API",
-      "Firebase authentication and integrated payment",
-      "Scalable serverless backend architecture",
+      "Géolocalisation en temps réel via Google Maps API",
+      "Authentification Firebase et paiement intégré",
+      "Architecture backend serverless et évolutive",
     ],
     tech: ["Flutter", "Firebase", "Google Maps API"],
     github: "#",
@@ -322,27 +322,27 @@ export const skills = {
 
 export const education = [
   {
-    degree: "DEC in Web Programming and Artificial Intelligence",
+    degree: "DEC en Programmation Web et Intelligence Artificielle",
     school: "Institut Teccart",
-    location: "Montreal, QC",
-    period: "Jan 2023 - Apr 2025",
+    location: "Montréal, QC",
+    period: "Janvier 2023 - Avril 2025",
     description:
-      "Intensive training in AI-integrated application development and modern web technologies. Practical projects: computer vision, SaaS platforms, deep learning, Agile/Scrum methodologies.",
+      "Formation intensive en développement d'applications intégrant l'intelligence artificielle et technologies web modernes. Projets pratiques : vision par ordinateur, plateformes SaaS, apprentissage profond et méthodologies Agile/Scrum.",
   },
   {
-    degree: "Bachelor's Degree in Computer Science",
+    degree: "Baccalauréat en Informatique",
     school: "Université Abderrahmane Mira",
-    location: "Béjaïa, Algeria",
-    period: "2019 - Sept 2022",
+    location: "Béjaïa, Algérie",
+    period: "2019 - Septembre 2022",
     description:
-      "Advanced algorithms, data structures, software engineering, databases, AI fundamentals. Official Quebec equivalence obtained (MIFI).",
+      "Algorithmes avancés, structures de données, génie logiciel, bases de données et fondamentaux de l'intelligence artificielle. Équivalence officielle obtenue du gouvernement du Québec (MIFI).",
   },
 ];
 
 export const languages = [
-  { language: "French", level: "Native", flag: "🇫🇷" },
-  { language: "English", level: "Professional (B2)", flag: "🇬🇧" },
-  { language: "Arabic", level: "Fluent", flag: "🇸🇦" },
-  { language: "Kabyle", level: "Native", flag: "🗣️" },
-  { language: "Spanish", level: "Basic (A2)", flag: "🇪🇸" },
+  { language: "Français", level: "Langue Maternelle" },
+  { language: "Anglais", level: "Professionnel (B2)" },
+  { language: "Arabe", level: "Courant" },
+  { language: "Kabyle", level: "Langue Maternelle" },
+  { language: "Espagnol", level: "Notions de base (A2)" },
 ];

@@ -1,39 +1,35 @@
 import type { Metadata } from "next";
-import { Inter, Space_Mono, Orbitron, Chakra_Petch } from "next/font/google";
+import { Inter, Sora } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 
-const inter = Inter({ subsets: ["latin"] });
-
-// Matrix Hacker Fonts
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
+// Professional NBC Banking Font - Inter for body
+const inter = Inter({
   subsets: ["latin"],
-  variable: '--font-space-mono',
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const orbitron = Orbitron({
+// Premium Display Font - Sora for headings
+const sora = Sora({
   subsets: ["latin"],
-  variable: '--font-orbitron',
-});
-
-const chakraPetch = Chakra_Petch({
-  weight: ['400', '500', '600', '700'],
-  subsets: ["latin"],
-  variable: '--font-chakra-petch',
+  display: "swap",
+  variable: "--font-sora",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Koceila Djaballah | Full Stack & AI Developer",
-  description: "Full Stack Developer specialized in AI and SaaS solutions. 1 year experience in digital transformation. Expert in Next.js, React, TypeScript, Python, and AI integration.",
-  keywords: ["Full Stack Developer", "AI Developer", "Next.js", "React", "TypeScript", "Python", "Machine Learning", "Montreal"],
+  title: "Koceila Djaballah | Développeur Full Stack & IA",
+  description: "Développeur Full Stack spécialisé en IA et solutions SaaS. 1 an d'expérience en transformation digitale. Expert en Next.js, React, TypeScript, Python et intégration d'IA.",
+  keywords: ["Développeur Full Stack", "Développeur IA", "Next.js", "React", "TypeScript", "Python", "Apprentissage Automatique", "Montréal"],
   authors: [{ name: "Koceila Djaballah" }],
   openGraph: {
-    title: "Koceila Djaballah | Full Stack & AI Developer",
-    description: "Full Stack Developer specialized in AI and SaaS solutions",
+    title: "Koceila Djaballah | Développeur Full Stack & IA",
+    description: "Développeur Full Stack spécialisé en IA et solutions SaaS",
     url: "https://koceila-djaballah.com",
-    siteName: "Koceila Djaballah Portfolio",
-    locale: "en_US",
+    siteName: "Portfolio de Koceila Djaballah",
+    locale: "fr_CA",
     type: "website",
   },
 };
@@ -44,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} ${spaceMono.variable} ${orbitron.variable} ${chakraPetch.variable}`}>
+    <html lang="fr" suppressHydrationWarning>
+      <body className={`${inter.className} ${inter.variable} ${sora.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
         </ThemeProvider>

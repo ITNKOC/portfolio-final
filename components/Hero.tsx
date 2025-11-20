@@ -44,33 +44,37 @@ const Hero = () => {
       {/* Background Image - Desktop SVG (No BG versions) */}
       <div className="absolute inset-0 z-[5]" style={{ isolation: 'isolate' }}>
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-500"
+          className="absolute inset-0 bg-cover bg-no-repeat bg-[center_top] xs:bg-[center_10%] sm:bg-center md:!bg-[center_20%] transition-all duration-500"
           style={{
             backgroundImage: theme === 'dark'
-              ? "url('/hero/hero desktop no bg night.svg')"
+              ? "url('/hero/hero desktop no bg dark.svg')"
               : "url('/hero/hero desktop no bg.svg')",
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
             mixBlendMode: 'normal',
             opacity: 1,
           }}
         />
       </div>
 
-      {/* Gradient Overlay - Dark from top to bottom */}
-      <div className="absolute inset-0 z-[6] bg-gradient-to-b from-transparent via-black/20 to-black/60 dark:from-transparent dark:via-[#0a0e27]/30 dark:to-[#0a0e27]/70 pointer-events-none transition-all duration-500" />
+      {/* Gradient Overlay - Dark from top to bottom - Enhanced darkness at bottom */}
+      <div className="absolute inset-0 z-[6] bg-gradient-to-b from-transparent via-black/30 to-black/80 dark:from-transparent dark:via-[#0a0e27]/50 dark:to-[#0a0e27]/90 pointer-events-none transition-all duration-500" />
+
+      {/* Additional vignette effect for extra darkness at edges */}
+      <div className="absolute inset-0 z-[6] bg-radial-gradient pointer-events-none transition-all duration-500" style={{
+        background: 'radial-gradient(ellipse at center top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0.5) 100%)'
+      }} />
 
       {/* Content */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 pt-24 md:pt-32 text-center"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 xs:pb-16 sm:pb-20 pt-[35vh] xs:pt-[40vh] sm:pt-32 md:pt-32 text-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Name with Professional Animation */}
-        <motion.div variants={itemVariants} className="mb-8 relative">
+        <motion.div variants={itemVariants} className="mb-4 xs:mb-6 md:mb-8 relative">
           <motion.p
-            className="text-white text-lg md:hidden font-semibold mb-6"
+            className="text-white text-sm xs:text-base md:text-lg md:hidden font-semibold mb-3 xs:mb-4 md:mb-6"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -105,10 +109,10 @@ const Hero = () => {
               </motion.h1>
             </div>
 
-            {/* Mobile: Centered Name */}
-            <div className="md:hidden flex flex-col items-center justify-center space-y-3 px-4">
+            {/* Mobile: Centered Name - Optimized for small phones */}
+            <div className="md:hidden flex flex-col items-center justify-center space-y-1 xs:space-y-2 sm:space-y-3 px-4">
               <motion.h1
-                className="text-4xl sm:text-5xl font-display font-extrabold uppercase tracking-tighter text-white drop-shadow-2xl"
+                className="text-2xl xs:text-3xl sm:text-4xl font-display font-extrabold uppercase tracking-tighter text-white drop-shadow-2xl"
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
@@ -116,7 +120,7 @@ const Hero = () => {
                 KOCEILA
               </motion.h1>
               <motion.h1
-                className="text-4xl sm:text-5xl font-display font-extrabold uppercase tracking-tighter text-white drop-shadow-2xl"
+                className="text-2xl xs:text-3xl sm:text-4xl font-display font-extrabold uppercase tracking-tighter text-white drop-shadow-2xl"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, type: "spring", stiffness: 100, delay: 0.2 }}
@@ -127,10 +131,10 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        {/* Short Description */}
+        {/* Short Description - Optimized for small phones */}
         <motion.p
           variants={itemVariants}
-          className="max-w-2xl mx-auto text-white/95 text-sm sm:text-base md:text-xl leading-relaxed px-6 mb-8 md:mb-10 md:mt-[102px] drop-shadow-lg text-center"
+          className="max-w-2xl mx-auto text-white/95 text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed px-4 xs:px-6 mb-4 xs:mb-6 sm:mb-8 md:mb-10 md:mt-[102px] drop-shadow-lg text-center"
         >
           {t.hero.description} <span className="text-white font-bold">{t.hero.descriptionBold}</span>
         </motion.p>
@@ -200,13 +204,13 @@ const Hero = () => {
           </motion.a>
         </motion.div>
 
-        {/* Premium Social Links */}
-        <motion.div variants={itemVariants} className="flex justify-center space-x-4 sm:space-x-6 mb-12 px-4">
+        {/* Premium Social Links - Optimized for small phones */}
+        <motion.div variants={itemVariants} className="flex justify-center space-x-2 xs:space-x-3 sm:space-x-4 md:space-x-6 mb-6 xs:mb-8 sm:mb-12 px-4">
           <motion.a
             href={personalInfo.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative p-4 sm:p-5 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white group shadow-lg hover:shadow-2xl overflow-hidden"
+            className="relative p-3 xs:p-4 sm:p-5 rounded-xl xs:rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white group shadow-lg hover:shadow-2xl overflow-hidden"
             whileHover={{ scale: 1.15, rotate: 5, y: -5 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -221,7 +225,7 @@ const Hero = () => {
             href={personalInfo.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative p-5 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white group shadow-lg hover:shadow-2xl overflow-hidden"
+            className="relative p-3 xs:p-4 sm:p-5 rounded-xl xs:rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white group shadow-lg hover:shadow-2xl overflow-hidden"
             whileHover={{ scale: 1.15, rotate: -5, y: -5 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -234,7 +238,7 @@ const Hero = () => {
           </motion.a>
           <motion.a
             href={`mailto:${personalInfo.email}`}
-            className="relative p-5 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white group shadow-lg hover:shadow-2xl overflow-hidden"
+            className="relative p-3 xs:p-4 sm:p-5 rounded-xl xs:rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white group shadow-lg hover:shadow-2xl overflow-hidden"
             whileHover={{ scale: 1.15, rotate: 5, y: -5 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -247,8 +251,9 @@ const Hero = () => {
           </motion.a>
           <motion.a
             href="/cv/CV_KOCEILA_1.pdf"
-            download="CV_Koceila_Djaballah.pdf"
-            className="relative p-5 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white group shadow-lg hover:shadow-2xl overflow-hidden"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative group p-3 xs:p-4 sm:p-5 rounded-xl xs:rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white shadow-lg hover:shadow-2xl overflow-hidden"
             whileHover={{ scale: 1.15, rotate: -5, y: -5 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -257,17 +262,17 @@ const Hero = () => {
               className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100"
               transition={{ duration: 0.3 }}
             />
-            <FiDownload size={24} className="relative z-10 text-white transition-colors" />
+            <span className="relative z-10 text-white text-xl font-bold">CV</span>
           </motion.a>
         </motion.div>
 
         {/* Premium Scroll Indicator */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col items-center gap-3"
+          className="flex flex-col items-center gap-2 xs:gap-3"
         >
           <motion.p
-            className="text-sm text-white/70 font-medium tracking-wider uppercase"
+            className="text-[10px] xs:text-xs sm:text-sm text-white/70 font-medium tracking-wider uppercase"
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
@@ -275,7 +280,14 @@ const Hero = () => {
           </motion.p>
           <motion.a
             href="#about"
-            className="relative p-4 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white shadow-lg hover:shadow-2xl overflow-hidden group"
+            onClick={(e) => {
+              e.preventDefault();
+              const aboutSection = document.querySelector('#about');
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
+            className="relative p-2 xs:p-3 sm:p-4 rounded-xl xs:rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white shadow-lg hover:shadow-2xl overflow-hidden group"
             animate={{
               y: [0, 12, 0],
             }}
@@ -291,7 +303,7 @@ const Hero = () => {
               className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100"
               transition={{ duration: 0.3 }}
             />
-            <FiArrowDown size={24} className="relative z-10 text-white" />
+            <FiArrowDown size={20} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 relative z-10 text-white" />
           </motion.a>
         </motion.div>
       </motion.div>

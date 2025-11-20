@@ -13,11 +13,7 @@ import {
 } from "react-icons/fi";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-// Choisissez votre switcher préféré en décommentant une ligne:
-import LanguageSwitcher from "./LanguageSwitcherToggle"; // ⭐ RECOMMANDÉ: Toggle élégant
-// import LanguageSwitcher from "./LanguageSwitcherDropdown"; // Dropdown sophistiqué
-// import LanguageSwitcher from "./LanguageSwitcherTabs"; // Tabs modernes
-// import LanguageSwitcher from "./LanguageSwitcher"; // Original (simple)
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -139,7 +135,7 @@ const Navbar = () => {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="relative p-2.5 rounded-xl overflow-hidden group bg-white/20 dark:bg-white/10 text-white border-2 border-white/30 hover:border-white shadow-lg"
               style={{
-                transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
               }}
               whileHover={{ scale: 1.1, rotate: 10 }}
               whileTap={{ scale: 0.9, rotate: -10 }}
@@ -172,7 +168,7 @@ const Navbar = () => {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="p-2.5 rounded-lg bg-nbc-polar dark:bg-nbc-gray-800 hover:bg-nbc-red/10 dark:hover:bg-nbc-red/20 text-nbc-red border-2 border-nbc-gray-200 dark:border-nbc-gray-700 hover:border-nbc-red"
               style={{
-                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}

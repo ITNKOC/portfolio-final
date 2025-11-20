@@ -6,8 +6,9 @@ import { FiArrowUp } from "react-icons/fi";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentSection, setCurrentSection] = useState("");
 
-  // Show button when page is scrolled down
+  // Show button when page is scrolled down and detect current section
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 300) {
@@ -15,9 +16,27 @@ const ScrollToTop = () => {
       } else {
         setIsVisible(false);
       }
+
+      // Detect which section is currently in view
+      const sections = ['about', 'experience', 'projects', 'skills', 'contact'];
+      const scrollPosition = window.pageYOffset + window.innerHeight / 2;
+
+      for (const sectionId of sections) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            setCurrentSection(sectionId);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener("scroll", toggleVisibility);
+    toggleVisibility(); // Check initial state
 
     return () => {
       window.removeEventListener("scroll", toggleVisibility);
@@ -32,12 +51,61 @@ const ScrollToTop = () => {
     });
   };
 
+  // Define colors based on section background
+  const getButtonColors = () => {
+    switch (currentSection) {
+      case 'about':
+        // White background - Red button
+        return {
+          bg: 'from-nbc-red to-red-600',
+          text: 'text-white',
+          glow: 'bg-nbc-red',
+        };
+      case 'experience':
+        // Red background (light) / Dark blue (dark) - White button
+        return {
+          bg: 'from-white to-gray-100 dark:from-gray-800 dark:to-gray-900',
+          text: 'text-nbc-red dark:text-white',
+          glow: 'bg-white dark:bg-gray-800',
+        };
+      case 'projects':
+        // White background (light) / Dark background (dark) - Red button
+        return {
+          bg: 'from-nbc-red to-red-600',
+          text: 'text-white',
+          glow: 'bg-nbc-red',
+        };
+      case 'skills':
+        // Red background (light) / Dark blue (dark) - White button
+        return {
+          bg: 'from-white to-gray-100 dark:from-gray-800 dark:to-gray-900',
+          text: 'text-nbc-red dark:text-white',
+          glow: 'bg-white dark:bg-gray-800',
+        };
+      case 'contact':
+        // White background (light) / Dark background (dark) - Red button
+        return {
+          bg: 'from-nbc-red to-red-600',
+          text: 'text-white',
+          glow: 'bg-nbc-red',
+        };
+      default:
+        return {
+          bg: 'from-nbc-red to-red-600',
+          text: 'text-white',
+          glow: 'bg-nbc-red',
+        };
+    }
+  };
+
+  const colors = getButtonColors();
+
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 text-white shadow-lg hover:shadow-2xl flex items-center justify-center group overflow-hidden"
+          className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br ${colors.bg} ${colors.text} shadow-lg hover:shadow-2xl flex items-center justify-center group overflow-hidden transition-colors duration-500`}
           initial={{ opacity: 0, scale: 0, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0, y: 20 }}
@@ -61,7 +129,7 @@ const ScrollToTop = () => {
 
           {/* Glow effect */}
           <motion.div
-            className="absolute inset-0 bg-nbc-red rounded-2xl blur-lg opacity-0 group-hover:opacity-50 -z-10"
+            className={`absolute inset-0 ${colors.glow} rounded-2xl blur-lg opacity-0 group-hover:opacity-50 -z-10 transition-colors duration-500`}
             transition={{ duration: 0.3 }}
           />
         </motion.button>

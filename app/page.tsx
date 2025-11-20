@@ -72,8 +72,8 @@ export default function Home() {
             viewport={viewportSettings}
             variants={fadeInUp}
           >
-            <div className="relative inline-block mb-24">
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
+            <div className="relative inline-block mb-16 xs:mb-20 md:mb-24">
+              <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
                 {t.about.title} <span className="gradient-text">{t.about.subtitle}</span>
               </h2>
               {/* Premium underline with animation */}
@@ -110,10 +110,10 @@ export default function Home() {
                   >
                     <FiUser size={20} className="sm:w-6 sm:h-6" />
                   </motion.div>
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.whoAmI}</h3>
+                  <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.whoAmI}</h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-3 md:mb-4 font-sans">{personalInfo.bio}</p>
-                <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed font-sans">
+                <p className="text-xs xs:text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-3 md:mb-4 font-sans">{personalInfo.bio}</p>
+                <p className="text-xs xs:text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed font-sans">
                   Passionné par l'innovation, j'apporte <span className="text-nbc-red dark:text-nbc-red font-bold">{t.about.bioHighlight}</span> {t.about.bioEnd}
                 </p>
               </motion.div>
@@ -135,14 +135,14 @@ export default function Home() {
                     >
                       <FiBookOpen size={20} className="sm:w-6 sm:h-6" />
                     </motion.div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.education}</h3>
+                    <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.education}</h3>
                   </div>
                   {education.map((edu, index) => (
                     <div key={index} className={`${index !== 0 ? "mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-200 dark:border-nbc-gray-700" : ""}`}>
-                      <h4 className="text-lg sm:text-xl md:text-2xl font-display font-bold text-gray-900 dark:text-white">{edu.degree}</h4>
-                      <p className="text-sm sm:text-base text-nbc-red dark:text-nbc-red font-mono font-semibold">{edu.school}</p>
-                      <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-mono">{edu.location} | {edu.period}</p>
-                      <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mt-2 font-sans leading-relaxed">{edu.description}</p>
+                      <h4 className="text-base xs:text-lg sm:text-xl md:text-2xl font-display font-bold text-gray-900 dark:text-white">{edu.degree}</h4>
+                      <p className="text-xs xs:text-sm sm:text-base text-nbc-red dark:text-nbc-red font-mono font-semibold">{edu.school}</p>
+                      <p className="text-gray-600 dark:text-gray-400 text-[10px] xs:text-xs sm:text-sm font-mono">{edu.location} | {edu.period}</p>
+                      <p className="text-xs xs:text-sm sm:text-base text-gray-700 dark:text-gray-300 mt-2 font-sans leading-relaxed">{edu.description}</p>
                     </div>
                   ))}
                 </motion.div>
@@ -163,13 +163,13 @@ export default function Home() {
                     >
                       <FiGlobe size={20} className="sm:w-6 sm:h-6" />
                     </motion.div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.languages}</h3>
+                    <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.languages}</h3>
                   </div>
-                  <div className="flex flex-wrap gap-2 sm:gap-3">
+                  <div className="flex flex-wrap gap-1.5 xs:gap-2 sm:gap-3">
                     {languages.map((lang, index) => (
                       <motion.span
                         key={index}
-                        className="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 dark:bg-nbc-gray-800 border border-gray-300 dark:border-nbc-gray-700 rounded-full text-xs sm:text-sm font-mono transition-all cursor-default"
+                        className="px-2 xs:px-3 sm:px-4 py-1 xs:py-1.5 sm:py-2 bg-gray-100 dark:bg-nbc-gray-800 border border-gray-300 dark:border-nbc-gray-700 rounded-full text-[10px] xs:text-xs sm:text-sm font-mono transition-all cursor-default"
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
@@ -196,8 +196,8 @@ export default function Home() {
             viewport={viewportSettings}
             variants={fadeInUp}
           >
-            <div className="relative inline-block mb-24">
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-white relative z-10 tracking-tight">
+            <div className="relative inline-block mb-16 xs:mb-20 md:mb-24">
+              <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-center text-white relative z-10 tracking-tight">
                 {t.experience.title} <span className="text-white drop-shadow-2xl">{t.experience.subtitle}</span>
               </h2>
               {/* Premium underline with animation */}
@@ -282,21 +282,21 @@ export default function Home() {
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-5">
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                           <div className="flex-1 min-w-0">
-                            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors duration-300 mb-2 tracking-tight leading-tight">
+                            <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors duration-300 mb-2 tracking-tight leading-tight">
                               {exp.title}
                             </h3>
-                            <p className="text-sm sm:text-base md:text-lg text-nbc-red dark:text-nbc-red font-sans font-semibold mb-1">
+                            <p className="text-xs xs:text-sm sm:text-base md:text-lg text-nbc-red dark:text-nbc-red font-sans font-semibold mb-1">
                               {exp.company}
                             </p>
-                            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-mono">
+                            <p className="text-[10px] xs:text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-mono">
                               {exp.location}
                             </p>
                           </div>
                           <div className="flex flex-row sm:flex-col items-start sm:items-end gap-2">
-                            <span className="px-3 sm:px-4 py-1 sm:py-1.5 bg-nbc-red/10 dark:bg-nbc-red/20 text-nbc-red dark:text-nbc-red text-xs sm:text-sm font-mono font-bold rounded-full border border-nbc-red/30 dark:border-nbc-red/40 whitespace-nowrap">
+                            <span className="px-2 xs:px-3 sm:px-4 py-0.5 xs:py-1 sm:py-1.5 bg-nbc-red/10 dark:bg-nbc-red/20 text-nbc-red dark:text-nbc-red text-[10px] xs:text-xs sm:text-sm font-mono font-bold rounded-full border border-nbc-red/30 dark:border-nbc-red/40 whitespace-nowrap">
                               {exp.period}
                             </span>
-                            <span className="text-gray-500 dark:text-gray-400 text-xs font-mono">
+                            <span className="text-gray-500 dark:text-gray-400 text-[10px] xs:text-xs font-mono">
                               {exp.duration}
                             </span>
                           </div>
@@ -308,13 +308,13 @@ export default function Home() {
                         {exp.description.map((desc, i) => (
                           <motion.li
                             key={i}
-                            className="flex items-start space-x-2 md:space-x-3 text-xs sm:text-sm md:text-base text-gray-700 dark:text-gray-300 font-sans leading-relaxed"
+                            className="flex items-start space-x-2 md:space-x-3 text-[11px] xs:text-xs sm:text-sm md:text-base text-gray-700 dark:text-gray-300 font-sans leading-relaxed"
                             initial={{ opacity: 0, x: -20 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.3, delay: i * 0.1 }}
                           >
-                            <span className="text-nbc-red dark:text-nbc-red mt-0.5 md:mt-1.5 font-bold text-base md:text-lg flex-shrink-0">
+                            <span className="text-nbc-red dark:text-nbc-red mt-0.5 md:mt-1.5 font-bold text-sm xs:text-base md:text-lg flex-shrink-0">
                               ▹
                             </span>
                             <span>{desc.replace(/[🚀💻🤖☁️]/g, '').trim()}</span>
@@ -323,11 +323,11 @@ export default function Home() {
                       </ul>
 
                       {/* Tech Stack Tags */}
-                      <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-3 md:pt-4 border-t border-gray-200 dark:border-nbc-gray-700">
+                      <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 pt-3 md:pt-4 border-t border-gray-200 dark:border-nbc-gray-700">
                         {exp.tech.map((tech, i) => (
                           <motion.span
                             key={i}
-                            className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-nbc-red/20 dark:to-nbc-red/10 border border-nbc-red/30 dark:border-nbc-red/40 rounded-full text-xs text-nbc-red dark:text-nbc-red font-mono font-semibold transition-all hover:scale-110 hover:border-nbc-red dark:hover:border-nbc-red cursor-default hover:shadow-lg"
+                            className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-nbc-red/20 dark:to-nbc-red/10 border border-nbc-red/30 dark:border-nbc-red/40 rounded-full text-[10px] xs:text-xs text-nbc-red dark:text-nbc-red font-mono font-semibold transition-all hover:scale-110 hover:border-nbc-red dark:hover:border-nbc-red cursor-default hover:shadow-lg"
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
@@ -357,9 +357,9 @@ export default function Home() {
             viewport={viewportSettings}
             variants={fadeInUp}
           >
-            <div className="text-center mb-24">
+            <div className="text-center mb-16 xs:mb-20 md:mb-24">
               <div className="relative inline-block mb-6">
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
+                <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
                   {t.projects.title} <span className="gradient-text">{t.projects.subtitle}</span>
                 </h2>
                 {/* Premium underline with animation */}
@@ -381,7 +381,7 @@ export default function Home() {
 
               {/* Call to action text */}
               <motion.p
-                className="text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto flex items-center justify-center gap-2 flex-wrap"
+                className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto flex items-center justify-center gap-2 flex-wrap"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -426,7 +426,7 @@ export default function Home() {
                     <div className="flex items-start justify-between">
                       {/* Project Number */}
                       <motion.span
-                        className="text-nbc-red/40 dark:text-nbc-red/30 text-4xl sm:text-5xl md:text-6xl font-bold leading-none"
+                        className="text-nbc-red/40 dark:text-nbc-red/30 text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-none"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
@@ -482,7 +482,7 @@ export default function Home() {
                     {/* Project Title and Description */}
                     <div className="space-y-2 md:space-y-3">
                       <motion.h3
-                        className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors duration-300 tracking-tight leading-tight"
+                        className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors duration-300 tracking-tight leading-tight"
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
@@ -491,7 +491,7 @@ export default function Home() {
                       </motion.h3>
 
                       <motion.p
-                        className="text-nbc-red dark:text-nbc-red font-medium text-xs sm:text-sm"
+                        className="text-nbc-red dark:text-nbc-red font-medium text-[10px] xs:text-xs sm:text-sm"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: 0.35 }}
@@ -500,7 +500,7 @@ export default function Home() {
                       </motion.p>
 
                       <motion.p
-                        className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed"
+                        className="text-[11px] xs:text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         transition={{ delay: 0.4 }}
@@ -519,7 +519,7 @@ export default function Home() {
                       {project.features.slice(0, 3).map((feature, i) => (
                         <motion.div
                           key={i}
-                          className="flex items-start space-x-2 text-gray-700 dark:text-gray-300 text-sm"
+                          className="flex items-start space-x-2 text-gray-700 dark:text-gray-300 text-[11px] xs:text-xs sm:text-sm"
                           initial={{ opacity: 0, x: -10 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.5 + i * 0.05 }}
@@ -531,11 +531,11 @@ export default function Home() {
                     </motion.div>
 
                     {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-3 md:pt-4 border-t border-gray-200 dark:border-nbc-gray-700">
+                    <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 pt-3 md:pt-4 border-t border-gray-200 dark:border-nbc-gray-700">
                       {project.tech.map((tech, i) => (
                         <motion.span
                           key={i}
-                          className="px-2 sm:px-3 py-0.5 sm:py-1 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-nbc-red/20 dark:to-nbc-red/10 text-nbc-red dark:text-nbc-red text-xs sm:text-sm font-medium rounded-full border border-nbc-red/20 dark:border-nbc-red/30 hover:border-nbc-red dark:hover:border-nbc-red hover:shadow-md cursor-default transition-all duration-300"
+                          className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-nbc-red/20 dark:to-nbc-red/10 text-nbc-red dark:text-nbc-red text-[10px] xs:text-xs sm:text-sm font-medium rounded-full border border-nbc-red/20 dark:border-nbc-red/30 hover:border-nbc-red dark:hover:border-nbc-red hover:shadow-md cursor-default transition-all duration-300"
                           initial={{ opacity: 0, scale: 0.8 }}
                           whileInView={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 0.6 + i * 0.05 }}
@@ -589,8 +589,8 @@ export default function Home() {
             viewport={viewportSettings}
             variants={fadeInUp}
           >
-            <div className="relative inline-block mb-24">
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-white relative z-10 tracking-tight">
+            <div className="relative inline-block mb-16 xs:mb-20 md:mb-24">
+              <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-center text-white relative z-10 tracking-tight">
                 {t.skills.title} <span className="text-white drop-shadow-2xl">{t.skills.subtitle}</span>
               </h2>
               {/* Premium underline with animation */}
@@ -635,12 +635,12 @@ export default function Home() {
 
                 // Category icons - Professional React Icons
                 const categoryIconsMap: { [key: string]: JSX.Element } = {
-                  languages: <HiCode className="w-5 h-5 sm:w-6 sm:h-6" />,
-                  frontend: <SiReact className="w-5 h-5 sm:w-6 sm:h-6" />,
-                  backend: <SiNodedotjs className="w-5 h-5 sm:w-6 sm:h-6" />,
-                  ai: <HiSparkles className="w-5 h-5 sm:w-6 sm:h-6" />,
-                  databases: <HiDatabase className="w-5 h-5 sm:w-6 sm:h-6" />,
-                  devops: <HiCloud className="w-5 h-5 sm:w-6 sm:h-6" />,
+                  languages: <HiCode className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />,
+                  frontend: <SiReact className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />,
+                  backend: <SiNodedotjs className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />,
+                  ai: <HiSparkles className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />,
+                  databases: <HiDatabase className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />,
+                  devops: <HiCloud className="w-4 h-4 xs:w-5 xs:h-5 sm:w-6 sm:h-6" />,
                 };
 
                 return (
@@ -657,17 +657,17 @@ export default function Home() {
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4 md:mb-6">
                       <div className="flex items-center gap-2 sm:gap-3">
                         <motion.div
-                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 flex items-center justify-center text-white font-bold shadow-lg flex-shrink-0"
+                          className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 flex items-center justify-center text-white font-bold shadow-lg flex-shrink-0"
                           whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
                           transition={{ duration: 0.5 }}
                         >
                           {categoryIconsMap[category]}
                         </motion.div>
-                        <h3 className="text-base sm:text-lg md:text-xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors capitalize tracking-tight">
+                        <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors capitalize tracking-tight">
                           {categoryNames[category]}
                         </h3>
                       </div>
-                      <span className="text-2xl sm:text-3xl font-bold text-nbc-red/30 dark:text-nbc-red/20 group-hover:text-nbc-red/50 dark:group-hover:text-nbc-red/40 transition-colors">
+                      <span className="text-xl xs:text-2xl sm:text-3xl font-bold text-nbc-red/30 dark:text-nbc-red/20 group-hover:text-nbc-red/50 dark:group-hover:text-nbc-red/40 transition-colors">
                         {avgLevel}%
                       </span>
                     </div>
@@ -690,11 +690,11 @@ export default function Home() {
                     </div>
 
                     {/* Technologies List */}
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                    <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2">
                       {items.map((skill: any, i: number) => (
                         <motion.span
                           key={i}
-                          className="px-2 sm:px-3 py-1 sm:py-1.5 bg-gray-100 dark:bg-nbc-gray-800/50 hover:bg-nbc-red/10 dark:hover:bg-nbc-red/20 text-gray-700 dark:text-gray-300 hover:text-nbc-red dark:hover:text-nbc-red text-xs sm:text-sm font-medium rounded-lg border border-gray-300 dark:border-nbc-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all cursor-default"
+                          className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gray-100 dark:bg-nbc-gray-800/50 hover:bg-nbc-red/10 dark:hover:bg-nbc-red/20 text-gray-700 dark:text-gray-300 hover:text-nbc-red dark:hover:text-nbc-red text-[10px] xs:text-xs sm:text-sm font-medium rounded-lg border border-gray-300 dark:border-nbc-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all cursor-default"
                           initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
@@ -729,8 +729,8 @@ export default function Home() {
             viewport={viewportSettings}
             variants={fadeInUp}
           >
-            <div className="relative inline-block mb-8">
-              <h2 className="text-4xl md:text-5xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
+            <div className="relative inline-block mb-6 xs:mb-8">
+              <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
                 {t.contact.title} <span className="gradient-text">{t.contact.subtitle}</span>
               </h2>
               {/* Premium underline with animation */}
@@ -749,7 +749,7 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
               />
             </div>
-            <p className="text-center text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 mb-10 md:mb-12 max-w-2xl mx-auto px-4 leading-relaxed">
+            <p className="text-center text-xs xs:text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-300 mb-8 xs:mb-10 md:mb-12 max-w-2xl mx-auto px-4 leading-relaxed">
               {t.contact.description}
             </p>
 
@@ -767,15 +767,15 @@ export default function Home() {
                 <div className="space-y-3 md:space-y-3">
                   <div className="flex items-center gap-3">
                     <motion.div
-                      className="w-12 h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                      className="w-10 h-10 xs:w-12 xs:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
-                      <FiMail size={24} />
+                      <FiMail size={20} className="xs:w-6 xs:h-6" />
                     </motion.div>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-display font-bold text-gray-900 dark:text-white tracking-tight">{t.contact.contactInfo}</h3>
+                    <h3 className="text-base xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-gray-900 dark:text-white tracking-tight">{t.contact.contactInfo}</h3>
                   </div>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">{t.contact.contactDescription}</p>
+                  <p className="text-xs xs:text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">{t.contact.contactDescription}</p>
                 </div>
 
                 {/* Contact items with icons - Mobile Optimized */}
@@ -789,12 +789,12 @@ export default function Home() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
                   >
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                      <FiMail size={22} className="sm:w-6 sm:h-6" />
+                    <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <FiMail size={18} className="xs:w-[22px] xs:h-[22px] sm:w-6 sm:h-6" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">Email</p>
-                      <p className="text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors truncate">
+                      <p className="text-[10px] xs:text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">Email</p>
+                      <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors truncate">
                         {personalInfo.email}
                       </p>
                     </div>
@@ -809,12 +809,12 @@ export default function Home() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                   >
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                      <FiPhone size={22} className="sm:w-6 sm:h-6" />
+                    <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <FiPhone size={18} className="xs:w-[22px] xs:h-[22px] sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">{t.contact.phone}</p>
-                      <p className="text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors">
+                      <p className="text-[10px] xs:text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">{t.contact.phone}</p>
+                      <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors">
                         {personalInfo.phone}
                       </p>
                     </div>
@@ -828,12 +828,12 @@ export default function Home() {
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
                   >
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                      <FiMapPin size={22} className="sm:w-6 sm:h-6" />
+                    <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <FiMapPin size={18} className="xs:w-[22px] xs:h-[22px] sm:w-6 sm:h-6" />
                     </div>
                     <div>
-                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">{t.contact.location}</p>
-                      <p className="text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold">
+                      <p className="text-[10px] xs:text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">{t.contact.location}</p>
+                      <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold">
                         {personalInfo.location}
                       </p>
                     </div>
@@ -842,7 +842,7 @@ export default function Home() {
 
                 {/* Social links - Mobile Optimized */}
                 <div className="pt-6 border-t-2 border-gray-200 dark:border-nbc-gray-700">
-                  <p className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">{t.contact.followMe}</p>
+                  <p className="text-xs xs:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">{t.contact.followMe}</p>
                   <div className="flex gap-3 sm:gap-4">
                     <motion.a
                       href={personalInfo.github}
@@ -912,7 +912,7 @@ export default function Home() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       </div>
-                      <span className="font-semibold">{t.contact.successMessage}</span>
+                      <span className="text-xs xs:text-sm font-semibold">{t.contact.successMessage}</span>
                     </motion.div>
                   )}
 
@@ -928,7 +928,7 @@ export default function Home() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                         </svg>
                       </div>
-                      <span className="font-semibold">{t.contact.errorMessage}</span>
+                      <span className="text-xs xs:text-sm font-semibold">{t.contact.errorMessage}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -938,7 +938,7 @@ export default function Home() {
                   <input
                     type="text"
                     id="name"
-                    className="peer w-full px-4 py-4 text-base bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent text-gray-900 dark:text-gray-100 font-medium"
+                    className="peer w-full px-3 xs:px-4 py-3 xs:py-4 text-sm xs:text-base bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent text-gray-900 dark:text-gray-100 font-medium"
                     placeholder={t.contact.namePlaceholder}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -946,7 +946,7 @@ export default function Home() {
                   />
                   <label
                     htmlFor="name"
-                    className="absolute left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
+                    className="absolute left-3 xs:left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-xs xs:text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-3 xs:peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm xs:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-xs xs:peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
                   >
                     {t.contact.namePlaceholder}
                   </label>
@@ -957,7 +957,7 @@ export default function Home() {
                   <input
                     type="email"
                     id="email"
-                    className="peer w-full px-4 py-4 text-base bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent text-gray-900 dark:text-gray-100 font-medium"
+                    className="peer w-full px-3 xs:px-4 py-3 xs:py-4 text-sm xs:text-base bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent text-gray-900 dark:text-gray-100 font-medium"
                     placeholder={t.contact.emailPlaceholder}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -965,7 +965,7 @@ export default function Home() {
                   />
                   <label
                     htmlFor="email"
-                    className="absolute left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
+                    className="absolute left-3 xs:left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-xs xs:text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-3 xs:peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm xs:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-xs xs:peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
                   >
                     {t.contact.emailPlaceholder}
                   </label>
@@ -976,7 +976,7 @@ export default function Home() {
                   <textarea
                     id="message"
                     rows={6}
-                    className="peer w-full px-4 py-4 text-base bg-white dark:bg-nbc-gray-800 border-2 border-gray-200 dark:border-nbc-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent resize-none text-gray-900 dark:text-white font-medium"
+                    className="peer w-full px-3 xs:px-4 py-3 xs:py-4 text-sm xs:text-base bg-white dark:bg-nbc-gray-800 border-2 border-gray-200 dark:border-nbc-gray-700 rounded-xl focus:border-nbc-red dark:focus:border-nbc-red focus:ring-4 focus:ring-nbc-red/10 dark:focus:ring-nbc-red/20 outline-none transition-all placeholder-transparent resize-none text-gray-900 dark:text-white font-medium"
                     placeholder={t.contact.messagePlaceholder}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -984,7 +984,7 @@ export default function Home() {
                   ></textarea>
                   <label
                     htmlFor="message"
-                    className="absolute left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
+                    className="absolute left-3 xs:left-4 -top-2.5 px-2 bg-white dark:bg-gray-900 text-xs xs:text-sm text-gray-600 dark:text-gray-400 peer-placeholder-shown:top-3 xs:peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm xs:peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 dark:peer-placeholder-shown:text-gray-500 peer-focus:-top-2.5 peer-focus:text-xs xs:peer-focus:text-sm peer-focus:text-nbc-red dark:peer-focus:text-nbc-red transition-all font-semibold"
                   >
                     {t.contact.messagePlaceholder}
                   </label>
@@ -994,7 +994,7 @@ export default function Home() {
                 <motion.button
                   type="submit"
                   disabled={formStatus === "sending"}
-                  className="w-full px-6 py-4 sm:py-5 bg-gradient-to-r from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 text-white font-bold text-base sm:text-lg rounded-xl hover:from-red-600 hover:to-nbc-red shadow-lg hover:shadow-2xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 active:scale-95"
+                  className="w-full px-4 xs:px-6 py-3 xs:py-4 sm:py-5 bg-gradient-to-r from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 text-white font-bold text-sm xs:text-base sm:text-lg rounded-xl hover:from-red-600 hover:to-nbc-red shadow-lg hover:shadow-2xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 active:scale-95"
                   whileHover={{ scale: formStatus === "sending" ? 1 : 1.02, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                 >

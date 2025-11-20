@@ -18,15 +18,30 @@
     scroll-margin-top: 100px;
   }
 
-  /* Professional smooth transitions */
+  /* Ultra-smooth transitions for theme switching */
   * {
     transition:
-      background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background-color 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      background-image 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      border-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      fill 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      stroke 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Smooth transitions for sections with backgrounds */
+  section {
+    transition:
+      background 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      background-color 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      background-image 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  html {
+    transition: background-color 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   body {
@@ -37,9 +52,12 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     font-optical-sizing: auto;
+    transition:
+      background-color 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      color 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  /* Premium Typography Hierarchy */
+  /* Premium Typography Hierarchy - Optimized for small phones */
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-sora), var(--font-inter), system-ui, sans-serif;
     font-weight: 700;
@@ -49,25 +67,69 @@
   }
 
   h1 {
-    @apply text-5xl md:text-6xl lg:text-7xl;
+    @apply text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl;
     font-weight: 800;
     letter-spacing: -0.03em;
   }
 
   h2 {
-    @apply text-4xl md:text-5xl lg:text-6xl;
+    @apply text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
     font-weight: 700;
     letter-spacing: -0.025em;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl;
+    @apply text-xl xs:text-2xl sm:text-2xl md:text-3xl lg:text-4xl;
+    font-weight: 600;
+  }
+
+  h4 {
+    @apply text-lg xs:text-xl sm:text-xl md:text-2xl;
+    font-weight: 600;
+  }
+
+  h5 {
+    @apply text-base xs:text-lg sm:text-lg md:text-xl;
     font-weight: 600;
   }
 
   p {
+    @apply text-sm xs:text-base;
     line-height: 1.7;
     text-wrap: pretty;
+  }
+
+  /* Base font size for very small phones */
+  @media (max-width: 374px) {
+    html {
+      font-size: 14px;
+    }
+
+    /* Reduce padding on containers for very small screens */
+    section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Adjust button sizes */
+    button, .btn-primary, .btn-secondary {
+      font-size: 0.875rem;
+      padding: 0.625rem 1.25rem;
+    }
+  }
+
+  /* Optimize for small phones (375px - 640px) */
+  @media (min-width: 375px) and (max-width: 639px) {
+    /* Ensure consistent spacing */
+    section {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    /* Adjust card padding */
+    .professional-card {
+      padding: 1.25rem;
+    }
   }
 
   /* Enhanced transitions for interactive elements */
@@ -90,7 +152,10 @@
       0 4px 16px -4px rgba(0, 0, 0, 0.06),
       0 8px 24px -8px rgba(0, 0, 0, 0.04);
     transition:
-      all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background-color 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      border-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
   }
 
@@ -916,6 +981,7 @@
     height: 100%;
     overflow: hidden;
     pointer-events: none;
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .star-blink {

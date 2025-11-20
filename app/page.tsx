@@ -63,7 +63,7 @@ export default function Home() {
       <Hero />
 
       {/* About Section */}
-      <section id="about" className="py-24 md:py-32 lg:py-40 bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:to-gray-800 relative overflow-hidden z-10">
+      <section id="about" className="py-24 md:py-32 lg:py-40 bg-white dark:bg-gradient-to-b dark:from-[#1a2332] dark:to-[#0f1820] relative overflow-hidden z-10">
         <div className="absolute inset-0 subtle-grid opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -93,11 +93,11 @@ export default function Home() {
               />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+            <div className="space-y-6 md:space-y-8">
               <motion.div
                 className="professional-card professional-glow p-6 md:p-8"
-                initial={{ opacity: 0, x: -50, scale: 0.95 }}
-                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={cardViewportSettings}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 whileHover={{ y: -8, scale: 1.02 }}
@@ -118,78 +118,80 @@ export default function Home() {
                 </p>
               </motion.div>
 
-              <div className="space-y-4 md:space-y-6">
-                <motion.div
-                  className="professional-card professional-glow p-6 md:p-8"
-                  initial={{ opacity: 0, x: 50, scale: 0.95 }}
-                  whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                  viewport={cardViewportSettings}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                >
-                  <div className="flex items-center gap-3 mb-4 md:mb-6">
-                    <motion.div
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
-                      whileHover={{ scale: 1.1, rotate: -5 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    >
-                      <FiBookOpen size={20} className="sm:w-6 sm:h-6" />
-                    </motion.div>
-                    <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.education}</h3>
+              <motion.div
+                className="professional-card professional-glow p-6 md:p-8"
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={cardViewportSettings}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                <div className="flex items-center gap-3 mb-4 md:mb-6">
+                  <motion.div
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                    whileHover={{ scale: 1.1, rotate: -5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <FiBookOpen size={20} className="sm:w-6 sm:h-6" />
+                  </motion.div>
+                  <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.education}</h3>
+                </div>
+                {education.map((edu, index) => (
+                  <div key={index} className={`${index !== 0 ? "mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-200 dark:border-nbc-gray-700" : ""}`}>
+                    <h4 className="text-base xs:text-lg sm:text-xl md:text-2xl font-display font-bold text-gray-900 dark:text-white">{edu.degree}</h4>
+                    <p className="text-xs xs:text-sm sm:text-base text-nbc-red dark:text-nbc-red font-mono font-semibold">{edu.school}</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-[10px] xs:text-xs sm:text-sm font-mono">{edu.location} | {edu.period}</p>
+                    <p className="text-xs xs:text-sm sm:text-base text-gray-700 dark:text-gray-300 mt-2 font-sans leading-relaxed">{edu.description}</p>
                   </div>
-                  {education.map((edu, index) => (
-                    <div key={index} className={`${index !== 0 ? "mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-200 dark:border-nbc-gray-700" : ""}`}>
-                      <h4 className="text-base xs:text-lg sm:text-xl md:text-2xl font-display font-bold text-gray-900 dark:text-white">{edu.degree}</h4>
-                      <p className="text-xs xs:text-sm sm:text-base text-nbc-red dark:text-nbc-red font-mono font-semibold">{edu.school}</p>
-                      <p className="text-gray-600 dark:text-gray-400 text-[10px] xs:text-xs sm:text-sm font-mono">{edu.location} | {edu.period}</p>
-                      <p className="text-xs xs:text-sm sm:text-base text-gray-700 dark:text-gray-300 mt-2 font-sans leading-relaxed">{edu.description}</p>
-                    </div>
-                  ))}
-                </motion.div>
+                ))}
+              </motion.div>
 
-                <motion.div
-                  className="professional-card professional-glow corner-accent p-6 md:p-8"
-                  initial={{ opacity: 0, y: 50, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={cardViewportSettings}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                >
-                  <div className="flex items-center gap-3 mb-4 md:mb-6">
-                    <motion.div
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
-                      whileHover={{ scale: 1.1, rotate: 360 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              <motion.div
+                className="professional-card professional-glow corner-accent p-6 md:p-8"
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={cardViewportSettings}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                <div className="flex items-center gap-3 mb-4 md:mb-6">
+                  <motion.div
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                    whileHover={{ scale: 1.1, rotate: 360 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  >
+                    <FiGlobe size={20} className="sm:w-6 sm:h-6" />
+                  </motion.div>
+                  <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.languages}</h3>
+                </div>
+                <div className="flex flex-wrap gap-1.5 xs:gap-2 sm:gap-3">
+                  {languages.map((lang, index) => (
+                    <motion.span
+                      key={index}
+                      className="px-2 xs:px-3 sm:px-4 py-1 xs:py-1.5 sm:py-2 bg-gray-100 dark:bg-nbc-gray-800 border border-gray-300 dark:border-nbc-gray-700 rounded-full text-[10px] xs:text-xs sm:text-sm font-mono transition-all cursor-default"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + index * 0.05 }}
+                      whileHover={{ scale: 1.1, y: -2, borderColor: "rgb(228, 28, 35)" }}
                     >
-                      <FiGlobe size={20} className="sm:w-6 sm:h-6" />
-                    </motion.div>
-                    <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.languages}</h3>
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 xs:gap-2 sm:gap-3">
-                    {languages.map((lang, index) => (
-                      <motion.span
-                        key={index}
-                        className="px-2 xs:px-3 sm:px-4 py-1 xs:py-1.5 sm:py-2 bg-gray-100 dark:bg-nbc-gray-800 border border-gray-300 dark:border-nbc-gray-700 rounded-full text-[10px] xs:text-xs sm:text-sm font-mono transition-all cursor-default"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + index * 0.05 }}
-                        whileHover={{ scale: 1.1, y: -2, borderColor: "rgb(228, 28, 35)" }}
-                      >
-                        {lang.language} <span className="text-gray-600 dark:text-gray-400">({lang.level})</span>
-                      </motion.span>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
+                      {lang.language} <span className="text-gray-600 dark:text-gray-400">({lang.level})</span>
+                    </motion.span>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gradient-to-br dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 relative overflow-hidden z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="experience" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gradient-to-b dark:from-[#0a0e27] dark:via-[#16213e] dark:to-[#0f1b35] relative overflow-hidden z-10">
+        {/* Starfield for Dark Mode */}
+        <div className="absolute inset-0 z-0 dark:block hidden">
+          <StarField />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -348,7 +350,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 md:py-32 lg:py-40 bg-white dark:bg-gradient-to-b dark:from-gray-900 dark:to-[#0a0e27] relative overflow-hidden z-10">
+      <section id="projects" className="py-24 md:py-32 lg:py-40 bg-white dark:bg-gradient-to-b dark:from-[#1a2332] dark:to-[#0f1820] relative overflow-hidden z-10">
         <div className="absolute inset-0 subtle-grid opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -720,7 +722,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 md:py-32 lg:py-40 bg-white dark:bg-gradient-to-b dark:from-[#16213e] dark:to-gray-900 relative overflow-hidden z-10">
+      <section id="contact" className="py-24 md:py-32 lg:py-40 bg-white dark:bg-gradient-to-b dark:from-[#1a2332] dark:to-[#0f1820] relative overflow-hidden z-10">
         <div className="absolute inset-0 subtle-grid opacity-10"></div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -1021,9 +1023,13 @@ export default function Home() {
       </section>
 
       {/* Footer - Premium Red Design */}
-      <footer className="relative z-10 bg-nbc-red dark:bg-gradient-to-t dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
+      <footer className="relative z-10 bg-nbc-red dark:bg-gradient-to-t dark:from-[#0a0e27] dark:via-[#16213e] dark:to-[#0f1b35] overflow-hidden">
+        {/* Starfield for Dark Mode */}
+        <div className="absolute inset-0 z-0 dark:block hidden">
+          <StarField />
+        </div>
         {/* Decorative Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0 opacity-5 z-0">
           <div className="absolute inset-0 subtle-grid"></div>
         </div>
 

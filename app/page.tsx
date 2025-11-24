@@ -12,7 +12,7 @@ import { SiJavascript, SiTypescript, SiPython, SiReact, SiNextdotjs, SiTailwindc
 import { HiSparkles, HiCode, HiDatabase, HiCloud } from "react-icons/hi";
 import { skills } from "@/lib/data";
 import { getTranslatedPersonalInfo, getTranslatedExperience, getTranslatedProjects, getTranslatedEducation, getTranslatedLanguages } from "@/lib/translatedData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   fadeInUp,
@@ -35,6 +35,17 @@ export default function Home() {
     title: "",
   });
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile devices for optimized animations
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Get translated data based on current language
   const personalInfo = getTranslatedPersonalInfo(language);
@@ -378,19 +389,19 @@ export default function Home() {
 
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10"
-              initial="hidden"
-              whileInView="visible"
-              viewport={cardViewportSettings}
-              variants={staggerContainer}
+              initial={isMobile ? {} : "hidden"}
+              whileInView={isMobile ? {} : "visible"}
+              viewport={isMobile ? {} : cardViewportSettings}
+              variants={isMobile ? {} : staggerContainer}
             >
               {projects.map((project, index) => (
                 <motion.div
                   key={index}
                   className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-sky-400 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer hover:-translate-y-2 hover:scale-[1.01]"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+                  initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 40 }}
+                  whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
+                  viewport={isMobile ? {} : { once: true }}
+                  transition={isMobile ? {} : { duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
                   onClick={() => {
                     if (project.demo !== "#") {
                       setDemoModal({

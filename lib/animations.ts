@@ -169,8 +169,8 @@ export const viewportSettings = {
  */
 export const cardViewportSettings = {
   once: true,
-  amount: 0.15, // Trigger when 15% visible
-  margin: "0px 0px -50px 0px"
+  amount: 0.05, // Trigger when 5% visible (optimized for mobile)
+  margin: "0px 0px -150px 0px" // Start animation earlier
 };
 
 /**

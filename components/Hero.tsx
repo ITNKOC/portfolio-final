@@ -50,15 +50,12 @@ const Hero = () => {
         </div>
       )}
 
-      {/* Background Image - Desktop SVG (Morning/Night versions) */}
+      {/* Background Image - Desktop SVG (Morning version) */}
       <div className="absolute inset-0 z-[5]" style={{ isolation: "isolate" }}>
         <div
           className="absolute inset-0 bg-cover bg-no-repeat bg-[center_top] xs:bg-[center_10%] sm:bg-center md:!bg-[center_20%]"
           style={{
-            backgroundImage:
-              theme === "dark"
-                ? "url('/hero/hero night.svg')"
-                : "url('/hero/hero morning.svg')",
+            backgroundImage: "url('/hero/hero morning.svg')",
             backgroundSize: "cover",
             mixBlendMode: "normal",
             opacity: 1,
@@ -66,8 +63,8 @@ const Hero = () => {
         />
       </div>
 
-      {/* Gradient Overlay - Only for light mode to make text readable */}
-      <div className="absolute inset-0 z-[6] bg-gradient-to-b from-transparent via-black/30 to-black/80 dark:from-transparent dark:via-transparent dark:to-transparent pointer-events-none transition-all duration-500" />
+      {/* Gradient Overlay - For both light and dark mode to make text readable */}
+      <div className="absolute inset-0 z-[6] bg-gradient-to-b from-transparent via-black/30 to-black/80 pointer-events-none" />
 
       {/* Content */}
       <motion.div

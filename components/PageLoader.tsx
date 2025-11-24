@@ -20,7 +20,6 @@ const PageLoader = () => {
     const preloadAssets = async () => {
       const imagesToPreload = [
         '/hero/hero morning.svg',
-        '/hero/hero night.svg',
       ];
 
       const imagePromises = imagesToPreload.map((src) => {

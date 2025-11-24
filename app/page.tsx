@@ -344,12 +344,7 @@ export default function Home() {
       <section id="projects" className="py-24 md:py-32 lg:py-40 bg-white dark:bg-gradient-to-b dark:from-[#1a2332] dark:to-[#0f1820] relative overflow-hidden z-10">
         <div className="absolute inset-0 subtle-grid opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportSettings}
-            variants={fadeInUp}
-          >
+          <div>
             <div className="text-center mb-16 xs:mb-20 md:mb-24">
               <div className="relative inline-block mb-6">
                 <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
@@ -372,7 +367,7 @@ export default function Home() {
               {projects.map((project, index) => (
                 <div
                   key={index}
-                  className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-sky-400 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer hover:-translate-y-2 hover:scale-[1.01]"
+                  className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 md:hover:border-nbc-red md:dark:hover:border-sky-400 md:transition-all md:duration-300 shadow-lg md:hover:shadow-2xl cursor-pointer md:hover:-translate-y-2 md:hover:scale-[1.01]"
                   onClick={() => {
                     if (project.demo !== "#") {
                       setDemoModal({
@@ -405,7 +400,7 @@ export default function Home() {
                                 title: project.title,
                               });
                             }}
-                            className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 text-white font-bold text-xs sm:text-sm rounded-lg shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1 sm:gap-2"
+                            className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 text-white font-bold text-xs sm:text-sm rounded-lg shadow-md md:hover:shadow-xl md:transition-all md:duration-200 md:hover:scale-105 active:scale-95 flex items-center gap-1 sm:gap-2"
                           >
                             <FiPackage className="w-3 h-3 sm:w-4 sm:h-4" />
                             <span className="hidden xs:inline">{t.projects.demo}</span>
@@ -422,7 +417,7 @@ export default function Home() {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold text-xs sm:text-sm rounded-lg shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1 sm:gap-2"
+                          className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold text-xs sm:text-sm rounded-lg shadow-md md:hover:shadow-xl md:transition-all md:duration-200 md:hover:scale-105 active:scale-95 flex items-center gap-1 sm:gap-2"
                           onClick={(e) => {
                             e.stopPropagation();
                           }}
@@ -435,7 +430,7 @@ export default function Home() {
 
                     {/* Project Title and Description */}
                     <div className="space-y-2 md:space-y-3">
-                      <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-sky-400 transition-colors duration-300 tracking-tight leading-tight">
+                      <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white md:group-hover:text-nbc-red md:dark:group-hover:text-sky-400 md:transition-colors md:duration-300 tracking-tight leading-tight">
                         {project.title}
                       </h3>
 
@@ -466,7 +461,7 @@ export default function Home() {
                       {project.tech.map((tech, i) => (
                         <span
                           key={i}
-                          className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-sky-400/20 dark:to-sky-500/10 text-nbc-red dark:text-sky-400 text-[10px] xs:text-xs sm:text-sm font-medium rounded-full border border-nbc-red/20 dark:border-sky-400/30 hover:border-nbc-red dark:hover:border-sky-400 hover:shadow-md cursor-default transition-all duration-200 hover:scale-105 hover:-translate-y-0.5"
+                          className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-sky-400/20 dark:to-sky-500/10 text-nbc-red dark:text-sky-400 text-[10px] xs:text-xs sm:text-sm font-medium rounded-full border border-nbc-red/20 dark:border-sky-400/30 md:hover:border-nbc-red md:dark:hover:border-sky-400 md:hover:shadow-md cursor-default md:transition-all md:duration-200 md:hover:scale-105 md:hover:-translate-y-0.5"
                         >
                           {tech}
                         </span>
@@ -474,15 +469,15 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Hover Gradient Overlay - Simple CSS */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-nbc-red/5 via-transparent to-nbc-red/5 dark:from-sky-400/10 dark:via-transparent dark:to-sky-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
+                  {/* Hover Gradient Overlay - Simple CSS - Desktop only */}
+                  <div className="hidden md:block absolute inset-0 bg-gradient-to-tr from-nbc-red/5 via-transparent to-nbc-red/5 dark:from-sky-400/10 dark:via-transparent dark:to-sky-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
 
-                  {/* Corner Accent */}
-                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-nbc-red/5 to-transparent dark:from-sky-400/10 dark:to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Corner Accent - Desktop only */}
+                  <div className="hidden md:block absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-nbc-red/5 to-transparent dark:from-sky-400/10 dark:to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 

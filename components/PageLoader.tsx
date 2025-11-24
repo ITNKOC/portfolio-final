@@ -9,34 +9,62 @@ const PageLoader = () => {
   const [progress, setProgress] = useState(0);
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [assetsLoaded, setAssetsLoaded] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   useEffect(() => {
-    // Simulation de chargement non-linéaire (plus réaliste pour un portfolio)
+    // Préchargement des assets critiques
+    const preloadAssets = async () => {
+      const imagesToPreload = [
+        '/hero/hero morning.svg',
+        '/hero/hero night.svg',
+      ];
+
+      const imagePromises = imagesToPreload.map((src) => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = resolve;
+          img.onerror = resolve; // Continue même si erreur
+          img.src = src;
+        });
+      });
+
+      // Attendre que toutes les images soient chargées
+      await Promise.all(imagePromises);
+      setAssetsLoaded(true);
+    };
+
+    preloadAssets();
+
+    // Simulation de chargement avec progression réaliste
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           return 100;
         }
-        // Accélération aléatoire pour simuler le chargement d'assets réels
-        const diff = Math.random() * 10;
+        // Progression plus lente pour donner le temps de précharger
+        const diff = Math.random() * 5;
         return Math.min(prev + diff, 100);
       });
-    }, 150);
-
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2500);
+    }, 200);
 
     return () => {
       clearInterval(progressInterval);
-      clearTimeout(timer);
     };
   }, []);
+
+  // Attendre que les assets soient chargés ET que la progression soit à 100%
+  useEffect(() => {
+    if (assetsLoaded && progress >= 100) {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
+    }
+  }, [assetsLoaded, progress]);
 
   if (!mounted) return null;
 

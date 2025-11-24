@@ -43,6 +43,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" suppressHydrationWarning>
+      <head>
+        {/* Preload critical assets for faster loading */}
+        <link rel="preload" href="/hero/hero morning.svg" as="image" />
+        <link rel="preload" href="/hero/hero night.svg" as="image" />
+      </head>
       <body className={`${inter.className} ${inter.variable} ${sora.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <LanguageProvider>

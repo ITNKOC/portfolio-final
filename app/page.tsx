@@ -355,53 +355,24 @@ export default function Home() {
                 <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
                   {t.projects.title} <span className="gradient-text dark:text-sky-400">{t.projects.subtitle}</span>
                 </h2>
-                {/* Premium underline with animation */}
-                <motion.div
-                  className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red dark:via-sky-400 to-transparent rounded-full shadow-lg shadow-nbc-red/50 dark:shadow-sky-400/50"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "65%" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                />
-                {/* Glow effect */}
-                <motion.div
-                  className="absolute inset-0 bg-nbc-red/10 dark:bg-sky-400/10 blur-3xl opacity-0"
-                  whileInView={{ opacity: 0.5 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                />
+                {/* Premium underline */}
+                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 w-[65%] bg-gradient-to-r from-transparent via-nbc-red dark:via-sky-400 to-transparent rounded-full shadow-lg shadow-nbc-red/50 dark:shadow-sky-400/50" />
               </div>
 
               {/* Call to action text */}
-              <motion.p
-                className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-center"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
+              <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-center">
                 <span className="inline-flex items-center gap-2 bg-nbc-red/10 dark:bg-sky-400/20 text-nbc-red dark:text-sky-400 px-4 py-2 rounded-full border border-nbc-red/30 dark:border-sky-400/40 font-medium">
                   <FiMousePointer className="w-4 h-4" />
                   {t.projects.clickToView}
                 </span>
-              </motion.p>
+              </p>
             </div>
 
-            <motion.div
-              className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10"
-              initial={isMobile ? {} : "hidden"}
-              whileInView={isMobile ? {} : "visible"}
-              viewport={isMobile ? {} : cardViewportSettings}
-              variants={isMobile ? {} : staggerContainer}
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-10">
               {projects.map((project, index) => (
-                <motion.div
+                <div
                   key={index}
                   className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-sky-400 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer hover:-translate-y-2 hover:scale-[1.01]"
-                  initial={isMobile ? { opacity: 1 } : { opacity: 0, y: 40 }}
-                  whileInView={isMobile ? {} : { opacity: 1, y: 0 }}
-                  viewport={isMobile ? {} : { once: true }}
-                  transition={isMobile ? {} : { duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
                   onClick={() => {
                     if (project.demo !== "#") {
                       setDemoModal({
@@ -508,9 +479,9 @@ export default function Home() {
 
                   {/* Corner Accent */}
                   <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-nbc-red/5 to-transparent dark:from-sky-400/10 dark:to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>

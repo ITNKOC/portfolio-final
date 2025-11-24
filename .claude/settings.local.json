@@ -3,7 +3,8 @@
     "allow": [
       "WebSearch",
       "WebFetch(domain:brandfetch.com)",
-      "WebFetch(domain:www.nbc.ca)"
+      "WebFetch(domain:www.nbc.ca)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

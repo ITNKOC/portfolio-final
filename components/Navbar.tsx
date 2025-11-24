@@ -166,7 +166,7 @@ const Navbar = () => {
             <LanguageSwitcher />
             <motion.button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2.5 rounded-lg bg-nbc-polar dark:bg-nbc-gray-800 hover:bg-nbc-red/10 dark:hover:bg-nbc-red/20 text-nbc-red border-2 border-nbc-gray-200 dark:border-nbc-gray-700 hover:border-nbc-red"
+              className="p-2.5 rounded-lg bg-nbc-polar dark:bg-nbc-gray-800 hover:bg-nbc-red/10 dark:hover:bg-sky-400/20 text-nbc-red dark:text-sky-400 border-2 border-nbc-gray-200 dark:border-nbc-gray-700 hover:border-nbc-red"
               style={{
                 transition: "all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
               }}
@@ -207,7 +207,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "100vh" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-nbc-red/95 dark:bg-nbc-gray-900/95 backdrop-blur-sm border-t-2 border-white/20 shadow-xl"
+            className="md:hidden bg-nbc-red/95 dark:bg-gray-900/95 backdrop-blur-sm border-t-2 border-white/20 shadow-xl"
           >
             <div className="px-6 py-8 space-y-3 h-full overflow-y-auto">
               {/* Menu Items */}

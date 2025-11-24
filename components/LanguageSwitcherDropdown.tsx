@@ -81,7 +81,7 @@ const LanguageSwitcherDropdown = () => {
                   {lang.nativeName}
                 </span>
                 {language === lang.code && (
-                  <FiCheck className="ml-auto text-nbc-red" size={16} />
+                  <FiCheck className="ml-auto text-nbc-red dark:text-sky-400" size={16} />
                 )}
               </motion.button>
             ))}

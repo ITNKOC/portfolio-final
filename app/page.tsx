@@ -74,11 +74,11 @@ export default function Home() {
           >
             <div className="relative inline-block mb-16 xs:mb-20 md:mb-24">
               <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
-                {t.about.title} <span className="gradient-text">{t.about.subtitle}</span>
+                {t.about.title} <span className="gradient-text dark:text-sky-400">{t.about.subtitle}</span>
               </h2>
               {/* Premium underline with animation */}
               <motion.div
-                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red to-transparent rounded-full"
+                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red dark:via-sky-400 to-transparent rounded-full"
                 initial={{ width: 0 }}
                 whileInView={{ width: "60%" }}
                 viewport={{ once: true }}
@@ -86,7 +86,7 @@ export default function Home() {
               />
               {/* Glow effect */}
               <motion.div
-                className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                className="absolute inset-0 bg-nbc-red/10 dark:bg-sky-400/10 blur-3xl opacity-0"
                 whileInView={{ opacity: 0.5 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
@@ -100,21 +100,16 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={cardViewportSettings}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                whileHover={{ y: -8, scale: 1.02 }}
               >
                 <div className="flex items-center gap-3 mb-4 md:mb-6">
-                  <motion.div
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 flex items-center justify-center text-white shadow-lg flex-shrink-0">
                     <FiUser size={20} className="sm:w-6 sm:h-6" />
-                  </motion.div>
-                  <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.whoAmI}</h3>
+                  </div>
+                  <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-sky-400 tracking-tight">{t.about.whoAmI}</h3>
                 </div>
                 <p className="text-xs xs:text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-3 md:mb-4 font-sans">{personalInfo.bio}</p>
                 <p className="text-xs xs:text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed font-sans">
-                  Passionné par l'innovation, j'apporte <span className="text-nbc-red dark:text-nbc-red font-bold">{t.about.bioHighlight}</span> {t.about.bioEnd}
+                  Passionné par l'innovation, j'apporte <span className="text-nbc-red dark:text-sky-400 font-bold">{t.about.bioHighlight}</span> {t.about.bioEnd}
                 </p>
               </motion.div>
 
@@ -124,22 +119,17 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={cardViewportSettings}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-                whileHover={{ y: -8, scale: 1.02 }}
               >
                 <div className="flex items-center gap-3 mb-4 md:mb-6">
-                  <motion.div
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
-                    whileHover={{ scale: 1.1, rotate: -5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 flex items-center justify-center text-white shadow-lg flex-shrink-0">
                     <FiBookOpen size={20} className="sm:w-6 sm:h-6" />
-                  </motion.div>
-                  <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.education}</h3>
+                  </div>
+                  <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-sky-400 tracking-tight">{t.about.education}</h3>
                 </div>
                 {education.map((edu, index) => (
-                  <div key={index} className={`${index !== 0 ? "mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-200 dark:border-nbc-gray-700" : ""}`}>
+                  <div key={index} className={`${index !== 0 ? "mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-200 dark:border-gray-700" : ""}`}>
                     <h4 className="text-base xs:text-lg sm:text-xl md:text-2xl font-display font-bold text-gray-900 dark:text-white">{edu.degree}</h4>
-                    <p className="text-xs xs:text-sm sm:text-base text-nbc-red dark:text-nbc-red font-mono font-semibold">{edu.school}</p>
+                    <p className="text-xs xs:text-sm sm:text-base text-nbc-red dark:text-sky-400 font-mono font-semibold">{edu.school}</p>
                     <p className="text-gray-600 dark:text-gray-400 text-[10px] xs:text-xs sm:text-sm font-mono">{edu.location} | {edu.period}</p>
                     <p className="text-xs xs:text-sm sm:text-base text-gray-700 dark:text-gray-300 mt-2 font-sans leading-relaxed">{edu.description}</p>
                   </div>
@@ -152,31 +142,21 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={cardViewportSettings}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                whileHover={{ y: -8, scale: 1.02 }}
               >
                 <div className="flex items-center gap-3 mb-4 md:mb-6">
-                  <motion.div
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 flex items-center justify-center text-white shadow-lg flex-shrink-0">
                     <FiGlobe size={20} className="sm:w-6 sm:h-6" />
-                  </motion.div>
-                  <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-nbc-red tracking-tight">{t.about.languages}</h3>
+                  </div>
+                  <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-nbc-red dark:text-sky-400 tracking-tight">{t.about.languages}</h3>
                 </div>
                 <div className="flex flex-wrap gap-1.5 xs:gap-2 sm:gap-3">
                   {languages.map((lang, index) => (
-                    <motion.span
+                    <span
                       key={index}
-                      className="px-2 xs:px-3 sm:px-4 py-1 xs:py-1.5 sm:py-2 bg-gray-100 dark:bg-nbc-gray-800 border border-gray-300 dark:border-nbc-gray-700 rounded-full text-[10px] xs:text-xs sm:text-sm font-mono transition-all cursor-default"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 + index * 0.05 }}
-                      whileHover={{ scale: 1.1, y: -2, borderColor: "rgb(228, 28, 35)" }}
+                      className="px-2 xs:px-3 sm:px-4 py-1 xs:py-1.5 sm:py-2 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-full text-[10px] xs:text-xs sm:text-sm font-mono cursor-default"
                     >
                       {lang.language} <span className="text-gray-600 dark:text-gray-400">({lang.level})</span>
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
               </motion.div>
@@ -186,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gradient-to-b dark:from-[#0a0e27] dark:via-[#16213e] dark:to-[#0f1b35] relative overflow-hidden z-10">
+      <section id="experience" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gradient-to-b dark:from-[#0a1929] dark:via-[#0c2d48] dark:to-[#0a1f3a] relative overflow-hidden z-10">
         {/* Starfield for Dark Mode */}
         <div className="absolute inset-0 z-0 dark:block hidden">
           <StarField />
@@ -212,7 +192,7 @@ export default function Home() {
               />
               {/* Glow effect */}
               <motion.div
-                className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                className="absolute inset-0 bg-nbc-red/10 dark:bg-sky-400/10 blur-3xl opacity-0"
                 whileInView={{ opacity: 0.5 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
@@ -223,7 +203,7 @@ export default function Home() {
             <div className="relative max-w-5xl mx-auto">
               {/* Animated Timeline Line */}
               <motion.div
-                className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-white via-white/50 to-transparent dark:from-nbc-gray-400 dark:via-nbc-gray-600 dark:to-transparent"
+                className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-white via-white/50 to-transparent dark:from-sky-400/60 dark:via-sky-400/30 dark:to-transparent"
                 initial={{ height: 0, opacity: 0 }}
                 whileInView={{ height: "100%", opacity: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -246,7 +226,7 @@ export default function Home() {
                   >
                     {/* Timeline Dot with Icon and Pulse Animation */}
                     <motion.div
-                      className="absolute -left-[38px] md:-left-[52px] top-6 md:top-8 w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-nbc-red to-red-600 border-2 md:border-4 border-white dark:border-nbc-gray-900 shadow-lg z-10 flex items-center justify-center"
+                      className="absolute -left-[38px] md:-left-[52px] top-6 md:top-8 w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 border-2 md:border-4 border-white dark:border-gray-900 shadow-lg z-10 flex items-center justify-center"
                       initial={{ scale: 0, opacity: 0, rotate: -180 }}
                       whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
                       viewport={{ once: true }}
@@ -255,7 +235,7 @@ export default function Home() {
                       <FiBriefcase className="w-3 h-3 md:w-4 md:h-4 text-white" />
                       {/* Pulse Ring Effect */}
                       <motion.div
-                        className="absolute inset-0 rounded-full bg-nbc-red"
+                        className="absolute inset-0 rounded-full bg-nbc-red dark:bg-sky-400"
                         animate={{
                           scale: [1, 1.8, 1.8],
                           opacity: [0.5, 0, 0],
@@ -270,7 +250,7 @@ export default function Home() {
 
                     {/* Experience Card */}
                     <motion.div
-                      className="relative bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-5 md:p-6 hover:border-nbc-red dark:hover:border-nbc-red transition-all duration-500 shadow-lg hover:shadow-2xl group"
+                      className="relative bg-white dark:bg-gray-900 border-2 border-gray-200 dark:border-gray-700 rounded-2xl p-4 sm:p-5 md:p-6 hover:border-nbc-red dark:hover:border-sky-400 transition-all duration-500 shadow-lg hover:shadow-2xl group"
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
@@ -278,16 +258,16 @@ export default function Home() {
                       whileHover={{ y: -8, scale: 1.02 }}
                     >
                       {/* Elegant Corner Accent */}
-                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-nbc-red/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-nbc-red/10 dark:from-sky-400/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                       {/* Header with Company/Role/Date */}
                       <div className="space-y-2 md:space-y-3 mb-4 md:mb-5">
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
                           <div className="flex-1 min-w-0">
-                            <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors duration-300 mb-2 tracking-tight leading-tight">
+                            <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-sky-400 transition-colors duration-300 mb-2 tracking-tight leading-tight">
                               {exp.title}
                             </h3>
-                            <p className="text-xs xs:text-sm sm:text-base md:text-lg text-nbc-red dark:text-nbc-red font-sans font-semibold mb-1">
+                            <p className="text-xs xs:text-sm sm:text-base md:text-lg text-nbc-red dark:text-sky-400 font-sans font-semibold mb-1">
                               {exp.company}
                             </p>
                             <p className="text-[10px] xs:text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-mono">
@@ -295,7 +275,7 @@ export default function Home() {
                             </p>
                           </div>
                           <div className="flex flex-row sm:flex-col items-start sm:items-end gap-2">
-                            <span className="px-2 xs:px-3 sm:px-4 py-0.5 xs:py-1 sm:py-1.5 bg-nbc-red/10 dark:bg-nbc-red/20 text-nbc-red dark:text-nbc-red text-[10px] xs:text-xs sm:text-sm font-mono font-bold rounded-full border border-nbc-red/30 dark:border-nbc-red/40 whitespace-nowrap">
+                            <span className="px-2 xs:px-3 sm:px-4 py-0.5 xs:py-1 sm:py-1.5 bg-nbc-red/10 dark:bg-sky-400/20 text-nbc-red dark:text-sky-400 text-[10px] xs:text-xs sm:text-sm font-mono font-bold rounded-full border border-nbc-red/30 dark:border-sky-400/40 whitespace-nowrap">
                               {exp.period}
                             </span>
                             <span className="text-gray-500 dark:text-gray-400 text-[10px] xs:text-xs font-mono">
@@ -316,7 +296,7 @@ export default function Home() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.3, delay: i * 0.1 }}
                           >
-                            <span className="text-nbc-red dark:text-nbc-red mt-0.5 md:mt-1.5 font-bold text-sm xs:text-base md:text-lg flex-shrink-0">
+                            <span className="text-nbc-red dark:text-sky-400 mt-0.5 md:mt-1.5 font-bold text-sm xs:text-base md:text-lg flex-shrink-0">
                               ▹
                             </span>
                             <span>{desc.replace(/[🚀💻🤖☁️]/g, '').trim()}</span>
@@ -325,11 +305,11 @@ export default function Home() {
                       </ul>
 
                       {/* Tech Stack Tags */}
-                      <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 pt-3 md:pt-4 border-t border-gray-200 dark:border-nbc-gray-700">
+                      <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 pt-3 md:pt-4 border-t border-gray-200 dark:border-gray-700">
                         {exp.tech.map((tech, i) => (
                           <motion.span
                             key={i}
-                            className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-nbc-red/20 dark:to-nbc-red/10 border border-nbc-red/30 dark:border-nbc-red/40 rounded-full text-[10px] xs:text-xs text-nbc-red dark:text-nbc-red font-mono font-semibold transition-all hover:scale-110 hover:border-nbc-red dark:hover:border-nbc-red cursor-default hover:shadow-lg"
+                            className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-sky-400/20 dark:to-sky-500/10 border border-nbc-red/30 dark:border-sky-400/40 rounded-full text-[10px] xs:text-xs text-nbc-red dark:text-sky-400 font-mono font-semibold transition-all hover:scale-110 hover:border-nbc-red dark:hover:border-sky-400 cursor-default hover:shadow-lg"
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
@@ -362,11 +342,11 @@ export default function Home() {
             <div className="text-center mb-16 xs:mb-20 md:mb-24">
               <div className="relative inline-block mb-6">
                 <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
-                  {t.projects.title} <span className="gradient-text">{t.projects.subtitle}</span>
+                  {t.projects.title} <span className="gradient-text dark:text-sky-400">{t.projects.subtitle}</span>
                 </h2>
                 {/* Premium underline with animation */}
                 <motion.div
-                  className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red to-transparent rounded-full shadow-lg shadow-nbc-red/50"
+                  className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red dark:via-sky-400 to-transparent rounded-full shadow-lg shadow-nbc-red/50 dark:shadow-sky-400/50"
                   initial={{ width: 0 }}
                   whileInView={{ width: "65%" }}
                   viewport={{ once: true }}
@@ -374,7 +354,7 @@ export default function Home() {
                 />
                 {/* Glow effect */}
                 <motion.div
-                  className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                  className="absolute inset-0 bg-nbc-red/10 dark:bg-sky-400/10 blur-3xl opacity-0"
                   whileInView={{ opacity: 0.5 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
@@ -383,13 +363,13 @@ export default function Home() {
 
               {/* Call to action text */}
               <motion.p
-                className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto flex items-center justify-center gap-2 flex-wrap"
+                className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-center"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                <span className="inline-flex items-center gap-2 bg-nbc-red/10 dark:bg-nbc-red/20 text-nbc-red dark:text-nbc-red px-4 py-2 rounded-full border border-nbc-red/30 dark:border-nbc-red/40 font-medium animate-pulse-subtle">
+                <span className="inline-flex items-center gap-2 bg-nbc-red/10 dark:bg-sky-400/20 text-nbc-red dark:text-sky-400 px-4 py-2 rounded-full border border-nbc-red/30 dark:border-sky-400/40 font-medium">
                   <FiMousePointer className="w-4 h-4" />
                   {t.projects.clickToView}
                 </span>
@@ -406,12 +386,11 @@ export default function Home() {
               {projects.map((project, index) => (
                 <motion.div
                   key={index}
-                  className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all duration-500 shadow-lg hover:shadow-2xl cursor-pointer"
-                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  className="group relative bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-sky-400 transition-all duration-300 shadow-lg hover:shadow-2xl cursor-pointer hover:-translate-y-2 hover:scale-[1.01]"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-                  whileHover={{ y: -8, scale: 1.02 }}
+                  transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
                   onClick={() => {
                     if (project.demo !== "#") {
                       setDemoModal({
@@ -427,20 +406,15 @@ export default function Home() {
                     {/* Header with Index and Actions */}
                     <div className="flex items-start justify-between">
                       {/* Project Number */}
-                      <motion.span
-                        className="text-nbc-red/40 dark:text-nbc-red/30 text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-none"
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
-                      >
+                      <span className="text-nbc-red/40 dark:text-sky-400/40 text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-none">
                         0{index + 1}
-                      </motion.span>
+                      </span>
 
                       {/* Action Buttons */}
                       <div className="flex gap-1.5 sm:gap-2">
                         {/* Demo Button */}
                         {project.demo !== "#" ? (
-                          <motion.button
+                          <button
                             onClick={(e) => {
                               e.stopPropagation();
                               setDemoModal({
@@ -449,13 +423,11 @@ export default function Home() {
                                 title: project.title,
                               });
                             }}
-                            className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 text-white font-bold text-xs sm:text-sm rounded-lg shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-1 sm:gap-2"
-                            whileHover={{ scale: 1.05, y: -2 }}
-                            whileTap={{ scale: 0.95 }}
+                            className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 text-white font-bold text-xs sm:text-sm rounded-lg shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1 sm:gap-2"
                           >
                             <FiPackage className="w-3 h-3 sm:w-4 sm:h-4" />
                             <span className="hidden xs:inline">{t.projects.demo}</span>
-                          </motion.button>
+                          </button>
                         ) : (
                           <div className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gray-200 dark:bg-nbc-gray-800 text-gray-400 dark:text-gray-600 font-bold text-xs sm:text-sm rounded-lg cursor-not-allowed flex items-center gap-1 sm:gap-2">
                             <FiPackage className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -464,113 +436,67 @@ export default function Home() {
                         )}
 
                         {/* GitHub Button */}
-                        <motion.a
+                        <a
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold text-xs sm:text-sm rounded-lg shadow-md hover:shadow-xl transition-all duration-300 flex items-center gap-1 sm:gap-2"
-                          whileHover={{ scale: 1.05, y: -2 }}
-                          whileTap={{ scale: 0.95 }}
+                          className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold text-xs sm:text-sm rounded-lg shadow-md hover:shadow-xl transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-1 sm:gap-2"
                           onClick={(e) => {
                             e.stopPropagation();
                           }}
                         >
                           <FiGithub className="w-3 h-3 sm:w-4 sm:h-4" />
                           <span className="hidden xs:inline">{t.projects.code}</span>
-                        </motion.a>
+                        </a>
                       </div>
                     </div>
 
                     {/* Project Title and Description */}
                     <div className="space-y-2 md:space-y-3">
-                      <motion.h3
-                        className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors duration-300 tracking-tight leading-tight"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                      >
+                      <h3 className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-sky-400 transition-colors duration-300 tracking-tight leading-tight">
                         {project.title}
-                      </motion.h3>
+                      </h3>
 
-                      <motion.p
-                        className="text-nbc-red dark:text-nbc-red font-medium text-[10px] xs:text-xs sm:text-sm"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.35 }}
-                      >
+                      <p className="text-nbc-red dark:text-sky-400 font-medium text-[10px] xs:text-xs sm:text-sm">
                         {project.subtitle}
-                      </motion.p>
+                      </p>
 
-                      <motion.p
-                        className="text-[11px] xs:text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                      >
+                      <p className="text-[11px] xs:text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
                         {project.description}
-                      </motion.p>
+                      </p>
                     </div>
 
                     {/* Key Features */}
-                    <motion.div
-                      className="space-y-2"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 0.45 }}
-                    >
+                    <div className="space-y-2">
                       {project.features.slice(0, 3).map((feature, i) => (
-                        <motion.div
+                        <div
                           key={i}
                           className="flex items-start space-x-2 text-gray-700 dark:text-gray-300 text-[11px] xs:text-xs sm:text-sm"
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.5 + i * 0.05 }}
                         >
-                          <span className="text-nbc-red dark:text-nbc-red font-bold mt-0.5 flex-shrink-0">▹</span>
+                          <span className="text-nbc-red dark:text-sky-400 font-bold mt-0.5 flex-shrink-0">▹</span>
                           <span>{feature}</span>
-                        </motion.div>
+                        </div>
                       ))}
-                    </motion.div>
+                    </div>
 
                     {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 pt-3 md:pt-4 border-t border-gray-200 dark:border-nbc-gray-700">
+                    <div className="flex flex-wrap gap-1 xs:gap-1.5 sm:gap-2 pt-3 md:pt-4 border-t border-gray-200 dark:border-gray-700">
                       {project.tech.map((tech, i) => (
-                        <motion.span
+                        <span
                           key={i}
-                          className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-nbc-red/20 dark:to-nbc-red/10 text-nbc-red dark:text-nbc-red text-[10px] xs:text-xs sm:text-sm font-medium rounded-full border border-nbc-red/20 dark:border-nbc-red/30 hover:border-nbc-red dark:hover:border-nbc-red hover:shadow-md cursor-default transition-all duration-300"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.6 + i * 0.05 }}
-                          whileHover={{ scale: 1.1, y: -2 }}
+                          className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gradient-to-r from-nbc-red/10 to-nbc-red/5 dark:from-sky-400/20 dark:to-sky-500/10 text-nbc-red dark:text-sky-400 text-[10px] xs:text-xs sm:text-sm font-medium rounded-full border border-nbc-red/20 dark:border-sky-400/30 hover:border-nbc-red dark:hover:border-sky-400 hover:shadow-md cursor-default transition-all duration-200 hover:scale-105 hover:-translate-y-0.5"
                         >
                           {tech}
-                        </motion.span>
+                        </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Hover Gradient Overlay */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-tr from-nbc-red/5 via-transparent to-nbc-red/5 dark:from-nbc-red/10 dark:via-transparent dark:to-nbc-red/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  />
-
-                  {/* Click Indicator Badge - Only for projects with demo */}
-                  {project.demo !== "#" && (
-                    <motion.div
-                      className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-nbc-red text-white px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl shadow-lg opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none flex items-center gap-2 text-xs sm:text-sm font-bold border-2 border-white/20"
-                      initial={{ opacity: 0, scale: 0.8, y: -10 }}
-                      whileInView={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <FiMousePointer className="w-3 h-3 sm:w-4 sm:h-4 animate-bounce" />
-                      <span>{t.projects.clickBadge}</span>
-                    </motion.div>
-                  )}
+                  {/* Hover Gradient Overlay - Simple CSS */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-nbc-red/5 via-transparent to-nbc-red/5 dark:from-sky-400/10 dark:via-transparent dark:to-sky-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
 
                   {/* Corner Accent */}
-                  <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-nbc-red/5 to-transparent dark:from-nbc-red/10 dark:to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-nbc-red/5 to-transparent dark:from-sky-400/10 dark:to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </motion.div>
               ))}
             </motion.div>
@@ -579,7 +505,7 @@ export default function Home() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gradient-to-br dark:from-[#0a0e27] dark:via-[#16213e] dark:to-[#0a0e27] relative overflow-hidden z-10">
+      <section id="skills" className="py-24 md:py-32 lg:py-40 bg-nbc-red dark:bg-gradient-to-br dark:from-[#0a1929] dark:via-[#0c2d48] dark:to-[#0a1929] relative overflow-hidden z-10">
         {/* Subtle Starfield for Dark Mode */}
         <div className="absolute inset-0 z-0 opacity-30 dark:block hidden">
           <StarField />
@@ -605,7 +531,7 @@ export default function Home() {
               />
               {/* Glow effect */}
               <motion.div
-                className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                className="absolute inset-0 bg-nbc-red/10 dark:bg-sky-400/10 blur-3xl opacity-0"
                 whileInView={{ opacity: 0.5 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
@@ -648,7 +574,7 @@ export default function Home() {
                 return (
                   <motion.div
                     key={category}
-                    className="group relative bg-white dark:bg-gray-900 rounded-2xl p-5 sm:p-6 md:p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all duration-500 shadow-lg hover:shadow-2xl"
+                    className="group relative bg-white dark:bg-gray-900 rounded-2xl p-5 sm:p-6 md:p-8 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-sky-400 transition-all duration-500 shadow-lg hover:shadow-2xl"
                     initial={{ opacity: 0, y: 30, scale: 0.95 }}
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     viewport={{ once: true }}
@@ -659,25 +585,25 @@ export default function Home() {
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4 md:mb-6">
                       <div className="flex items-center gap-2 sm:gap-3">
                         <motion.div
-                          className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 flex items-center justify-center text-white font-bold shadow-lg flex-shrink-0"
+                          className="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 flex items-center justify-center text-white font-bold shadow-lg flex-shrink-0"
                           whileHover={{ scale: 1.15, rotate: [0, -10, 10, 0] }}
                           transition={{ duration: 0.5 }}
                         >
                           {categoryIconsMap[category]}
                         </motion.div>
-                        <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors capitalize tracking-tight">
+                        <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-sky-400 transition-colors capitalize tracking-tight">
                           {categoryNames[category]}
                         </h3>
                       </div>
-                      <span className="text-xl xs:text-2xl sm:text-3xl font-bold text-nbc-red/30 dark:text-nbc-red/20 group-hover:text-nbc-red/50 dark:group-hover:text-nbc-red/40 transition-colors">
+                      <span className="text-xl xs:text-2xl sm:text-3xl font-bold text-nbc-red/30 dark:text-sky-400/40 group-hover:text-nbc-red/50 dark:group-hover:text-sky-400/60 transition-colors">
                         {avgLevel}%
                       </span>
                     </div>
 
                     {/* Animated Progress Bar for Category Average */}
-                    <div className="relative h-2 sm:h-3 bg-gray-200 dark:bg-nbc-gray-700/50 rounded-full overflow-hidden mb-4 md:mb-6">
+                    <div className="relative h-2 sm:h-3 bg-gray-200 dark:bg-gray-700/50 rounded-full overflow-hidden mb-4 md:mb-6">
                       <motion.div
-                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 rounded-full"
+                        className="absolute inset-y-0 left-0 bg-gradient-to-r from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 rounded-full"
                         initial={{ width: 0 }}
                         whileInView={{ width: `${avgLevel}%` }}
                         viewport={{ once: true }}
@@ -696,7 +622,7 @@ export default function Home() {
                       {items.map((skill: any, i: number) => (
                         <motion.span
                           key={i}
-                          className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gray-100 dark:bg-nbc-gray-800/50 hover:bg-nbc-red/10 dark:hover:bg-nbc-red/20 text-gray-700 dark:text-gray-300 hover:text-nbc-red dark:hover:text-nbc-red text-[10px] xs:text-xs sm:text-sm font-medium rounded-lg border border-gray-300 dark:border-nbc-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all cursor-default"
+                          className="px-1.5 xs:px-2 sm:px-3 py-0.5 xs:py-1 sm:py-1.5 bg-gray-100 dark:bg-gray-800/50 hover:bg-nbc-red/10 dark:hover:bg-sky-400/20 text-gray-700 dark:text-gray-300 hover:text-nbc-red dark:hover:text-sky-400 text-[10px] xs:text-xs sm:text-sm font-medium rounded-lg border border-gray-300 dark:border-gray-700 hover:border-nbc-red dark:hover:border-sky-400 transition-all cursor-default"
                           initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
@@ -709,10 +635,10 @@ export default function Home() {
                     </div>
 
                     {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-nbc-red/5 via-transparent to-transparent dark:from-nbc-red/10 dark:via-transparent dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-nbc-red/5 via-transparent to-transparent dark:from-sky-400/10 dark:via-transparent dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
 
                     {/* Corner Accent */}
-                    <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-nbc-red/10 to-transparent dark:from-nbc-red/20 dark:to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-nbc-red/10 to-transparent dark:from-sky-400/20 dark:to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </motion.div>
                 );
               })}
@@ -733,11 +659,11 @@ export default function Home() {
           >
             <div className="relative inline-block mb-6 xs:mb-8">
               <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold text-center text-gray-900 dark:text-white relative z-10 tracking-tight">
-                {t.contact.title} <span className="gradient-text">{t.contact.subtitle}</span>
+                {t.contact.title} <span className="gradient-text dark:text-sky-400">{t.contact.subtitle}</span>
               </h2>
               {/* Premium underline with animation */}
               <motion.div
-                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red to-transparent rounded-full shadow-lg shadow-nbc-red/50"
+                className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 h-1.5 bg-gradient-to-r from-transparent via-nbc-red dark:via-sky-400 to-transparent rounded-full shadow-lg shadow-nbc-red/50 dark:shadow-sky-400/50"
                 initial={{ width: 0 }}
                 whileInView={{ width: "50%" }}
                 viewport={{ once: true }}
@@ -745,7 +671,7 @@ export default function Home() {
               />
               {/* Glow effect */}
               <motion.div
-                className="absolute inset-0 bg-nbc-red/10 blur-3xl opacity-0"
+                className="absolute inset-0 bg-nbc-red/10 dark:bg-sky-400/10 blur-3xl opacity-0"
                 whileInView={{ opacity: 0.5 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
@@ -769,7 +695,7 @@ export default function Home() {
                 <div className="space-y-3 md:space-y-3">
                   <div className="flex items-center gap-3">
                     <motion.div
-                      className="w-10 h-10 xs:w-12 xs:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0"
+                      className="w-10 h-10 xs:w-12 xs:h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 flex items-center justify-center text-white shadow-lg flex-shrink-0"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
                     >
@@ -784,19 +710,19 @@ export default function Home() {
                 <div className="space-y-4">
                   <motion.a
                     href={`mailto:${personalInfo.email}`}
-                    className="group flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all"
+                    className="group flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-sky-400 transition-all"
                     whileHover={{ x: 5, scale: 1.02 }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
                   >
-                    <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
                       <FiMail size={18} className="xs:w-[22px] xs:h-[22px] sm:w-6 sm:h-6" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="text-[10px] xs:text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">Email</p>
-                      <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors truncate">
+                      <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-sky-400 transition-colors truncate">
                         {personalInfo.email}
                       </p>
                     </div>
@@ -804,33 +730,33 @@ export default function Home() {
 
                   <motion.a
                     href={`tel:${personalInfo.phone}`}
-                    className="group flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all"
+                    className="group flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-sky-400 transition-all"
                     whileHover={{ x: 5, scale: 1.02 }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
                   >
-                    <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
                       <FiPhone size={18} className="xs:w-[22px] xs:h-[22px] sm:w-6 sm:h-6" />
                     </div>
                     <div>
                       <p className="text-[10px] xs:text-xs sm:text-sm text-gray-600 dark:text-gray-400 font-medium mb-1">{t.contact.phone}</p>
-                      <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-nbc-red transition-colors">
+                      <p className="text-xs xs:text-sm sm:text-base md:text-lg text-gray-900 dark:text-white font-semibold group-hover:text-nbc-red dark:group-hover:text-sky-400 transition-colors">
                         {personalInfo.phone}
                       </p>
                     </div>
                   </motion.a>
 
                   <motion.div
-                    className="group flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-nbc-red transition-all"
+                    className="group flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-sky-400 transition-all"
                     whileHover={{ x: 5, scale: 1.02 }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
                   >
-                    <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <div className="w-10 h-10 xs:w-12 xs:h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 flex items-center justify-center text-white shadow-lg flex-shrink-0 group-hover:scale-110 transition-transform">
                       <FiMapPin size={18} className="xs:w-[22px] xs:h-[22px] sm:w-6 sm:h-6" />
                     </div>
                     <div>
@@ -850,7 +776,7 @@ export default function Home() {
                       href={personalInfo.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 sm:flex-none sm:w-14 sm:h-14 h-12 rounded-xl bg-gray-900 dark:bg-white flex items-center justify-center text-white dark:text-gray-900 hover:bg-nbc-red dark:hover:bg-nbc-red hover:text-white dark:hover:text-white transition-all shadow-md hover:shadow-lg"
+                      className="flex-1 sm:flex-none sm:w-14 sm:h-14 h-12 rounded-xl bg-gray-900 dark:bg-white flex items-center justify-center text-white dark:text-gray-900 hover:bg-nbc-red dark:hover:bg-sky-400 hover:text-white dark:hover:text-white transition-all shadow-md hover:shadow-lg"
                       whileHover={{ scale: 1.1, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, y: 20 }}
@@ -864,7 +790,7 @@ export default function Home() {
                       href={personalInfo.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 sm:flex-none sm:w-14 sm:h-14 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white hover:bg-nbc-red transition-all shadow-md hover:shadow-lg"
+                      className="flex-1 sm:flex-none sm:w-14 sm:h-14 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white hover:bg-nbc-red dark:hover:bg-sky-400 transition-all shadow-md hover:shadow-lg"
                       whileHover={{ scale: 1.1, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, y: 20 }}
@@ -876,7 +802,7 @@ export default function Home() {
                     </motion.a>
                     <motion.a
                       href={`mailto:${personalInfo.email}`}
-                      className="flex-1 sm:flex-none sm:w-14 sm:h-14 h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 flex items-center justify-center text-white hover:from-red-600 hover:to-nbc-red transition-all shadow-md hover:shadow-lg"
+                      className="flex-1 sm:flex-none sm:w-14 sm:h-14 h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 flex items-center justify-center text-white hover:from-red-600 hover:to-nbc-red dark:hover:from-cyan-500 dark:hover:to-sky-400 transition-all shadow-md hover:shadow-lg"
                       whileHover={{ scale: 1.1, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, y: 20 }}
@@ -996,7 +922,7 @@ export default function Home() {
                 <motion.button
                   type="submit"
                   disabled={formStatus === "sending"}
-                  className="w-full px-4 xs:px-6 py-3 xs:py-4 sm:py-5 bg-gradient-to-r from-nbc-red to-red-600 dark:from-nbc-red dark:to-red-600 text-white font-bold text-sm xs:text-base sm:text-lg rounded-xl hover:from-red-600 hover:to-nbc-red shadow-lg hover:shadow-2xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 active:scale-95"
+                  className="w-full px-4 xs:px-6 py-3 xs:py-4 sm:py-5 bg-gradient-to-r from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 text-white font-bold text-sm xs:text-base sm:text-lg rounded-xl hover:from-red-600 hover:to-nbc-red shadow-lg hover:shadow-2xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3 active:scale-95"
                   whileHover={{ scale: formStatus === "sending" ? 1 : 1.02, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                 >

@@ -186,7 +186,7 @@
   }
 
   .professional-card:hover {
-    @apply border-nbc-red dark:border-nbc-red;
+    @apply border-nbc-red dark:border-sky-400;
     transform: translateY(-8px);
     box-shadow:
       0 20px 40px -12px rgba(228, 28, 35, 0.15),
@@ -933,6 +933,13 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: gradient-text-flow 3s ease infinite;
+  }
+
+  /* Dark mode override for gradient-text */
+  .dark .gradient-text {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    animation: none;
   }
 
   @keyframes gradient-text-flow {

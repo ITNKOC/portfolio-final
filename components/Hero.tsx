@@ -2,7 +2,13 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiDownload } from "react-icons/fi";
+import {
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+  FiArrowDown,
+  FiDownload,
+} from "react-icons/fi";
 import { getTranslatedPersonalInfo } from "@/lib/translatedData";
 import { useTheme } from "next-themes";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -33,36 +39,32 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex md:items-center items-end justify-center overflow-hidden bg-nbc-red dark:bg-gradient-to-b dark:from-[#0a0e27] dark:via-[#16213e] dark:to-[#0f1b35]">
+    <section
+      id="home"
+      className="relative min-h-screen flex md:items-center items-end justify-center overflow-hidden bg-nbc-red dark:bg-gradient-to-b dark:from-[#0a1929] dark:via-[#0c2d48] dark:to-[#0a1f3a]"
+    >
       {/* Starfield for Dark Mode */}
-      {theme === 'dark' && (
+      {theme === "dark" && (
         <div className="absolute inset-0 z-0">
           <StarField />
         </div>
       )}
 
-      {/* Background Image - Desktop SVG (No BG versions) */}
-      <div className="absolute inset-0 z-[5]" style={{ isolation: 'isolate' }}>
+      {/* Background Image - Desktop SVG (Morning/Night versions) */}
+      <div className="absolute inset-0 z-[5]" style={{ isolation: "isolate" }}>
         <div
           className="absolute inset-0 bg-cover bg-no-repeat bg-[center_top] xs:bg-[center_10%] sm:bg-center md:!bg-[center_20%] transition-all duration-500"
           style={{
-            backgroundImage: theme === 'dark'
-              ? "url('/hero/hero desktop no bg dark.svg')"
-              : "url('/hero/hero desktop no bg.svg')",
-            backgroundSize: 'cover',
-            mixBlendMode: 'normal',
+            backgroundImage:
+              theme === "dark"
+                ? "url('/hero/hero night.svg')"
+                : "url('/hero/hero morning.svg')",
+            backgroundSize: "cover",
+            mixBlendMode: "normal",
             opacity: 1,
           }}
         />
       </div>
-
-      {/* Gradient Overlay - Dark from top to bottom - Enhanced darkness at bottom */}
-      <div className="absolute inset-0 z-[6] bg-gradient-to-b from-transparent via-black/30 to-black/80 dark:from-transparent dark:via-[#0a0e27]/50 dark:to-[#0a0e27]/90 pointer-events-none transition-all duration-500" />
-
-      {/* Additional vignette effect for extra darkness at edges */}
-      <div className="absolute inset-0 z-[6] bg-radial-gradient pointer-events-none transition-all duration-500" style={{
-        background: 'radial-gradient(ellipse at center top, transparent 0%, transparent 40%, rgba(0, 0, 0, 0.3) 80%, rgba(0, 0, 0, 0.5) 100%)'
-      }} />
 
       {/* Content */}
       <motion.div
@@ -72,7 +74,10 @@ const Hero = () => {
         animate="visible"
       >
         {/* Name with Professional Animation */}
-        <motion.div variants={itemVariants} className="mb-4 xs:mb-6 md:mb-8 relative">
+        <motion.div
+          variants={itemVariants}
+          className="mb-4 xs:mb-6 md:mb-8 relative"
+        >
           <motion.p
             className="text-white text-sm xs:text-base md:text-lg md:hidden font-semibold mb-3 xs:mb-4 md:mb-6"
             initial={{ opacity: 0, y: -20 }}
@@ -89,7 +94,7 @@ const Hero = () => {
               {/* First Name - Left with Fixed Offset */}
               <motion.h1
                 className="text-6xl lg:text-8xl font-bold uppercase tracking-tight text-white drop-shadow-2xl"
-                style={{ transform: "translateX(-60px)" }}
+                style={{ transform: "translateX(-90px)" }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
@@ -100,7 +105,7 @@ const Hero = () => {
               {/* Last Name - Right with Fixed Offset */}
               <motion.h1
                 className="text-6xl lg:text-8xl font-bold uppercase tracking-tight text-white drop-shadow-2xl"
-                style={{ transform: "translateX(170px)" }}
+                style={{ transform: "translateX(240px)" }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -123,7 +128,12 @@ const Hero = () => {
                 className="text-2xl xs:text-3xl sm:text-4xl font-display font-extrabold uppercase tracking-tighter text-white drop-shadow-2xl"
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, type: "spring", stiffness: 100, delay: 0.2 }}
+                transition={{
+                  duration: 0.8,
+                  type: "spring",
+                  stiffness: 100,
+                  delay: 0.2,
+                }}
               >
                 DJABALLAH
               </motion.h1>
@@ -134,9 +144,10 @@ const Hero = () => {
         {/* Short Description - Optimized for small phones */}
         <motion.p
           variants={itemVariants}
-          className="max-w-2xl mx-auto text-white/95 text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed px-4 xs:px-6 mb-4 xs:mb-6 sm:mb-8 md:mb-10 md:mt-[102px] drop-shadow-lg text-center"
+          className="max-w-2xl mx-auto text-white/95 text-[11px] xs:text-xs sm:text-sm md:text-base lg:text-xl leading-relaxed px-4 xs:px-6 mb-4 xs:mb-6 sm:mb-8 md:mb-10 md:mt-[200px] drop-shadow-lg text-center"
         >
-          {t.hero.description} <span className="text-white font-bold">{t.hero.descriptionBold}</span>
+          {t.hero.description}{" "}
+          <span className="text-white font-bold">{t.hero.descriptionBold}</span>
         </motion.p>
 
         {/* Premium CTA Buttons - Desktop Only */}
@@ -152,7 +163,7 @@ const Hero = () => {
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
           >
             {/* Gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-nbc-red via-nbc-redLight to-nbc-red bg-[length:200%_100%] animate-gradient-shift" />
+            <div className="absolute inset-0 bg-gradient-to-r from-nbc-red via-nbc-redLight to-nbc-red dark:from-sky-400 dark:via-cyan-400 dark:to-sky-500 bg-[length:200%_100%] animate-gradient-shift" />
 
             {/* Shimmer effect */}
             <motion.div
@@ -169,7 +180,7 @@ const Hero = () => {
 
             {/* Glow effect */}
             <motion.div
-              className="absolute inset-0 bg-nbc-red/50 blur-xl opacity-0 group-hover:opacity-50"
+              className="absolute inset-0 bg-nbc-red/50 dark:bg-sky-400/50 blur-xl opacity-0 group-hover:opacity-50"
               transition={{ duration: 0.3 }}
             />
           </motion.a>
@@ -185,7 +196,8 @@ const Hero = () => {
             <motion.div
               className="absolute inset-0 opacity-0 group-hover:opacity-100"
               style={{
-                background: "linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent)",
+                background:
+                  "linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent)",
               }}
               transition={{ duration: 0.4 }}
             />
@@ -205,7 +217,10 @@ const Hero = () => {
         </motion.div>
 
         {/* Premium Social Links - Optimized for small phones */}
-        <motion.div variants={itemVariants} className="flex justify-center space-x-2 xs:space-x-3 sm:space-x-4 md:space-x-6 mb-6 xs:mb-8 sm:mb-12 px-4">
+        <motion.div
+          variants={itemVariants}
+          className="flex justify-center space-x-2 xs:space-x-3 sm:space-x-4 md:space-x-6 mb-6 xs:mb-8 sm:mb-12 px-4"
+        >
           <motion.a
             href={personalInfo.github}
             target="_blank"
@@ -219,7 +234,10 @@ const Hero = () => {
               className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100"
               transition={{ duration: 0.3 }}
             />
-            <FiGithub size={24} className="relative z-10 text-white transition-colors" />
+            <FiGithub
+              size={24}
+              className="relative z-10 text-white transition-colors"
+            />
           </motion.a>
           <motion.a
             href={personalInfo.linkedin}
@@ -234,7 +252,10 @@ const Hero = () => {
               className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100"
               transition={{ duration: 0.3 }}
             />
-            <FiLinkedin size={24} className="relative z-10 text-white transition-colors" />
+            <FiLinkedin
+              size={24}
+              className="relative z-10 text-white transition-colors"
+            />
           </motion.a>
           <motion.a
             href={`mailto:${personalInfo.email}`}
@@ -247,7 +268,10 @@ const Hero = () => {
               className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100"
               transition={{ duration: 0.3 }}
             />
-            <FiMail size={24} className="relative z-10 text-white transition-colors" />
+            <FiMail
+              size={24}
+              className="relative z-10 text-white transition-colors"
+            />
           </motion.a>
           <motion.a
             href="/cv/CV_KOCEILA_1.pdf"
@@ -262,7 +286,9 @@ const Hero = () => {
               className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100"
               transition={{ duration: 0.3 }}
             />
-            <span className="relative z-10 text-white text-xl font-bold">CV</span>
+            <span className="relative z-10 text-white text-xl font-bold">
+              CV
+            </span>
           </motion.a>
         </motion.div>
 
@@ -282,9 +308,12 @@ const Hero = () => {
             href="#about"
             onClick={(e) => {
               e.preventDefault();
-              const aboutSection = document.querySelector('#about');
+              const aboutSection = document.querySelector("#about");
               if (aboutSection) {
-                aboutSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                aboutSection.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
               }
             }}
             className="relative p-2 xs:p-3 sm:p-4 rounded-xl xs:rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white shadow-lg hover:shadow-2xl overflow-hidden group"
@@ -294,7 +323,7 @@ const Hero = () => {
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
             }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
@@ -303,7 +332,10 @@ const Hero = () => {
               className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100"
               transition={{ duration: 0.3 }}
             />
-            <FiArrowDown size={20} className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 relative z-10 text-white" />
+            <FiArrowDown
+              size={20}
+              className="xs:w-5 xs:h-5 sm:w-6 sm:h-6 relative z-10 text-white"
+            />
           </motion.a>
         </motion.div>
       </motion.div>

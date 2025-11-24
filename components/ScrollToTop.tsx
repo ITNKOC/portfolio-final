@@ -55,45 +55,45 @@ const ScrollToTop = () => {
   const getButtonColors = () => {
     switch (currentSection) {
       case 'about':
-        // White background - Red button
+        // White background - Red/Blue button
         return {
-          bg: 'from-nbc-red to-red-600',
+          bg: 'from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500',
           text: 'text-white',
-          glow: 'bg-nbc-red',
+          glow: 'bg-nbc-red dark:bg-sky-400',
         };
       case 'experience':
         // Red background (light) / Dark blue (dark) - White button
         return {
           bg: 'from-white to-gray-100 dark:from-gray-800 dark:to-gray-900',
-          text: 'text-nbc-red dark:text-white',
+          text: 'text-nbc-red dark:text-sky-400',
           glow: 'bg-white dark:bg-gray-800',
         };
       case 'projects':
-        // White background (light) / Dark background (dark) - Red button
+        // White background (light) / Dark background (dark) - Red/Blue button
         return {
-          bg: 'from-nbc-red to-red-600',
+          bg: 'from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500',
           text: 'text-white',
-          glow: 'bg-nbc-red',
+          glow: 'bg-nbc-red dark:bg-sky-400',
         };
       case 'skills':
         // Red background (light) / Dark blue (dark) - White button
         return {
           bg: 'from-white to-gray-100 dark:from-gray-800 dark:to-gray-900',
-          text: 'text-nbc-red dark:text-white',
+          text: 'text-nbc-red dark:text-sky-400',
           glow: 'bg-white dark:bg-gray-800',
         };
       case 'contact':
-        // White background (light) / Dark background (dark) - Red button
+        // White background (light) / Dark background (dark) - Red/Blue button
         return {
-          bg: 'from-nbc-red to-red-600',
+          bg: 'from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500',
           text: 'text-white',
-          glow: 'bg-nbc-red',
+          glow: 'bg-nbc-red dark:bg-sky-400',
         };
       default:
         return {
-          bg: 'from-nbc-red to-red-600',
+          bg: 'from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500',
           text: 'text-white',
-          glow: 'bg-nbc-red',
+          glow: 'bg-nbc-red dark:bg-sky-400',
         };
     }
   };

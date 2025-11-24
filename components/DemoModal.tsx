@@ -76,17 +76,17 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
 
           {/* Modal Content */}
           <motion.div
-            className="relative w-full h-full max-w-[95vw] max-h-[90vh] bg-white dark:bg-nbc-gray-800 rounded-2xl overflow-hidden shadow-2xl border-4 border-nbc-red"
+            className="relative w-full h-full max-w-[95vw] max-h-[90vh] bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border-4 border-nbc-red dark:border-sky-400"
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
           >
             {/* Header */}
-            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-6 py-4 bg-white/95 dark:bg-nbc-gray-900/95 backdrop-blur-md border-b-2 border-nbc-red/30">
+            <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-6 py-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b-2 border-nbc-red/30 dark:border-sky-400/30">
               <div className="flex items-center space-x-3">
                 <motion.div
-                  className="w-3 h-3 rounded-full bg-nbc-red"
+                  className="w-3 h-3 rounded-full bg-nbc-red dark:bg-sky-400"
                   animate={{
                     boxShadow: [
                       "0 0 10px rgba(228, 28, 35, 0.5)",
@@ -97,20 +97,20 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
                   transition={{ duration: 2, repeat: Infinity }}
                 />
                 <h3 className="text-lg font-bold text-nbc-text-primary">
-                  {projectTitle} <span className="text-nbc-red">// Démo en Direct</span>
+                  {projectTitle} <span className="text-nbc-red dark:text-sky-400">// Démo en Direct</span>
                 </h3>
               </div>
 
               <div className="flex items-center space-x-2">
                 {/* View Mode Toggle - Only show on desktop */}
                 {!isMobileDevice && (
-                  <div className="flex items-center bg-nbc-red/10 dark:bg-nbc-gray-700 rounded-lg p-1 border-2 border-nbc-red/20 dark:border-nbc-gray-600">
+                  <div className="flex items-center bg-nbc-red/10 dark:bg-gray-700 rounded-lg p-1 border-2 border-nbc-red/20 dark:border-sky-400/30">
                     <motion.button
                       onClick={() => setViewMode("desktop")}
                       className={`p-2 rounded-md transition-all ${
                         viewMode === "desktop"
-                          ? "bg-nbc-red text-white"
-                          : "text-nbc-text-secondary hover:text-nbc-red"
+                          ? "bg-nbc-red dark:bg-sky-400 text-white"
+                          : "text-nbc-text-secondary hover:text-nbc-red dark:hover:text-sky-400"
                       }`}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
@@ -122,7 +122,7 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
                       onClick={() => setViewMode("mobile")}
                       className={`p-2 rounded-md transition-all ${
                         viewMode === "mobile"
-                          ? "bg-nbc-red text-white"
+                          ? "bg-nbc-red dark:bg-sky-400 text-white"
                           : "text-nbc-text-secondary hover:text-nbc-red"
                       }`}
                       whileHover={{ scale: 1.05 }}
@@ -139,7 +139,7 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
                   href={demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg bg-nbc-red/10 dark:bg-nbc-gray-700 hover:bg-nbc-red/20 dark:hover:bg-nbc-red/20 text-nbc-red border-2 border-nbc-red/20 dark:border-nbc-gray-600 transition-colors"
+                  className="p-2.5 rounded-lg bg-nbc-red/10 dark:bg-gray-700 hover:bg-nbc-red/20 dark:hover:bg-sky-400/20 text-nbc-red dark:text-sky-400 border-2 border-nbc-red/20 dark:border-gray-600 transition-colors"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                   title="Ouvrir dans un nouvel onglet"
@@ -150,7 +150,7 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
                 {/* Close button */}
                 <motion.button
                   onClick={onClose}
-                  className="p-2.5 rounded-lg bg-nbc-red/10 dark:bg-nbc-gray-700 hover:bg-red-100 dark:hover:bg-red-900/20 text-nbc-red hover:text-red-600 dark:hover:text-red-500 border-2 border-nbc-red/20 dark:border-nbc-gray-600 hover:border-red-500 dark:hover:border-red-500 transition-colors"
+                  className="p-2.5 rounded-lg bg-nbc-red/10 dark:bg-nbc-gray-700 hover:bg-red-100 dark:hover:bg-sky-900/20 text-nbc-red hover:text-red-600 dark:hover:text-sky-400 border-2 border-nbc-red/20 dark:border-gray-600 hover:border-red-500 dark:hover:border-sky-400 transition-colors"
                   whileHover={{ scale: 1.1, rotate: 90 }}
                   whileTap={{ scale: 0.95 }}
                   title="Fermer (ESC)"
@@ -170,7 +170,7 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
               >
                 <div className="relative">
                   <motion.div
-                    className="w-16 h-16 border-4 border-nbc-red/20 dark:border-nbc-gray-700 rounded-full"
+                    className="w-16 h-16 border-4 border-nbc-red/20 dark:border-gray-700 rounded-full"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                   />
@@ -239,10 +239,10 @@ const DemoModal = ({ isOpen, onClose, demoUrl, projectTitle }: DemoModalProps) =
             </div>
 
             {/* Corner Decorations - Elegant NBC Accent */}
-            <div className="absolute top-16 left-0 w-8 h-8 border-l-2 border-t-2 border-nbc-red opacity-20 pointer-events-none" />
-            <div className="absolute top-16 right-0 w-8 h-8 border-r-2 border-t-2 border-nbc-red opacity-20 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-nbc-red opacity-20 pointer-events-none" />
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-nbc-red opacity-20 pointer-events-none" />
+            <div className="absolute top-16 left-0 w-8 h-8 border-l-2 border-t-2 border-nbc-red dark:border-sky-400 opacity-20 pointer-events-none" />
+            <div className="absolute top-16 right-0 w-8 h-8 border-r-2 border-t-2 border-nbc-red dark:border-sky-400 opacity-20 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-nbc-red dark:border-sky-400 opacity-20 pointer-events-none" />
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-nbc-red dark:border-sky-400 opacity-20 pointer-events-none" />
           </motion.div>
         </motion.div>
       )}

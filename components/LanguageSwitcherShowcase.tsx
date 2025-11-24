@@ -48,15 +48,15 @@ const LanguageSwitcherShowcase = () => {
             <h3 className="text-xl font-bold text-white mb-3">Toggle Switch Élégant</h3>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li className="flex items-start gap-2">
-                <span className="text-nbc-red">✓</span>
+                <span className="text-nbc-red dark:text-sky-400">✓</span>
                 <span>Design compact et moderne</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-nbc-red">✓</span>
+                <span className="text-nbc-red dark:text-sky-400">✓</span>
                 <span>Animations fluides et sophistiquées</span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-nbc-red">✓</span>
+                <span className="text-nbc-red dark:text-sky-400">✓</span>
                 <span>Glassmorphism premium</span>
               </li>
               <li className="flex items-start gap-2">

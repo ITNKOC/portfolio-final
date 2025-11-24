@@ -164,7 +164,7 @@ export default function Home() {
                     </p>
                   </div>
                 ))}
-              </motion.div>
+              </div>
 
               <motion.div
                 className="professional-card professional-glow corner-accent p-6 md:p-8"
@@ -194,7 +194,7 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
@@ -292,7 +292,7 @@ export default function Home() {
                           delay: index * 0.2,
                         }}
                       />
-                    </motion.div>
+                    </div>
 
                     {/* Experience Card */}
                     <motion.div
@@ -348,7 +348,7 @@ export default function Home() {
                             <span>
                               {desc.replace(/[🚀💻🤖☁️]/g, "").trim()}
                             </span>
-                          </motion.li>
+                          </li>
                         ))}
                       </ul>
 
@@ -365,15 +365,15 @@ export default function Home() {
                             whileHover={{ scale: 1.15, y: -2 }}
                           >
                             {tech}
-                          </motion.span>
+                          </span>
                         ))}
                       </div>
-                    </motion.div>
-                  </motion.div>
+                    </div>
+                  </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -643,7 +643,7 @@ export default function Home() {
                           transition={{ duration: 0.5 }}
                         >
                           {categoryIconsMap[category]}
-                        </motion.div>
+                        </div>
                         <h3 className="text-sm xs:text-base sm:text-lg md:text-xl font-display font-bold text-gray-900 dark:text-white group-hover:text-nbc-red dark:group-hover:text-sky-400 transition-colors capitalize tracking-tight">
                           {categoryNames[category]}
                         </h3>
@@ -692,7 +692,7 @@ export default function Home() {
                           whileHover={{ scale: 1.05, y: -2 }}
                         >
                           {skill.name}
-                        </motion.span>
+                        </span>
                       ))}
                     </div>
 
@@ -701,11 +701,11 @@ export default function Home() {
 
                     {/* Corner Accent */}
                     <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-nbc-red/10 to-transparent dark:from-sky-400/20 dark:to-transparent rounded-tl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  </motion.div>
+                  </div>
                 );
               })}
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -772,7 +772,7 @@ export default function Home() {
                       }}
                     >
                       <FiMail size={20} className="xs:w-6 xs:h-6" />
-                    </motion.div>
+                    </div>
                     <h3 className="text-base xs:text-xl sm:text-2xl md:text-3xl font-display font-bold text-gray-900 dark:text-white tracking-tight">
                       {t.contact.contactInfo}
                     </h3>
@@ -807,7 +807,7 @@ export default function Home() {
                         {personalInfo.email}
                       </p>
                     </div>
-                  </motion.a>
+                  </a>
 
                   <motion.a
                     href={`tel:${personalInfo.phone}`}
@@ -832,7 +832,7 @@ export default function Home() {
                         {personalInfo.phone}
                       </p>
                     </div>
-                  </motion.a>
+                  </a>
 
                   <motion.div
                     className="group flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 hover:border-nbc-red dark:hover:border-sky-400 transition-all"
@@ -856,7 +856,7 @@ export default function Home() {
                         {personalInfo.location}
                       </p>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Social links - Mobile Optimized */}
@@ -878,7 +878,7 @@ export default function Home() {
                       transition={{ delay: 0.4 }}
                     >
                       <FiGithub size={22} />
-                    </motion.a>
+                    </a>
                     <motion.a
                       href={personalInfo.linkedin}
                       target="_blank"
@@ -892,7 +892,7 @@ export default function Home() {
                       transition={{ delay: 0.5 }}
                     >
                       <FiLinkedin size={22} />
-                    </motion.a>
+                    </a>
                     <motion.a
                       href={`mailto:${personalInfo.email}`}
                       className="flex-1 sm:flex-none sm:w-14 sm:h-14 h-12 rounded-xl bg-gradient-to-br from-nbc-red to-red-600 dark:from-sky-400 dark:to-cyan-500 flex items-center justify-center text-white hover:from-red-600 hover:to-nbc-red dark:hover:from-cyan-500 dark:hover:to-sky-400 transition-all shadow-md hover:shadow-lg"
@@ -904,10 +904,10 @@ export default function Home() {
                       transition={{ delay: 0.6 }}
                     >
                       <FiMail size={22} />
-                    </motion.a>
+                    </a>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Modern Form with Floating Labels - Mobile Optimized */}
               <form
@@ -941,7 +941,7 @@ export default function Home() {
                       <span className="text-xs xs:text-sm font-semibold">
                         {t.contact.successMessage}
                       </span>
-                    </motion.div>
+                    </div>
                   )}
 
                   {formStatus === "error" && (
@@ -969,7 +969,7 @@ export default function Home() {
                       <span className="text-xs xs:text-sm font-semibold">
                         {t.contact.errorMessage}
                       </span>
-                    </motion.div>
+                    </div>
                   )}
                 </AnimatePresence>
 
@@ -1066,10 +1066,10 @@ export default function Home() {
                       <span>{t.contact.send}</span>
                     </>
                   )}
-                </motion.button>
+                </button>
               </form>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -1101,7 +1101,7 @@ export default function Home() {
               <p className="text-base sm:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
                 {t.footer.taglineAlt}
               </p>
-            </motion.div>
+            </div>
 
             {/* Social Links - Large & Prominent */}
             <motion.div
@@ -1123,7 +1123,7 @@ export default function Home() {
                   size={24}
                   className="group-hover:scale-110 transition-transform"
                 />
-              </motion.a>
+              </a>
               <motion.a
                 href={personalInfo.linkedin}
                 target="_blank"
@@ -1136,7 +1136,7 @@ export default function Home() {
                   size={24}
                   className="group-hover:scale-110 transition-transform"
                 />
-              </motion.a>
+              </a>
               <motion.a
                 href={`mailto:${personalInfo.email}`}
                 className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/10 backdrop-blur-md border-2 border-white/30 hover:border-white flex items-center justify-center text-white shadow-lg hover:shadow-2xl transition-all group"
@@ -1147,8 +1147,8 @@ export default function Home() {
                   size={24}
                   className="group-hover:scale-110 transition-transform"
                 />
-              </motion.a>
-            </motion.div>
+              </a>
+            </div>
 
             {/* Quick Navigation */}
             <motion.nav
@@ -1176,9 +1176,9 @@ export default function Home() {
                 >
                   {item.label}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
-                </motion.a>
+                </a>
               ))}
-            </motion.nav>
+            </nav>
 
             {/* Contact Info */}
             <motion.div
@@ -1200,7 +1200,7 @@ export default function Home() {
                 <FiMapPin size={18} />
                 <span className="font-medium">{personalInfo.location}</span>
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Bottom Bar - Copyright */}
@@ -1221,21 +1221,17 @@ export default function Home() {
                 <motion.span
                   className="inline-block text-white"
                   animate={{ scale: [1, 1.2, 1] }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity,
-                    repeatDelay: 2,
-                  }}
+                  transition={{ duration: 1, repeat: Infinity, repeatDelay: 2 }}
                 >
                   ❤️
-                </motion.span>{" "}
+                </span>{" "}
                 {t.footer.using}{" "}
                 <span className="font-semibold text-white">Next.js</span>{" "}
                 {t.footer.and}{" "}
                 <span className="font-semibold text-white">Tailwind CSS</span>
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
       </footer>
 

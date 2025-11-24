@@ -91,13 +91,13 @@ const Hero = () => {
           </motion.p>
 
           {/* Main Name - Split for Desktop, Centered for Mobile */}
-          <div className="relative w-full">
+          <div className="relative w-full md:mt-40">
             {/* Desktop: Split Name Layout */}
             <div className="hidden md:flex md:justify-between md:items-center md:w-full md:px-0 lg:px-0">
               {/* First Name - Left with Fixed Offset */}
               <motion.h1
-                className="text-6xl lg:text-8xl font-bold uppercase tracking-tight text-white drop-shadow-2xl"
-                style={{ transform: "translateX(-90px)" }}
+                className="text-6xl lg:text-7xl font-bold uppercase tracking-tight text-white drop-shadow-2xl"
+                style={{ transform: "translateX(-120px)" }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
@@ -107,8 +107,8 @@ const Hero = () => {
 
               {/* Last Name - Right with Fixed Offset */}
               <motion.h1
-                className="text-6xl lg:text-8xl font-bold uppercase tracking-tight text-white drop-shadow-2xl"
-                style={{ transform: "translateX(240px)" }}
+                className="text-6xl lg:text-7xl font-bold uppercase tracking-tight text-white drop-shadow-2xl"
+                style={{ transform: "translateX(250px)" }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
